@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fury-data-381412",
+  "private_key_id": "1979b6246a3d36545f9eddcaef931cddc23c0991",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDilONsg5sSV/Zv\n/u8uyrzoo3SKmTU1AFxtW5I9qd48MVUlr6Ul0FXvbPNWpQ3PxkYuk+wQphnzOjQP\nKSU2/1INqIKRUF+8uXkmsOyP8ybx5Wu9MQWybc6YrzdkWpnxRMpm2kYMjmA4pSYq\nKfn21b9RVmPgvSnnVEiDi89soVBXQt66cTeLT5x2AAvI2qNd11hKnc/ebo7ItR4n\n4DsYEYO/lZLgo+aOylELNqu8HoNYknSWJJqomVJyOVFRMOyWwafVHmS1ur/Sr1VR\nnGfXtE5k5Tz2dMJ4T1vS4eqDaI8pUaGD2jfJrD8F4if726E8yb1UJRXgVn/7uGMX\nmMkwC1lXAgMBAAECggEASglZiL82IBfTBER6lkET2jZy4cjvHFr6WJd34SNM5UE/\nb9mFbqY1Nk9U8gZrzW0dyKF4HPaReysVELEiomZqQuFBjMcFCW9XeX+NRPowSxFq\nk37dvDBqNfTm9ikurSoLsvD2u6qYIVpBbryZm4C7i5Hdf/V/qEGfkjBQfk/1pxUq\nt54M79DFzYCeiRhr/zMcJUeVnzIHigPaU/M1da5VeSNcUklFWNkGVEARr2g9daYE\nPM6peRsPk+ppwFSJ6cLjeYqVgGYefKQY1TxVgDJJq4/NzGADe+yH7EG4sfKskl14\neXVCyUXrQ2S7poJ2PqAfNwhXsXTg4fOlQ6OklPBgbQKBgQDzhQT0tUehkkgGFRoY\nvyottvcbteJ4+LUc6CAI5zI+zo8Umyu3S3//w50UoFrZxt6bGMUsfV7SqOAihuNi\nPTTkNj/HDMuFNRqBh/lxSX9J5VDxsaN0T9H5HRqMzzb7sIuHhAshQnPmyMmDIhHK\nLEyXwmJbqvP/4FlvV2+BOvMyHQKBgQDuMaRec905Kc2Zh3YNQeDS2ZB+UWBE44wE\nn1/fpXL3K/aO8K/a7yyDRSsejax/AaUZW92PIVd7DwyeOjMeN7WAl6qSRHegGa4h\nHIh+M/oYaRAxOtBc0jU3zs9PdUK7Bde03Wm5BQJQ2Nb6Ld6DLCvPZLWZPxErdwmt\nkXfQSq1fAwKBgQDPQ9RoAzMojbzHkIZZsbtQlX3VFAXiOKzOIbPCYCUf1+dn/npC\n0/vp0LCNsb4hxWYKVBbeOwbN/fZm7K/0GWw/IP0/ieBfTEd3IChrB8dTOd6fGDaq\n9JUelmrWljeSGT1o5jYi5NCJCTSabBEAJpw6PrRAmUx76JO2dJDvSSFc8QKBgEel\nlPx4O4XTRi21KlRIiZjCqozka2GtVFOboNoDyTYB+lL6oNro8Gm354V0NfuqAgBD\nurwv2kGAwFnjxbaEKUs506vVfmog71i0XXYgqkynZaB5QW16KVnVElSjP+RDmKOl\nqgRmNlEdOGTeYTzxj2f9sgYbi02Yq8eSpwh3PfkDAoGABtSg1qyiwSx81faZES55\nwwgnfUIOwLjBm9YhnyYY3DEjpeCfr5WgU2fSaIWcpCtliTmLKc/tDTdNt2eyWTZl\nyQGIX3IE4rTWT/6pXXb7xqiR8uXsHwGW9EB1XjX2/HpW1zVxUILLnl/Axyje7PMP\nmBckApPNsHKBS4Lo+NaMmos=\n-----END PRIVATE KEY-----\n",
+  "client_email": "furydata@fury-data-381412.iam.gserviceaccount.com",
+  "client_id": "105369375343058297439",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/furydata%40fury-data-381412.iam.gserviceaccount.com"
+}
