@@ -54,3 +54,23 @@ def place_ships(board, num_ships):
     """
     for _ in range(num_ships):
         place_ship(board, 3)
+
+
+def select_difficulty():
+    """
+    select difficulty function
+    """
+    print("Select difficulty level:")
+    print("1. Easy (5x5 board with 2 ship)")
+    print("2. Medium (7x7 board with 3 ships)")
+    print("3. Hard (10x10 board with 5 ships)")
+
+    choice = int(input("Enter your choice (1, 2, or 3): "))
+    if choice == 1:
+        return 5, 2
+    elif choice == 2:
+        return 7, 3
+    else:
+        return 10, 4
+print(select_difficulty)
+
