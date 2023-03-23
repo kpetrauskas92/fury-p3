@@ -78,40 +78,45 @@ def play_game():
     """
     Plays a game of Battleship.
     """
-    print("Welcome to Battleship!")
-    size, num_ships = select_difficulty()
-    player_board = create_board(size)
-    enemy_board = create_board(size)
-    place_ships(enemy_board, num_ships)
+    while True:
+        print("Welcome to Battleship!")
+        size, num_ships = select_difficulty()
+        player_board = create_board(size)
+        enemy_board = create_board(size)
+        place_ships(enemy_board, num_ships)
 
-    turn_limit = 10
-    turns = 0
+        turn_limit = 10
+        turns = 0
 
-    while turns < turn_limit:
-        print(f"Turn {turns + 1}/{turn_limit}")
-        print_board(player_board)
+        while turns < turn_limit:
+            print(f"Turn {turns + 1}/{turn_limit}")
+            print_board(player_board)
 
-        row = int(input(f"Enter row (1-{size}): ")) - 1
-        col = int(input(f"Enter column (1-{size}): ")) - 1
+            row = int(input(f"Enter row (1-{size}): ")) - 1
+            col = int(input(f"Enter column (1-{size}): ")) - 1
 
-        if (row < 0 or row > size - 1) or (col < 0 or col > size - 1):
-            print("Oops, that's not even in the ocean.")
-        elif player_board[row][col] == "X" or player_board[row][col] == "!":
-            print("You've already tried that spot.")
-        elif enemy_board[row][col] == "S":
-            print("Hit!")
-            player_board[row][col] = "!"
-            enemy_board[row][col] = "~"
-            if not any("S" in row for row in enemy_board):
-                print("Congratulations! You sunk all the battleships!")
-                break
-        else:
-            print("Miss!")
-            player_board[row][col] = "X"
+            if (row < 0 or row > size - 1) or (col < 0 or col > size - 1):
+                print("Oops, that's not even in the ocean.")
+            elif player_board[row][col] == "X" or player_board[row][col] == "!":
+                print("You've already tried that spot.")
+            elif enemy_board[row][col] == "S":
+                print("Hit!")
+                player_board[row][col] = "!"
+                enemy_board[row][col] = "~"
+                if not any("S" in row for row in enemy_board):
+                    print("Congratulations! You sunk all the battleships!")
+                    break
+            else:
+                print("You Missed!")
+                player_board[row][col] = "X"
 
-        turns += 1
+            turns += 1
 
-    if turns == turn_limit:
-        print("Game Over! You ran out of turns.")
-        print("The enemy battleships were at:")
-        print_board(enemy_board)
+        if turns == turn_limit:
+            print("Game Over! You ran out of turns.")
+            print("The enemy battleships were at:")
+            print_board(enemy_board)
+
+        play_again = input("Do you want to play again? (yes or no): ")
+        if play_again.lower() == "no":
+            break
