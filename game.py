@@ -95,9 +95,9 @@ def play_game():
             row = int(input(f"Enter row (1-{size}): ")) - 1
             col = int(input(f"Enter column (1-{size}): ")) - 1
 
-            if (row < 0 or row > size - 1) or (col < 0 or col > size - 1):
+            if row not in range(size) or col not in range(size):
                 print("Oops, that's not even in the ocean.")
-            elif player_board[row][col] == "X" or player_board[row][col] == "!":
+            elif player_board[row][col] in ("X", "!"):
                 print("You've already tried that spot.")
             elif enemy_board[row][col] == "S":
                 print("Hit!")
@@ -107,13 +107,13 @@ def play_game():
                     print("Congratulations! You sunk all the battleships!")
                     break
             else:
-                print("You Missed!")
+                print("You missed!")
                 player_board[row][col] = "X"
 
             turns += 1
 
         if turns == turn_limit:
-            print("Game Over! You ran out of turns.")
+            print("Game over! You ran out of turns.")
             print("The enemy battleships were at:")
             print_board(enemy_board)
 
