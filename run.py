@@ -7,6 +7,8 @@ from modules.main_menu import display_main_menu
 from modules.user_menu import display_user_menu_after_action
 from modules.google_sheets import get_highscores_worksheet
 from modules.login import login
+from modules.register import register
+from modules.leaderboard import show_leaderboard
 
 
 if __name__ == "__main__":
@@ -21,5 +23,10 @@ if __name__ == "__main__":
         if main_menu_choice == 1:
             if login(highscores_worksheet):
                 display_user_menu_after_action()
+        elif main_menu_choice == 2:
+            register()
+        elif main_menu_choice == 3:
+            show_leaderboard()
         else:
             print("Invalid choice. Please try again.")
+            break
