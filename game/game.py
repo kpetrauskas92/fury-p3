@@ -1,5 +1,5 @@
 """
-import random lib
+Main game
 """
 import random
 

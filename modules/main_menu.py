@@ -6,4 +6,4 @@ def display_main_menu():
     print("Main Menu:\n")
     print("1. Login")
     print("2. Register")
-    print("3. Leaderboard")
+    print("3. Leaderboard\n")
