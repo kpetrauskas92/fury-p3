@@ -15,8 +15,20 @@ def print_board(board):
     """
     print board function
     """
-    for row in board:
-        print(" ".join(row))
+    size = len(board)
+    # Print column labels
+    print("  ", end="")
+    for col_num in range(1, size + 1):
+        print(f"{col_num:<3}", end="")
+    print()
+
+    # Print row labels and board content
+    for row_num, row in enumerate(board, start=1):
+        row_label = chr(row_num + 64)  # Convert row number to letters
+        print(f"{row_label} ", end="")
+        for cell in row:
+            print(f"{cell:<3}", end="")
+        print()
 
 
 def random_row(board):
@@ -79,7 +91,7 @@ def play_game():
     Plays a game of Battleship.
     """
     while True:
-        print("Welcome to Battleship!")
+        print("Welcome to FURY!")
         size, num_ships = select_difficulty()
         player_board = create_board(size)
         enemy_board = create_board(size)
@@ -92,7 +104,8 @@ def play_game():
             print(f"Turn {turns + 1}/{turn_limit}")
             print_board(player_board)
 
-            row = int(input(f"Enter row (1-{size}): ")) - 1
+            row_input = input(f"Enter row (A-{chr(size + 64)}): ").upper()
+            row = ord(row_input) - 65
             col = int(input(f"Enter column (1-{size}): ")) - 1
 
             if row not in range(size) or col not in range(size):
@@ -120,3 +133,10 @@ def play_game():
         play_again = input("Do you want to play again? (yes or no): ")
         if play_again.lower() == "no":
             break
+
+
+"""TESTING"""
+
+
+if __name__ == "__main__":
+    play_game()
