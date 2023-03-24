@@ -1,4 +1,4 @@
-""" Login function """
+""" Login module """
 
 
 def login(highscores):

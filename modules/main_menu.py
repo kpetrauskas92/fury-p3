@@ -1,4 +1,4 @@
-""" Main menu function """
+""" Main menu module """
 
 
 def display_main_menu():
