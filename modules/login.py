@@ -1,4 +1,5 @@
 """ Login module """
+from operator import itemgetter
 
 
 def login(highscores):
@@ -8,10 +9,17 @@ def login(highscores):
 
     records = highscores.get_all_records()
 
-    for index, record in enumerate(records):
-        if record["NAME"] == player_name and record["CITY"] == player_city:
+    # Sort the records by 'SCORE' in descending order
+    sorted_records = sorted(records, key=itemgetter('SCORE'), reverse=True)
+
+    for index, record in enumerate(sorted_records):
+        if (record["NAME"].lower() == player_name
+                and record["CITY"].lower() == player_city):
             print(f"Welcome back {record['NAME']}!")
             print(f"Your high score is {record['SCORE']}.")
+            position = index + 1
+            print(f"You are currently in position {position} on"
+                  " the leaderboard.")
             return index
 
     print("Player not found. Please try again.")
