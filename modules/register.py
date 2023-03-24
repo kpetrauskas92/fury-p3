@@ -1,6 +1,5 @@
 """ Player register module """
 from modules.google_sheets import get_highscores_worksheet
-from modules.user_menu import display_user_menu_after_action
 
 
 def is_player_registered(name, city, highscores):
@@ -26,7 +25,11 @@ def register():
     else:
         new_entry = [name, city, bonus_score]
         highscores.append_row(new_entry)
+        player_index = len(highscores.col_values(1)) - 2
+
         print(f"Congratulations {name}!")
         print("You've been registered")
         print(f"You received {bonus_score} bonus points.")
-        display_user_menu_after_action()
+
+        # Return the player_index after registration
+        return player_index
