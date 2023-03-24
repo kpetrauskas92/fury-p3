@@ -27,15 +27,15 @@ if __name__ == "__main__":
     print(MAIN_LOGO)
 
     loading_messages = [
-        "Loading game data ...",
-        "Loading fury ships ...",
-        "Loading battle coordinates ...\n"
+        f"{Fore.YELLOW}Loading game data{Style.RESET_ALL} ...",
+        f"{Fore.YELLOW}Loading fury ships{Style.RESET_ALL} ...",
+        f"{Fore.YELLOW}Loading battle coordinates{Style.RESET_ALL} ...\n"
     ]
 
     for message in loading_messages:
         typewriter(message)
 
-    typewriter("Game has successfuly loaded!\n")
+    typewriter(f"{Fore.GREEN}Game has successfuly loaded!{Style.RESET_ALL}\n")
     typewriter(INTRO_TEXT)
 
     highscores_worksheet = get_highscores_worksheet()
