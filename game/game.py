@@ -73,17 +73,17 @@ def select_difficulty():
     select difficulty function
     """
     print("Select difficulty level:")
-    print("1. Easy (5x5 board with 2 ship)")
-    print("2. Medium (7x7 board with 3 ships)")
-    print("3. Hard (10x10 board with 5 ships)")
+    print("1. Easy (5x5 board with 2 ships - 10 turns)")
+    print("2. Medium (7x7 board with 3 ships - 15 turns)")
+    print("3. Hard (10x10 board with 5 ships - 20 turns)")
 
     choice = int(input("Enter your choice (1, 2, or 3): "))
     if choice == 1:
-        return 5, 2
+        return 5, 2, 10
     elif choice == 2:
-        return 7, 3
+        return 7, 3, 15
     else:
-        return 10, 4
+        return 10, 4, 20
 
 
 def play_game():
@@ -92,12 +92,11 @@ def play_game():
     """
     while True:
         print("Welcome to FURY!")
-        size, num_ships = select_difficulty()
+        size, num_ships, turn_limit = select_difficulty()
         player_board = create_board(size)
         enemy_board = create_board(size)
         place_ships(enemy_board, num_ships)
 
-        turn_limit = 10
         turns = 0
 
         while turns < turn_limit:
