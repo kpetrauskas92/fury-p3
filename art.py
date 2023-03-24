@@ -42,13 +42,11 @@ LOGO = f"""
 """
 
 MAIN_MENU = f"""
-{Fore.MAGENTA}-Main  Menu-{Style.RESET_ALL}
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+{Fore.MAGENTA}⣿ Main Menu ⣿{Style.RESET_ALL}
 """
 
 USER_MENU = f"""
-{Fore.MAGENTA}-User  Menu-{Style.RESET_ALL}
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+{Fore.MAGENTA}⣿ User Menu ⣿{Style.RESET_ALL}
 """
 
 

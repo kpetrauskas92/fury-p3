@@ -1,6 +1,6 @@
 """Main python terminal"""
 
-
+from colorama import Fore, Style
 from art import MAIN_LOGO
 from modules.main_menu import display_main_menu
 from modules.user_menu import display_user_menu_after_action
@@ -16,7 +16,8 @@ if __name__ == "__main__":
 
     while True:
         display_main_menu()
-        main_menu_choice = int(input("Enter your choice (1, 2, or 3): \n"))
+        print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
+        main_menu_choice = int(input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}"))
 
         if main_menu_choice == 1:
             player_index = login(highscores_worksheet)
