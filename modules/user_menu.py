@@ -3,12 +3,13 @@
 
 from game.game import play_game
 from modules.leaderboard import show_leaderboard
+from art import USER_MENU
 from art import RULES
 
 
 def display_user_menu():
     """Displays user menu"""
-    print("User Menu:\n")
+    print(USER_MENU)
     print("1. Play Game")
     print("2. Leaderboard")
     print("3. Rules")

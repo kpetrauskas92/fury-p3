@@ -2,6 +2,7 @@
 Main game
 """
 import random
+from art import LOGO
 from modules.google_sheets import get_highscores_worksheet
 
 
@@ -73,10 +74,13 @@ def select_difficulty():
     """
     select difficulty function
     """
-    print("Select difficulty level:")
-    print("1. Easy (5x5 board with 2 ships - 10 turns)")
-    print("2. Medium (7x7 board with 3 ships - 15 turns)")
-    print("3. Hard (10x10 board with 5 ships - 20 turns)")
+    print("Select difficulty level:\n")
+    print("1. Easy")
+    print(" 5x5 board with 2 ships - 10 turns\n")
+    print("2. Medium")
+    print(" 7x7 board with 3 ships - 15 turns\n")
+    print("3. Hard")
+    print(" 10x10 board with 5 ships - 20 turns\n")
 
     choice = int(input("Enter your choice (1, 2, or 3): "))
     if choice == 1:
@@ -92,7 +96,7 @@ def play_game(player_index=None):
     Plays a game of Battleship.
     """
     while True:
-        print("Welcome to FURY!")
+        print(LOGO)
         size, num_ships, turn_limit = select_difficulty()
         player_board = create_board(size)
         enemy_board = create_board(size)
@@ -164,10 +168,3 @@ def play_game(player_index=None):
         play_again = input("Do you want to play again? (yes or no): ")
         if play_again.lower() == "no":
             break
-
-
-"""TESTING"""
-
-
-if __name__ == "__main__":
-    play_game()

@@ -15,7 +15,7 @@ def login(highscores):
     for index, record in enumerate(sorted_records):
         if (record["NAME"].lower() == player_name
                 and record["CITY"].lower() == player_city):
-            print(f"Welcome back {record['NAME']}!")
+            print("\nWelcome back " + record['NAME'] + "!")
             print(f"Your high score is {record['SCORE']}.")
             position = index + 1
             print(f"You are currently in position {position} on"
