@@ -14,8 +14,8 @@ def is_player_registered(name, city, highscores):
 
 def register():
     """register user"""
-    name = input("Please enter your name: ")
-    city = input("Please enter your city: ")
+    name = input("Please enter your name: ").title()
+    city = input("Please enter your city: ").title()
     bonus_score = 10
 
     highscores = get_highscores_worksheet()
