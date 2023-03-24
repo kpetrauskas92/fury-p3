@@ -30,6 +30,7 @@ MAIN_LOGO = f"""
   {Fore.CYAN}----\"Engage in Epic Naval Warfare!\"----{Style.RESET_ALL}
 """
 
+INTRO_TEXT = "Welcome to FURY! An epic naval warfare experience awaits you\n"
 
 LOGO = f"""
 ⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢀⣤⣤⣤⠀⠀⠀⣠⣤⣤⡄⠀⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢠⣤⣤⣄⠀⠀⢀⣤⣤⡤⠀⠀
