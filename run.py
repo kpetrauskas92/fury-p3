@@ -35,7 +35,7 @@ if __name__ == "__main__":
     for message in loading_messages:
         typewriter(message)
 
-    typewriter(f"{Fore.GREEN}Game has successfuly loaded!{Style.RESET_ALL}\n")
+    typewriter(f"{Fore.GREEN}Game has loaded successfuly!{Style.RESET_ALL}\n")
     typewriter(INTRO_TEXT)
 
     highscores_worksheet = get_highscores_worksheet()

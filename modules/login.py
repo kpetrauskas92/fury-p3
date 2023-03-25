@@ -7,8 +7,8 @@ init()
 
 def login(highscores):
     """ Login function checks gsheets for existing data  """
-    player_name = input("Enter your name: ")
-    player_city = input("Enter your city: ")
+    player_name = input(f"{Fore.YELLOW}Enter your name:{Style.RESET_ALL} ")
+    player_city = input(f"{Fore.YELLOW}Enter your city:{Style.RESET_ALL} ")
 
     records = highscores.get_all_records()
 

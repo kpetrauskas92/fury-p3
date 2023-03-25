@@ -1,5 +1,9 @@
 """ Player register module """
+from colorama import Fore, Style, init
 from modules.google_sheets import get_highscores_worksheet
+
+
+init()
 
 
 def is_player_registered(name, city, highscores):
@@ -13,23 +17,29 @@ def is_player_registered(name, city, highscores):
 
 def register():
     """register user"""
-    name = input("Please enter your name: ").title()
-    city = input("Please enter your city: ").title()
+    name = input(f"{Fore.YELLOW}Please enter your name:"
+                 f"{Style.RESET_ALL} ").title()
+    city = input(f"{Fore.YELLOW}Please enter your city:"
+                 f"{Style.RESET_ALL} ").title()
     bonus_score = 10
 
     highscores = get_highscores_worksheet()
 
     if is_player_registered(name, city, highscores):
-        print("Player already exists. Please choose a different name.")
-        print("Or log in.")
+        print(f"{Fore.RED}Player already exists.{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Please choose a different name.{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Or log in.{Style.RESET_ALL}")
     else:
         new_entry = [name, city, bonus_score]
         highscores.append_row(new_entry)
         player_index = len(highscores.col_values(1)) - 2
 
-        print(f"Congratulations {name}!")
-        print("You've been registered")
-        print(f"You received {bonus_score} bonus points.")
+        print(f"{Fore.GREEN}Congratulations {name}!"
+              f"{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}You've been registered"
+              f"{Style.RESET_ALL}")
+        print(f"You received /{Fore.GREEN}{bonus_score}"
+              f"{Style.RESET_ALL}/ bonus points.")
 
         # Return the player_index after registration
         return player_index
