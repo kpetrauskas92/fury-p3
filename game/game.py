@@ -2,8 +2,11 @@
 Main game
 """
 import random
+from colorama import Fore, Style, init
 from art import LOGO
 from modules.google_sheets import get_highscores_worksheet
+
+init()
 
 
 def create_board(size):
@@ -74,15 +77,16 @@ def select_difficulty():
     """
     select difficulty function
     """
-    print("Select difficulty level:\n")
-    print("1. Easy")
+    print(f"{Fore.GREEN}Select difficulty level:{Style.RESET_ALL}\n")
+    print(f"{Fore.CYAN}1. {Fore.GREEN}Easy{Style.RESET_ALL}")
     print(" 5x5 board with 2 ships - 10 turns\n")
-    print("2. Medium")
+    print(f"{Fore.CYAN}2. {Fore.YELLOW}Medium{Style.RESET_ALL}")
     print(" 7x7 board with 3 ships - 15 turns\n")
-    print("3. Hard")
+    print(f"{Fore.CYAN}3. {Fore.RED}Hard{Style.RESET_ALL}")
     print(" 10x10 board with 5 ships - 20 turns\n")
 
-    choice = int(input("Enter your choice (1, 2, or 3): "))
+    print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
+    choice = int(input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}"))
     if choice == 1:
         return 5, 2, 10
     elif choice == 2:
@@ -106,7 +110,7 @@ def play_game(player_index=None):
         ships_sunk = 0
 
         while turns < turn_limit:
-            print(f"Turn {turns + 1}/{turn_limit}")
+            print(f"\nTurn {turns + 1}/{turn_limit}")
             print_board(player_board)
 
             while True:
