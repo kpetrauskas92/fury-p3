@@ -1,12 +1,26 @@
 """
 Main game
 """
+import os
 import random
 from colorama import Fore, Style, init
 from art import LOGO
 from modules.google_sheets import get_highscores_worksheet
 
 init()
+
+DIFFICULTY_LEVELS = {
+    1: {"size": 5, "num_ships": 2, "turn_limit": 10},
+    2: {"size": 7, "num_ships": 3, "turn_limit": 15},
+    3: {"size": 10, "num_ships": 4, "turn_limit": 20},
+}
+
+SHIP_SIZES = [2, 3, 4]  # Custom ship sizes
+
+
+def clear_screen():
+    """clears board for new one"""
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def create_board(size):
@@ -50,6 +64,18 @@ def random_col(board):
     return random.randint(0, len(board[0]) - 1)
 
 
+def is_valid_ship_placement(board, row, col, length, orientation):
+    """function to check if the ship placement is valid."""
+    for i in range(length):
+        if orientation == "horizontal":
+            if col + i >= len(board[0]) or board[row][col + i] == "S":
+                return False
+        else:
+            if row + i >= len(board) or board[row + i][col] == "S":
+                return False
+    return True
+
+
 def place_ship(board, length):
     """
     place ship function
@@ -57,20 +83,26 @@ def place_ship(board, length):
     orientation = random.choice(["horizontal", "vertical"])
     if orientation == "horizontal":
         row, col = random_row(board), random.randint(0, len(board[0]) - length)
+        if not is_valid_ship_placement(board, row, col, length, orientation):
+            return False
         for i in range(length):
             board[row][col + i] = "S"
     else:
         row, col = random.randint(0, len(board) - length), random_col(board)
+        if not is_valid_ship_placement(board, row, col, length, orientation):
+            return False
         for i in range(length):
             board[row + i][col] = "S"
+    return True
 
 
-def place_ships(board, num_ships):
+def place_ships(board, ship_sizes):
     """
     place ships function
     """
-    for _ in range(num_ships):
-        place_ship(board, 3)
+    for ship_size in ship_sizes:
+        while not place_ship(board, ship_size):
+            pass
 
 
 def select_difficulty():
@@ -100,16 +132,18 @@ def play_game(player_index=None):
     Plays a game of Battleship.
     """
     while True:
+        clear_screen()
         print(LOGO)
         size, num_ships, turn_limit = select_difficulty()
         player_board = create_board(size)
         enemy_board = create_board(size)
-        place_ships(enemy_board, num_ships)
+        place_ships(enemy_board, SHIP_SIZES[:num_ships])
 
         turns = 0
         ships_sunk = 0
 
         while turns < turn_limit:
+            clear_screen()
             print(f"\nTurn {turns + 1}/{turn_limit}")
             print_board(player_board)
 
