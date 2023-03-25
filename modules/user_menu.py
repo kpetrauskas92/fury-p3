@@ -7,18 +7,16 @@ from art import USER_MENU
 from art import RULES
 
 
-init(autoreset=True)
-
-# Need to update other modules with autoreset!!!
+init()
 
 
 def display_user_menu():
     """Displays user menu"""
     print(USER_MENU)
-    print(f"{Fore.CYAN}1. Play Game{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}2. Leaderboard{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}3. Rules{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}4. Logout{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}1.{Style.RESET_ALL} Play Game")
+    print(f"{Fore.CYAN}2.{Style.RESET_ALL} Leaderboard")
+    print(f"{Fore.CYAN}3.{Style.RESET_ALL} Rules")
+    print(f"{Fore.CYAN}4.{Style.RESET_ALL} Logout")
 
 
 def display_user_menu_after_action(player_index):
