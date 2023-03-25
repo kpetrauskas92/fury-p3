@@ -27,7 +27,7 @@ def create_board(size):
     """
     create board function
     """
-    return [["~" for _ in range(size)] for _ in range(size)]
+    return [[" ~" for _ in range(size)] for _ in range(size)]
 
 
 def print_board(board):
@@ -35,19 +35,27 @@ def print_board(board):
     print board function
     """
     size = len(board)
-    # Print column labels
-    print("  ", end="")
-    for col_num in range(1, size + 1):
-        print(f"{col_num:<3}", end="")
-    print()
+    border = f"+{'-' * (size * 3 + 1)}+"
+
+    # Print the top border
+    print(border)
 
     # Print row labels and board content
     for row_num, row in enumerate(board, start=1):
         row_label = chr(row_num + 64)  # Convert row number to letters
-        print(f"{row_label} ", end="")
+        print(f"{row_label}|", end="")
         for cell in row:
             print(f"{cell:<3}", end="")
-        print()
+        print("|")
+
+    # Print the bottom border
+    print(border)
+
+    # Print column labels
+    print("   ", end="")
+    for col_num in range(1, size + 1):
+        print(f"{col_num:<3}", end="")
+    print()
 
 
 def random_row(board):
@@ -96,13 +104,12 @@ def place_ship(board, length):
     return True
 
 
-def place_ships(board, ship_sizes):
+def place_ships(board, num_ships):
     """
     place ships function
     """
-    for ship_size in ship_sizes:
-        while not place_ship(board, ship_size):
-            pass
+    for _ in range(num_ships):
+        place_ship(board, 3)
 
 
 def select_difficulty():
@@ -137,13 +144,17 @@ def play_game(player_index=None):
         size, num_ships, turn_limit = select_difficulty()
         player_board = create_board(size)
         enemy_board = create_board(size)
-        place_ships(enemy_board, SHIP_SIZES[:num_ships])
+        place_ships(enemy_board, num_ships)
 
         turns = 0
         ships_sunk = 0
+        event_message = ""
 
         while turns < turn_limit:
             clear_screen()
+            print(LOGO)
+            if event_message:
+                print(event_message)
             print(f"\nTurn {turns + 1}/{turn_limit}")
             print_board(player_board)
 
@@ -164,20 +175,20 @@ def play_game(player_index=None):
                     print("Please enter a single number for the column.")
 
             if row not in range(size) or col not in range(size):
-                print("Oops, that's not even in the ocean.")
-            elif player_board[row][col] in ("X", "!"):
-                print("You've already tried that spot.")
-            elif enemy_board[row][col] == "S":
-                print("Hit!")
-                player_board[row][col] = "!"
-                enemy_board[row][col] = "~"
+                event_message = "Oops, that's not even in the ocean."
+            elif player_board[row][col] in (" X", " !"):
+                event_message = "You've already tried that spot."
+            elif enemy_board[row][col] == " S":
+                event_message = "Hit!"
+                player_board[row][col] = " !"
+                enemy_board[row][col] = " ~"
                 ships_sunk += 1
                 if not any("S" in row for row in enemy_board):
-                    print("Congratulations! You sunk all the battleships!")
+                    event_message = "Congratulations! You sunk all the battleships!"
                     break
             else:
-                print("You missed!")
-                player_board[row][col] = "X"
+                event_message = "You missed!"
+                player_board[row][col] = " X"
 
             turns += 1
 

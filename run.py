@@ -2,7 +2,7 @@
 
 import sys
 import time
-from colorama import init, Fore, Style
+from colorama import Fore, Style, init
 from art import MAIN_LOGO, INTRO_TEXT
 from modules.main_menu import display_main_menu
 from modules.user_menu import display_user_menu_after_action
