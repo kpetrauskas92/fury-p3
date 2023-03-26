@@ -233,7 +233,7 @@ def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
         tanks_destr += 1
         if not any("S" in row for row in enemy_brd):
             event_message = "Congratulations!"
-            event_message = "You destroyed all the enemy tanks!"
+            event_message = "You destroyed all enemy tanks!"
     else:
         event_message = "You missed!"
         player_brd[row][col] = "X"
