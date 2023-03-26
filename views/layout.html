@@ -8,10 +8,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
-    <title>Python Terminal by Code Institute</title>
+    <title>Welcome to Fury!</title>
     <style>
         body {
             font-family: Arial;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #terminal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /**
@@ -84,7 +95,7 @@
             top: 0;
             bottom: 0;
             background-color: rgb(0, 0, 0);
-            width: 730px;
+            /* width: 730px; */
         }
 
         .xterm .xterm-screen {
@@ -159,11 +170,27 @@
             width: 200px;
             height: 40px;
             background-color: #E84610;
-            border: 1px solid grey;
+            border: 1px solid yellow;
             color: white;
             text-transform: uppercase;
             margin: 10px;
             border-radius: 8px;
+        }
+
+        @media (max-width: 585px) {
+            .xterm .xterm-text-layer {
+                width: 410px !important;
+                height: 650px !important;
+                margin-left: 65px;
+            }
+            .xterm-cursor-layer {
+                cursor: none;
+            }
+            button {
+                width: 150px;
+                height: 35px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
