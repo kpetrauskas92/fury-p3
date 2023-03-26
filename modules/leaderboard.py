@@ -6,7 +6,7 @@ init()
 
 
 def show_leaderboard():
-    """ leaderboard functionality """
+    """Display the leaderboard."""
     highscores = get_highscores_worksheet()
     rows = highscores.get_all_values()[1:]  # Skip the header row
 
@@ -23,3 +23,5 @@ def show_leaderboard():
     for i, row in enumerate(sorted_rows[:15]):
         name, city, score = row
         print(f"{i + 1:<5} {name:<20} {city:<20} {score:<10}")
+
+    input("\nPress Enter to go back to the main menu: ")

@@ -22,7 +22,7 @@ def display_main_menu():
 
 
 def show_rules_and_start_game():
-    """show rules function."""
+    """show rules and start game function."""
     while True:
         show_rules = input("Would you like to see the rules? (y/n): ")
         if show_rules.lower() == 'y':
@@ -30,21 +30,10 @@ def show_rules_and_start_game():
             for line in RULES.splitlines():
                 print(line)
                 time.sleep(0.1)
-            return start_game_after_rules()
-        if show_rules.lower() == 'n':
+            input("\nPress Enter to start the game: ")
             play_game()
-            return None
-        print("Invalid input. Please try again.")
-
-
-def start_game_after_rules():
-    """after rules function."""
-    while True:
-        print("\nPress 'y' to start the game or 'n' to go back.")
-        user_input = input().strip()
-        if user_input.lower() == 'n':
             break
-        if user_input.lower() == 'y':
+        if show_rules.lower() == 'n':
             play_game()
             break
         print("Invalid input. Please try again.")

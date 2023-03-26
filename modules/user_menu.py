@@ -32,6 +32,7 @@ def display_user_menu_after_action(player_index):
             show_leaderboard()
         elif user_choice == 3:
             print(RULES)
+            input("\nPress Enter to go back to the user menu: ")
         elif user_choice == 4:
             print("You have been logged out.")
             break
