@@ -36,7 +36,7 @@ def load_game():
     """Load game function."""
     loading_messages = [
         f"{Fore.YELLOW}Loading game data{Style.RESET_ALL}...",
-        f"{Fore.YELLOW}Loading fury ships{Style.RESET_ALL}...",
+        f"{Fore.YELLOW}Loading fury tanks{Style.RESET_ALL}...",
         f"{Fore.YELLOW}Loading battle coordinates{Style.RESET_ALL}..."
     ]
 
