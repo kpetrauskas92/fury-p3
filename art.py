@@ -47,7 +47,7 @@ LOGO = f"""
 ⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀
 ⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀
-  {Fore.GREEN}----\"Engage in Epic Naval Warfare!\"----{Style.RESET_ALL}
+  {Fore.GREEN}----\"Engage in Epic Tank Warfare!\"----{Style.RESET_ALL}
 """
 
 MAIN_MENU = f"""

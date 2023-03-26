@@ -4,12 +4,9 @@ import sys
 import time
 from colorama import Fore, Style, init
 from art import MAIN_LOGO, INTRO_TEXT
-from modules.main_menu import display_main_menu
-from modules.user_menu import display_user_menu_after_action
+from modules.main_menu import (display_main_menu,
+                               process_main_menu_choice)
 from modules.google_sheets import get_highscores_worksheet
-from modules.login import login
-from modules.register import register
-from modules.leaderboard import show_leaderboard
 
 init()
 
@@ -36,31 +33,15 @@ def continue_prompt():
 
 
 def load_game():
-    """load game function"""
+    """Load game function."""
     loading_messages = [
-        f"{Fore.YELLOW}\nLoading game data{Style.RESET_ALL} ...",
-        f"{Fore.YELLOW}Loading fury ships{Style.RESET_ALL} ...",
-        f"{Fore.YELLOW}Loading battle coordinates{Style.RESET_ALL} ..."
+        f"{Fore.YELLOW}Loading game data{Style.RESET_ALL}...",
+        f"{Fore.YELLOW}Loading fury ships{Style.RESET_ALL}...",
+        f"{Fore.YELLOW}Loading battle coordinates{Style.RESET_ALL}..."
     ]
 
     for message in loading_messages:
-        typewriter(message + "\n")
-
-
-def process_main_menu_choice(choice):
-    """process mm choices function"""
-    if choice == 1:
-        player_index = login(highscores_worksheet)
-        if player_index is not None:
-            display_user_menu_after_action(player_index)
-    elif choice == 2:
-        player_index = register()
-        if player_index is not None:
-            display_user_menu_after_action(player_index)
-    elif choice == 3:
-        show_leaderboard()
-    else:
-        print("Invalid choice. Please try again.")
+        typewriter(message)
 
 
 if __name__ == "__main__":
@@ -83,7 +64,7 @@ if __name__ == "__main__":
             main_menu_choice_input = f"{Fore.CYAN}\n>>> {Style.RESET_ALL}"
             main_menu_choice = int(input(main_menu_choice_input))
 
-            process_main_menu_choice(main_menu_choice)
+            process_main_menu_choice(main_menu_choice, highscores_worksheet)
 
     else:
         typewriter("\nExiting the game...")
