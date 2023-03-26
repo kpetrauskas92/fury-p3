@@ -52,20 +52,24 @@ if __name__ == "__main__":
 
         highscores_worksheet = get_highscores_worksheet()
 
+        GAME_LOADED = False
+
         while True:
-            game_loaded_msg = (
-                f"{Fore.GREEN}Game has loaded successfully!"
-                f"{Style.RESET_ALL}"
-            )
-            typewriter(game_loaded_msg + "\n")
-            typewriter(INTRO_TEXT)
+            if not GAME_LOADED:
+                game_loaded_msg = (
+                    f"{Fore.GREEN}Game has loaded successfully!"
+                    f"{Style.RESET_ALL}"
+                )
+                typewriter(game_loaded_msg + "\n")
+                typewriter(INTRO_TEXT)
+                GAME_LOADED = True
+
             display_main_menu()
-            print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
+            print("\nChoose (1, 2, 3 or 4) and press Enter:", end=" ")
             main_menu_choice_input = f"{Fore.CYAN}\n>>> {Style.RESET_ALL}"
             main_menu_choice = int(input(main_menu_choice_input))
 
             process_main_menu_choice(main_menu_choice, highscores_worksheet)
-
     else:
         typewriter("\nExiting the game...")
         print("Press restart button at the top to start again")
