@@ -77,10 +77,10 @@ def is_valid_tank_placement(brd, row, col, length, orientation):
     """function to check if the tank placement is valid."""
     for i in range(length):
         if orientation == "horizontal":
-            if col + i >= len(brd[0]) or brd[row][col + i] == "S":
+            if col + i >= len(brd[0]) or brd[row][col + i] == "T":
                 return False
         else:
-            if row + i >= len(brd) or brd[row + i][col] == "S":
+            if row + i >= len(brd) or brd[row + i][col] == "T":
                 return False
     return True
 
@@ -95,13 +95,13 @@ def place_tank(brd, length):
         if not is_valid_tank_placement(brd, row, col, length, orientation):
             return False
         for i in range(length):
-            brd[row][col + i] = "S"
+            brd[row][col + i] = "T"
     else:
         row, col = random.randint(0, len(brd) - length), random_col(brd)
         if not is_valid_tank_placement(brd, row, col, length, orientation):
             return False
         for i in range(length):
-            brd[row + i][col] = "S"
+            brd[row + i][col] = "T"
     return True
 
 
@@ -226,13 +226,13 @@ def get_row_col(size):
 
 def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
     """update game state function"""
-    if enemy_brd[row][col] == "S":
+    if enemy_brd[row][col] == "T":
         event_message = "Hit!"
         player_brd[row][col] = "!"
         enemy_brd[row][col] = "~"
         tanks_destr += 1
-        if not any("S" in row for row in enemy_brd):
-            event_message = "Congratulations!"
+        if not any("T" in row for row in enemy_brd):
+            event_message = f"{Fore.GREEN}Congratulations!{Style.RESET_ALL}"
             event_message = "You destroyed all enemy tanks!"
     else:
         event_message = "You missed!"
