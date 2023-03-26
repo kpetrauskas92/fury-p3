@@ -151,7 +151,7 @@ def select_difficulty():
             choice = int(choice)
             break
 
-        print(f"\n{Fore.RED}Please enter a valid number "
+        print(f"\n{Fore.RED}Please enter a valid option "
               f"(1, 2, or 3).{Style.RESET_ALL}")
 
     if choice == 1:
@@ -180,7 +180,7 @@ def valid_row(value):
 def valid_col(value):
     """valid col function"""
     if not value.isdigit():
-        print(f"{Fore.GREEN}Please enter a number.{Style.RESET_ALL}")
+        print(f"{Fore.RED}Please enter a number.{Style.RESET_ALL}")
         return False
     return True
 
@@ -220,29 +220,33 @@ def play_game(player_index=None):
         if game_state["turns"] == turn_limit:
             print(event_messages["game_over"])
             print(event_messages["enemy_tanks"])
+            print_brd(enemy_brd)
 
         score = int(game_state["tanks_destr"] * 10 *
                     [1, 1.2, 1.3][turn_limit // 5 - 2])
-        print(f"You scored {Fore.GREEN}/{score}/ points!{Style.RESET_ALL}")
+        print(f"You scored: {Fore.GREEN}{score} points!{Style.RESET_ALL}")
 
         if player_index is not None:
             highscores = get_highscores_worksheet()
             old_score = highscores.cell(player_index + 2, 3).value
             highscores.update_cell(player_index + 2, 3, int(old_score) + score)
 
-        play_again = input("Do you want to play again? (yes or no): ")
-        if play_again.lower() == "no":
+        print(f"{Fore.YELLOW}Do you want to play again? {Style.RESET_ALL}"
+              f"(yes or no):", end=" ")
+        play_again = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}").lower()
+        if play_again == "no":
             break
 
 
 def get_row_col(size):
     """get row col function"""
     row_input = get_input(
-        f"Enter row (A-{chr(64 + size)}): ", valid_row
+        f"Enter row (A-{chr(64 + size)}):{Fore.CYAN} >>> {Style.RESET_ALL}",
+        valid_row
     ).upper()
     row = ord(row_input) - 65
     col_input = get_input(
-        f"Enter column (1-{size}): ",
+        f"Enter column (1-{size}):{Fore.CYAN} >>> {Style.RESET_ALL}",
         valid_col
     )
     col = int(col_input) - 1

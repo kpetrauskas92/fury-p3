@@ -24,19 +24,20 @@ def display_main_menu():
 def show_rules_and_start_game():
     """show rules and start game function."""
     while True:
-        show_rules = input("Would you like to see the rules? (y/n): ")
+        print("Would you like to see the rules? (y/n):", end=" ")
+        show_rules = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}").lower()
         if show_rules.lower() == 'y':
             print("\n")
             for line in RULES.splitlines():
                 print(line)
                 time.sleep(0.1)
-            input("\nPress Enter to start the game: ")
+            input("\nPress ENTER to start the game: ")
             play_game()
             break
         if show_rules.lower() == 'n':
             play_game()
             break
-        print("Invalid input. Please try again.")
+        print(f"{Fore.RED}Invalid input. Please try again.{Style.RESET_ALL}")
 
 
 def process_main_menu_choice(choice, highscores_worksheet):
@@ -54,4 +55,4 @@ def process_main_menu_choice(choice, highscores_worksheet):
     elif choice == 4:
         show_leaderboard()
     else:
-        print("Invalid choice. Please try again.")
+        print(f"{Fore.RED}Invalid choice. Please try again.{Style.RESET_ALL}")
