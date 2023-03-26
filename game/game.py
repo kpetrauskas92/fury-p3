@@ -128,8 +128,17 @@ def select_difficulty():
     print(f"{Fore.CYAN}3. {Fore.RED}Hard{Style.RESET_ALL}")
     print(" 10x10 board with 5 Tanks - 20 turns\n")
 
-    print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
-    choice = int(input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}"))
+    while True:
+        print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
+        choice = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}")
+
+        if choice.isdigit() and choice in ('1', '2', '3'):
+            choice = int(choice)
+            break
+
+        print(f"\n{Fore.RED}Please enter a valid number "
+              f"(1, 2, or 3).{Style.RESET_ALL}")
+
     if choice == 1:
         return 5, 2, 10
     if choice == 2:
