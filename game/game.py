@@ -17,6 +17,21 @@ DIFFICULTY_LEVELS = {
 
 TANK_SIZES = [2]  # Custom tank sizes
 
+event_messages = {
+    "oops": f"{Fore.YELLOW}Oops, that's not even in "
+            f"the battlefield.{Style.RESET_ALL}",
+    "same": f"{Fore.RED}You've already hit that "
+            f"spot. Try again!{Style.RESET_ALL}",
+    "hit": f"{Fore.GREEN}You've hit a tank! Good job!{Style.RESET_ALL}",
+    "miss": f"{Fore.YELLOW}You missed. Better luck "
+            f"next time!{Style.RESET_ALL}",
+    "game_over": f"\n{Fore.RED}Game over! You ran out "
+                 f"of turns.{Style.RESET_ALL}",
+    "enemy_tanks": f"{Fore.YELLOW}The enemy tanks were at:{Style.RESET_ALL}",
+    "congrats": f"{Fore.GREEN}Congratulations!{Style.RESET_ALL}",
+    "destroyed": "You destroyed all enemy tanks!",
+}
+
 
 def clear_screen():
     """clears board for new one"""
@@ -157,7 +172,7 @@ def get_input(prompt, valid_func):
 def valid_row(value):
     """valid row function"""
     if len(value) != 1 or not value.isalpha():
-        print("Invalid input. Please enter a single letter.")
+        print(f"{Fore.RED}Please enter a single letter.{Style.RESET_ALL}")
         return False
     return True
 
@@ -165,7 +180,7 @@ def valid_row(value):
 def valid_col(value):
     """valid col function"""
     if not value.isdigit():
-        print("Invalid input. Please enter a number.")
+        print(f"{Fore.GREEN}Please enter a number.{Style.RESET_ALL}")
         return False
     return True
 
@@ -192,10 +207,9 @@ def play_game(player_index=None):
             row, col = get_row_col(size)
 
             if row not in range(size) or col not in range(size):
-                game_state["event_message"] = ("Oops, that's not even in "
-                                               "the battlefield.")
+                game_state["event_message"] = event_messages["oops"]
             elif player_brd[row][col] in ("X", " !"):
-                game_state["event_message"] = "You've already tried that spot."
+                game_state["event_message"] = event_messages["same"]
             else:
                 (game_state["event_message"], player_brd, enemy_brd,
                  game_state["tanks_destr"]) = update_game_state(
@@ -204,13 +218,12 @@ def play_game(player_index=None):
             game_state["turns"] += 1
 
         if game_state["turns"] == turn_limit:
-            print("Game over! You ran out of turns.")
-            print("The enemy tanks were at:")
-            print_brd(enemy_brd)
+            print(event_messages["game_over"])
+            print(event_messages["enemy_tanks"])
 
         score = int(game_state["tanks_destr"] * 10 *
                     [1, 1.2, 1.3][turn_limit // 5 - 2])
-        print(f"You scored {score} points!")
+        print(f"You scored {Fore.GREEN}/{score}/ points!{Style.RESET_ALL}")
 
         if player_index is not None:
             highscores = get_highscores_worksheet()
@@ -239,14 +252,14 @@ def get_row_col(size):
 def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
     """update game state function"""
     if enemy_brd[row][col] == "T":
-        event_message = "Hit!"
+        event_message = event_messages["hit"]
         player_brd[row][col] = "!"
         enemy_brd[row][col] = "~"
         tanks_destr += 1
         if not any("T" in row for row in enemy_brd):
-            event_message = f"{Fore.GREEN}Congratulations!{Style.RESET_ALL}"
-            event_message = "You destroyed all enemy tanks!"
+            event_message = event_messages["congrats"]
+            event_message = event_messages["destroyed"]
     else:
-        event_message = "You missed!"
+        event_message = event_messages["miss"]
         player_brd[row][col] = "X"
     return event_message, player_brd, enemy_brd, tanks_destr
