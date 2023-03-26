@@ -154,9 +154,9 @@ def valid_row(value):
 
 
 def valid_col(value):
-    """get col function"""
-    if len(value) != 1 or not value.isdigit():
-        print("Invalid input. Please enter a single number.")
+    """valid col function"""
+    if not value.isdigit():
+        print("Invalid input. Please enter a number.")
         return False
     return True
 
@@ -184,7 +184,7 @@ def play_game(player_index=None):
 
             if row not in range(size) or col not in range(size):
                 game_state["event_message"] = ("Oops, that's not even in "
-                                               "the ocean.")
+                                               "the battlefield.")
             elif player_brd[row][col] in ("X", " !"):
                 game_state["event_message"] = "You've already tried that spot."
             else:
@@ -217,9 +217,12 @@ def get_row_col(size):
     """get row col function"""
     row_input = get_input(
         f"Enter row (A-{chr(64 + size)}): ", valid_row
-        ).upper()
+    ).upper()
     row = ord(row_input) - 65
-    col_input = get_input(f"Enter column (1-{size}): ", valid_col)
+    col_input = get_input(
+        f"Enter column (1-{size}): ",
+        valid_col
+    )
     col = int(col_input) - 1
     return row, col
 
