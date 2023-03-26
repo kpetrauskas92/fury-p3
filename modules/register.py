@@ -1,4 +1,5 @@
 """ Player register module """
+import re
 from colorama import Fore, Style, init
 from modules.google_sheets import get_highscores_worksheet
 
@@ -15,12 +16,29 @@ def is_player_registered(name, city, highscores):
     return False
 
 
+def is_valid_input(input_str):
+    """checks for valid input"""
+    return bool(re.match(r'^[A-Za-z]{3,10}$', input_str))
+
+
 def register():
     """register user"""
-    name = input(f"{Fore.YELLOW}Please enter your name:"
-                 f"{Style.RESET_ALL} ").title()
-    city = input(f"{Fore.YELLOW}Please enter your city:"
-                 f"{Style.RESET_ALL} ").title()
+    while True:
+        name = input(f"{Fore.YELLOW}Please enter your name (3-10 letters):"
+                     f"{Style.RESET_ALL} ").title()
+        if is_valid_input(name):
+            break
+        print(Fore.RED + "Invalid name. Please enter a name with "
+              "3 to 10 letters." + Style.RESET_ALL)
+
+    while True:
+        city = input(f"{Fore.YELLOW}Please enter your city (3-10 letters):"
+                     f"{Style.RESET_ALL} ").title()
+        if is_valid_input(city):
+            break
+        print(Fore.RED + "Invalid city name. Please enter a city name with "
+              "3 to 10 letters." + Style.RESET_ALL)
+
     bonus_score = 10
 
     highscores = get_highscores_worksheet()
