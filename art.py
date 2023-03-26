@@ -1,10 +1,13 @@
 """
 ASCII Art
 """
-from colorama import Fore, Style, init
+from colorama import Fore, Style
 
-
-init()
+GREEN = Fore.GREEN
+YELLOW = Fore.YELLOW
+MAGENTA = Fore.MAGENTA
+RED = Fore.RED
+RESET = Style.RESET_ALL
 
 
 MAIN_LOGO = f"""
@@ -26,62 +29,62 @@ MAIN_LOGO = f"""
 ⠀⠀⠀⠀⠀⠀⠀⠈⢿⡚⠛⢿⠓⠿⣏⢻⣿⣿⣿⣿⣿⣿⣿⣿⡞⠳⡗⣶⢿⡉⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢻⡞⠁
 ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠾⠦⠷⠤⠼⠿⠯⠭⠿⠿⠿⠿⠽⠿⠿⠶⠤⠧⠤⠿⠧⠤⠼⠧⠤⠼⠤⠼⠧⠤⠿⠋⠀⠀
 
-⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢀⣤⣤⣤⠀⠀⠀⣠⣤⣤⡄⠀⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢠⣤⣤⣄⠀⠀⢀⣤⣤⡤⠀⠀
-⠀⠀⠀⢰⣿⣿⡿⠿⠿⠿⠿⠿⠿⠏⠀⣼⣿⣿⠇⠀⠀⢠⣿⣿⡿⠀⢀⣿⣿⣿⠿⠿⠿⢿⣿⣿⡿⠀⠈⣿⣿⣿⡀⣴⣿⡿⠋⠀⠀⠀
-⠀⠀⢠⣿⣿⣿⣥⣤⣤⣤⣤⡄⠀⠀⢸⣿⣿⡟⠀⠀⠀⣾⣿⣿⠃⠀⣼⣿⣿⣧⣤⣤⣤⣼⣿⣿⠇⠀⠀⢸⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀
-⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀
-⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀
-⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀
-  {Fore.GREEN}----\"Engage in Epic Tank Warfare!\"----{Style.RESET_ALL}
+{GREEN}⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢀⣤⣤⣤⠀⠀⠀⣠⣤⣤⡄⠀⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢠⣤⣤⣄⠀⠀⢀⣤⣤⡤{RESET}⠀⠀
+{GREEN}⠀⠀⠀⢰⣿⣿⡿⠿⠿⠿⠿⠿⠿⠏⠀⣼⣿⣿⠇⠀⠀⢠⣿⣿⡿⠀⢀⣿⣿⣿⠿⠿⠿⢿⣿⣿⡿⠀⠈⣿⣿⣿⡀⣴⣿⡿⠋{RESET}⠀⠀⠀
+{GREEN}⠀⠀⢠⣿⣿⣿⣥⣤⣤⣤⣤⡄⠀⠀⢸⣿⣿⡟⠀⠀⠀⣾⣿⣿⠃⠀⣼⣿⣿⣧⣤⣤⣤⣼⣿⣿⠇⠀⠀⢸⣿⣿⣿⣿⠟{RESET}⠀⠀⠀⠀⠀
+{GREEN}⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁{RESET}⠀⠀⠀⠀⠀⠀
+{GREEN}⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇{RESET}⠀⠀⠀⠀⠀⠀⠀
+{GREEN}⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}⠀⠀⠀⠀⠀⠀⠀⠀
+   {YELLOW}----/"Engage in Epic Tank Warfare!/"----{RESET}
 """
 
-INTRO_TEXT = """
-Welcome to FURY!
-Tank warfare: where strategy and firepower meet.
+INTRO_TEXT = f"""
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ {GREEN}Welcome to FURY!{RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+{YELLOW}Tank warfare: where strategy and firepower meet.{RESET}n
 """
 
 LOGO = f"""
-⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢀⣤⣤⣤⠀⠀⠀⣠⣤⣤⡄⠀⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢠⣤⣤⣄⠀⠀⢀⣤⣤⡤⠀⠀
-⠀⠀⠀⢰⣿⣿⡿⠿⠿⠿⠿⠿⠿⠏⠀⣼⣿⣿⠇⠀⠀⢠⣿⣿⡿⠀⢀⣿⣿⣿⠿⠿⠿⢿⣿⣿⡿⠀⠈⣿⣿⣿⡀⣴⣿⡿⠋⠀⠀⠀
-⠀⠀⢠⣿⣿⣿⣥⣤⣤⣤⣤⡄⠀⠀⢸⣿⣿⡟⠀⠀⠀⣾⣿⣿⠃⠀⣼⣿⣿⣧⣤⣤⣤⣼⣿⣿⠇⠀⠀⢸⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀
-⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀
-⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀
-⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀
-  {Fore.GREEN}----\"Engage in Epic Tank Warfare!\"----{Style.RESET_ALL}
+{GREEN}⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢀⣤⣤⣤⠀⠀⠀⣠⣤⣤⡄⠀⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⠀⢠⣤⣤⣄⠀⠀⢀⣤⣤⡤{RESET}⠀⠀
+{GREEN}⠀⠀⠀⢰⣿⣿⡿⠿⠿⠿⠿⠿⠿⠏⠀⣼⣿⣿⠇⠀⠀⢠⣿⣿⡿⠀⢀⣿⣿⣿⠿⠿⠿⢿⣿⣿⡿⠀⠈⣿⣿⣿⡀⣴⣿⡿⠋{RESET}⠀⠀⠀
+{GREEN}⠀⠀⢠⣿⣿⣿⣥⣤⣤⣤⣤⡄⠀⠀⢸⣿⣿⡟⠀⠀⠀⣾⣿⣿⠃⠀⣼⣿⣿⣧⣤⣤⣤⣼⣿⣿⠇⠀⠀⢸⣿⣿⣿⣿⠟{RESET}⠀⠀⠀⠀⠀
+{GREEN}⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁{RESET}⠀⠀⠀⠀⠀⠀
+{GREEN}⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇{RESET}⠀⠀⠀⠀⠀⠀⠀
+{GREEN}⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}⠀⠀⠀⠀⠀⠀⠀⠀
+   {YELLOW}----/"Engage in Epic Tank Warfare!/"----{RESET}
 """
 
 MAIN_MENU = f"""
-{Fore.MAGENTA}⣿ Main Menu ⣿{Style.RESET_ALL}
+{MAGENTA}⣿ Main Menu ⣿{RESET}
 """
 
 USER_MENU = f"""
-{Fore.MAGENTA}⣿ User Menu ⣿{Style.RESET_ALL}
+{MAGENTA}⣿ User Menu ⣿{RESET}
 """
 
 
-RULES = """
-  +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ --GAME RULES-- ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+
+RULES = f"""
+  +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿{GREEN} --GAME RULES-- {RESET}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+
   ⣿                                              ⣿
-  ⣿  1. Destroy all enemy tanks on the board     ⣿
-  ⣿     within a limited number of turns.        ⣿
+  ⣿  1. {YELLOW}Destroy all enemy tanks on the board{RESET}     ⣿
+  ⣿     {YELLOW}within a limited number of turns.{RESET}        ⣿
   ⣿                                              ⣿
-  ⣿  2. Choose a difficulty level                ⣿
-  ⣿     (easy, medium, or hard)                  ⣿
+  ⣿  2. {YELLOW}Choose a difficulty level{RESET}                ⣿
+  ⣿     {YELLOW}(easy, medium, or hard){RESET}                  ⣿
   ⣿                                              ⣿
-  ⣿  3. Guess a row (letter) and column (number) ⣿
-  ⣿     on the enemy board to target a tank.     ⣿
+  ⣿  3. {YELLOW}Guess a row (letter) and column (number){RESET} ⣿
+  ⣿     {YELLOW}on the enemy board to target a tank.{RESET}     ⣿
   ⣿                                              ⣿
-  ⣿  4. A hit is marked with "!" on your board,  ⣿
-  ⣿     while a miss is marked with "X".         ⣿
+  ⣿  4. {YELLOW}A hit is marked with "!" on your board,{RESET}  ⣿
+  ⣿     {YELLOW}while a miss is marked with "X".{RESET}         ⣿
   ⣿                                              ⣿
-  ⣿  5. Win by destroying all tanks or lose      ⣿
-  ⣿     if turn limit is reached.                ⣿
+  ⣿  5. {YELLOW}Win by destroying all tanks or lose{RESET}      ⣿
+  ⣿     {YELLOW}if turn limit is reached.{RESET}                ⣿
   ⣿                                              ⣿
-  ⣿  6. Score is based on number                 ⣿
-  ⣿     of tanks destroyed                       ⣿
-  ⣿     and the chosen difficulty level.         ⣿
+  ⣿  6. {YELLOW}Score is based on number{RESET}                 ⣿
+  ⣿     {YELLOW}of tanks destroyed{RESET}                       ⣿
+  ⣿     {YELLOW}and the chosen difficulty level.{RESET}         ⣿
   ⣿                                              ⣿
   +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+
 
-    Plan your moves carefully and enjoy the game!
+    {GREEN}Plan your moves CAREFULLY and enjoy the game!{RESET}
 """

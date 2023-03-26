@@ -30,7 +30,7 @@ def login(highscores):
                 and record["CITY"].lower() == player_city.lower()):
             welcome_msg = f"\n{Fore.GREEN}Welcome back {record['NAME']}!"
             print(welcome_msg + Style.RESET_ALL)
-            highscore_msg = f"{Fore.YELLOW}Your score is {record['SCORE']}."
+            highscore_msg = f"{Fore.YELLOW}You have {record['SCORE']} points."
             print(highscore_msg + Style.RESET_ALL)
             position = index + 1
             position_msg = (f"Your position is: "

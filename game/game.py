@@ -185,7 +185,7 @@ def valid_col(value):
     return True
 
 
-def play_game(player_index=None):
+def play_game(player_index=None, signed_in=False):
     """play game function"""
     while True:
         clear_screen()
@@ -230,8 +230,12 @@ def play_game(player_index=None):
             highscores = get_highscores_worksheet()
             old_score = highscores.cell(player_index + 2, 3).value
             highscores.update_cell(player_index + 2, 3, int(old_score) + score)
+        elif not signed_in:
+            print(f"\nYou are not signed in{Fore.RED} !!!{Style.RESET_ALL}")
+            print(f"{Fore.RED}Your score will not be "
+                  f"updated.{Style.RESET_ALL}")
 
-        print(f"{Fore.YELLOW}Do you want to play again? {Style.RESET_ALL}"
+        print(f"{Fore.YELLOW}\nDo you want to play again? {Style.RESET_ALL}"
               f"(yes or no):", end=" ")
         play_again = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}").lower()
         if play_again == "no":

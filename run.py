@@ -23,19 +23,22 @@ def typewriter(text, delay=0.05):
 def continue_prompt():
     """continue prompt function"""
     while True:
-        print("Do you wish to continue? (y/n):", end=" ")
+        typewriter(INTRO_TEXT)
+        print(f"{Fore.CYAN}DO YOU HAVE WHAT IT TAKES?{Style.RESET_ALL} "
+              f"(y/n):", end=" ")
+
         user_input = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}").lower()
         if user_input == 'y':
             return True
         if user_input == 'n':
             return False
-        print("Invalid input. Please try again.")
+        print(f"{Fore.CYAN}Invalid input. Please try again.{Style.RESET_ALL}")
 
 
 def load_game():
     """Load game function."""
     loading_messages = [
-        f"{Fore.YELLOW}Loading game data{Style.RESET_ALL}...",
+        f"\n{Fore.YELLOW}Loading game data{Style.RESET_ALL}...",
         f"{Fore.YELLOW}Loading fury tanks{Style.RESET_ALL}...",
         f"{Fore.YELLOW}Loading battle coordinates{Style.RESET_ALL}..."
     ]
@@ -61,7 +64,6 @@ if __name__ == "__main__":
                     f"{Style.RESET_ALL}"
                 )
                 typewriter(game_loaded_msg + "\n")
-                typewriter(INTRO_TEXT)
                 GAME_LOADED = True
 
             display_main_menu()
@@ -71,5 +73,6 @@ if __name__ == "__main__":
 
             process_main_menu_choice(main_menu_choice, highscores_worksheet)
     else:
-        typewriter("\nExiting the game...")
-        print("Press restart button at the top to start again")
+        typewriter(f"\n{Fore.RED}Exiting the game...{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Press RESTART GAME button at "
+              f"the top to start again{Style.RESET_ALL}")
