@@ -28,7 +28,7 @@ def continue_prompt():
     """continue prompt function"""
     while True:
         typewriter(INTRO_TEXT)
-        print(f"{BOLD}{RED}DO YOU HAVE WHAT IT TAKES TO WIN?{RESET} "
+        print(f"{BOLD}DO YOU HAVE WHAT IT TAKES TO {GREEN}WIN?{RESET} "
               f"(y/n):", end=" ")
 
         user_input = input(f"{CYAN}\n>>> {RESET}").lower()
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         while True:
             if not GAME_LOADED:
                 game_loaded_msg = (
-                    f"{GREEN}Game has loaded successfully!"
+                    f"{BOLD}{GREEN}Game has loaded successfully!"
                     f"{RESET}"
                 )
                 typewriter(game_loaded_msg + "\n")
@@ -73,5 +73,5 @@ if __name__ == "__main__":
             process_main_menu_choice(highscores_worksheet)
     else:
         typewriter(f"\n{YELLOW}Shutting down the system...{RESET}")
-        print(f"Press {RED}'RESTART GAME'{RESET} button at "
-              f"the top to start again.")
+        print(f"Press {BOLD}{RED}'RESTART GAME'{RESET} button at "
+              f"the top of the screen to start again.")

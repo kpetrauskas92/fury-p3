@@ -29,7 +29,8 @@ def display_main_menu():
 def show_rules_and_start_game():
     """show rules and start game function."""
     while True:
-        print("Would you like to see the rules? (y/n):", end=" ")
+        print(f"{BOLD}{CYAN}Would you like to see the "
+              f"rules?{RESET} (y/n):", end=" ")
         show_rules = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
         if show_rules.lower() == 'y':
             print("\n")

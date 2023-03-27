@@ -37,12 +37,10 @@ MAIN_LOGO = f"""
 ⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁
 ⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇
 ⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}
-   {YELLOW}----/"Engage in Epic Tank Warfare!/"----{RESET}
 """
 
 INTRO_TEXT = f"""
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ {BOLD}{GREEN}Welcome to FURY!{RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-{YELLOW}Tank warfare: where strategy and firepower meet{RESET}
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{GREEN}Tank Warfare{RESET}  ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
 
 LOGO = f"""
@@ -53,16 +51,16 @@ LOGO = f"""
 ⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁
 ⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇
 ⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}
-       {YELLOW}----/"Epic Tank Warfare!/"----{RESET}
+ {BOLD}“Ideals are peaceful. History is violent.”{RESET}
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
 
 MAIN_MENU = f"""
-{BOLD}{MAGENTA}⣿ Main Menu ⣿{RESET}
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{MAGENTA}MAIN MENU {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
 
 USER_MENU = f"""
-{BOLD}{MAGENTA}⣿ User Menu ⣿{RESET}
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{MAGENTA}USER MENU {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
 
 
@@ -90,5 +88,5 @@ RULES = f"""
   ⣿                                              ⣿
   +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+
 
-    {GREEN}Plan your moves CAREFULLY and enjoy the game!{RESET}
+    Plan your moves {BOLD}{YELLOW}CAREFULLY{RESET} and enjoy the game!
 """
