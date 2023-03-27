@@ -3,11 +3,18 @@ Main game
 """
 import os
 import random
-from colorama import Fore, Style, init
+from colorama import Fore, Style
 from art import LOGO
 from modules.google_sheets import get_highscores_worksheet
 
-init()
+
+GREEN = Fore.GREEN
+CYAN = Fore.CYAN
+YELLOW = Fore.YELLOW
+RED = Fore.RED
+BOLD = Style.BRIGHT
+RESET = Style.RESET_ALL
+
 
 DIFFICULTY_LEVELS = {
     1: {"size": 5, "num_tanks": 2, "turn_limit": 10},
@@ -18,17 +25,17 @@ DIFFICULTY_LEVELS = {
 TANK_SIZES = [2]  # Custom tank sizes
 
 event_messages = {
-    "oops": f"{Fore.YELLOW}Oops, that's not even in "
-            f"the battlefield.{Style.RESET_ALL}",
-    "same": f"{Fore.RED}You've already hit that "
-            f"spot. Try again!{Style.RESET_ALL}",
-    "hit": f"{Fore.GREEN}You've hit a tank! Good job!{Style.RESET_ALL}",
-    "miss": f"{Fore.YELLOW}You missed. Better luck "
-            f"next time!{Style.RESET_ALL}",
-    "game_over": f"\n{Fore.RED}Game over! You ran out "
-                 f"of turns.{Style.RESET_ALL}",
-    "enemy_tanks": f"{Fore.YELLOW}The enemy tanks were at:{Style.RESET_ALL}",
-    "congrats": f"{Fore.GREEN}Congratulations!{Style.RESET_ALL}",
+    "oops": f"{YELLOW}Oops, that's not even in "
+            f"the battlefield.{RESET}",
+    "same": f"{RED}You've already hit that "
+            f"spot. Try again!{RESET}",
+    "hit": f"{GREEN}You've hit a tank! Good job!{RESET}",
+    "miss": f"{YELLOW}You missed. Better luck "
+            f"next time!{RESET}",
+    "game_over": f"\n{RED}Game over! You ran out "
+                 f"of turns.{RESET}",
+    "enemy_tanks": f"{YELLOW}The enemy tanks were at:{RESET}",
+    "congrats": f"{GREEN}Congratulations!{RESET}",
     "destroyed": "You destroyed all enemy tanks!",
 }
 
@@ -135,24 +142,24 @@ def select_difficulty():
     """
     select difficulty function
     """
-    print(f"{Fore.GREEN}Select difficulty level:{Style.RESET_ALL}\n")
-    print(f"{Fore.CYAN}1. {Fore.GREEN}Easy{Style.RESET_ALL}")
+    print(f"{GREEN}Select difficulty level:{RESET}\n")
+    print(f"{CYAN}1. {GREEN}Easy{RESET}")
     print(" 5x5 board with 2 Tanks - 10 turns\n")
-    print(f"{Fore.CYAN}2. {Fore.YELLOW}Medium{Style.RESET_ALL}")
+    print(f"{CYAN}2. {YELLOW}Medium{RESET}")
     print(" 7x7 board with 3 Tanks - 15 turns\n")
-    print(f"{Fore.CYAN}3. {Fore.RED}Hard{Style.RESET_ALL}")
+    print(f"{CYAN}3. {RED}Hard{RESET}")
     print(" 10x10 board with 5 Tanks - 20 turns\n")
 
     while True:
         print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
-        choice = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}")
+        choice = input(f"{CYAN}\n>>> {RESET}")
 
         if choice.isdigit() and choice in ('1', '2', '3'):
             choice = int(choice)
             break
 
-        print(f"\n{Fore.RED}Please enter a valid option "
-              f"(1, 2, or 3).{Style.RESET_ALL}")
+        print(f"\n{RED}Please enter a valid option "
+              f"(1, 2, or 3).{RESET}")
 
     if choice == 1:
         return 5, 2, 10
@@ -172,7 +179,7 @@ def get_input(prompt, valid_func):
 def valid_row(value):
     """valid row function"""
     if len(value) != 1 or not value.isalpha():
-        print(f"{Fore.RED}Please enter a single letter.{Style.RESET_ALL}")
+        print(f"{RED}Please enter a single letter.{RESET}")
         return False
     return True
 
@@ -180,7 +187,7 @@ def valid_row(value):
 def valid_col(value):
     """valid col function"""
     if not value.isdigit():
-        print(f"{Fore.RED}Please enter a number.{Style.RESET_ALL}")
+        print(f"{RED}Please enter a number.{RESET}")
         return False
     return True
 
@@ -224,20 +231,20 @@ def play_game(player_index=None, signed_in=False):
 
         score = int(game_state["tanks_destr"] * 10 *
                     [1, 1.2, 1.3][turn_limit // 5 - 2])
-        print(f"You scored: {Fore.GREEN}{score} points!{Style.RESET_ALL}")
+        print(f"You scored: {GREEN}{score} points!{RESET}")
 
         if player_index is not None:
             highscores = get_highscores_worksheet()
             old_score = highscores.cell(player_index + 2, 3).value
             highscores.update_cell(player_index + 2, 3, int(old_score) + score)
         elif not signed_in:
-            print(f"\nYou are not signed in{Fore.RED} !!!{Style.RESET_ALL}")
-            print(f"{Fore.RED}Your score will not be "
-                  f"updated.{Style.RESET_ALL}")
+            print(f"\nYou are not signed in{RED} !!!{RESET}")
+            print(f"{RED}Your score will not be "
+                  f"updated.{RESET}")
 
-        print(f"{Fore.YELLOW}\nDo you want to play again? {Style.RESET_ALL}"
+        print(f"{YELLOW}\nDo you want to play again? {RESET}"
               f"(yes or no):", end=" ")
-        play_again = input(f"{Fore.CYAN}\n>>> {Style.RESET_ALL}").lower()
+        play_again = input(f"{CYAN}\n>>> {RESET}").lower()
         if play_again == "no":
             break
 
@@ -245,12 +252,12 @@ def play_game(player_index=None, signed_in=False):
 def get_row_col(size):
     """get row col function"""
     row_input = get_input(
-        f"Enter row (A-{chr(64 + size)}):{Fore.CYAN} >>> {Style.RESET_ALL}",
+        f"Enter row (A-{chr(64 + size)}):{CYAN} >>> {RESET}",
         valid_row
     ).upper()
     row = ord(row_input) - 65
     col_input = get_input(
-        f"Enter column (1-{size}):{Fore.CYAN} >>> {Style.RESET_ALL}",
+        f"Enter column (1-{size}):{CYAN} >>> {RESET}",
         valid_col
     )
     col = int(col_input) - 1

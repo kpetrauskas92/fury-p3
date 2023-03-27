@@ -6,6 +6,7 @@ GREEN = Fore.GREEN
 CYAN = Fore.CYAN
 YELLOW = Fore.YELLOW
 RED = Fore.RED
+BOLD = Style.BRIGHT
 RESET = Style.RESET_ALL
 
 
@@ -17,7 +18,7 @@ def show_leaderboard():
     # Sort by score
     sorted_rows = sorted(rows, key=lambda row: int(row[2]), reverse=True)
 
-    print(f"{GREEN}\nLeaderboard:{RESET}")
+    print(f"{BOLD}{GREEN}\nLeaderboard:{RESET}")
     print(f"{YELLOW}{'Rank:':<7}{RESET}"
           f"{YELLOW}{' Name:':<15}{RESET}"
           f"{YELLOW}{'  City:':<18}{RESET}"
