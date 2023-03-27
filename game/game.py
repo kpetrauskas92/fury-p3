@@ -213,67 +213,6 @@ def valid_col(value):
     return True
 
 
-def play_game(player_index=None, signed_in=False):
-    """play game function"""
-    while True:
-        clear_screen()
-        print(LOGO)
-        size, num_tanks, turn_limit = select_difficulty()
-        player_brd, enemy_brd = create_brd(size), create_brd(size)
-        place_tanks(enemy_brd, num_tanks)
-
-        game_state = {"turns": 0, "tanks_destr": 0, "event_message": ""}
-
-        while game_state["turns"] < turn_limit:
-            clear_screen()
-            print(LOGO)
-            if game_state["event_message"]:
-                print(game_state["event_message"])
-            colored_turn = get_turn_color(game_state["turns"] + 1, turn_limit)
-            if game_state["turns"] + 1 == turn_limit:
-                print(f"\nTurn {colored_turn}/{turn_limit} {RED}Last!{RESET}")
-            else:
-                print(f"\nTurn {colored_turn}/{turn_limit}")
-            print_brd(player_brd)
-
-            row, col = get_row_col(size)
-
-            if row not in range(size) or col not in range(size):
-                game_state["event_message"] = event_messages["oops"]
-            elif player_brd[row][col] in ("X", " !"):
-                game_state["event_message"] = event_messages["same"]
-            else:
-                (game_state["event_message"], player_brd, enemy_brd,
-                 game_state["tanks_destr"]) = update_game_state(
-                 player_brd, enemy_brd, row, col, game_state["tanks_destr"])
-
-            game_state["turns"] += 1
-
-        if game_state["turns"] == turn_limit:
-            print(event_messages["game_over"])
-            print(event_messages["enemy_tanks"])
-            print_brd(enemy_brd)
-
-        score = int(game_state["tanks_destr"] * 10 *
-                    [1, 1.2, 1.3][turn_limit // 5 - 2])
-        print(f"You scored: {GREEN}{score} points!{RESET}")
-
-        if player_index is not None:
-            highscores = get_highscores_worksheet()
-            old_score = highscores.cell(player_index + 2, 3).value
-            highscores.update_cell(player_index + 2, 3, int(old_score) + score)
-        elif not signed_in:
-            print(f"\nYou are not signed in{RED} !!!{RESET}")
-            print(f"Your score will {RED}not be "
-                  f"updated.{RESET}")
-
-        print(f"{YELLOW}\nDo you want to play again? {RESET}"
-              f"(yes or no):", end=" ")
-        play_again = input(f"{CYAN}\n>>> {RESET}").lower()
-        if play_again == "no":
-            break
-
-
 def get_row_col(size):
     """get row col function"""
     row_input = get_input(
@@ -291,15 +230,93 @@ def get_row_col(size):
 
 def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
     """update game state function"""
+    game_over = False
     if enemy_brd[row][col] == "T":
         event_message = event_messages["hit"]
         player_brd[row][col] = "!"
         enemy_brd[row][col] = "~"
         tanks_destr += 1
         if not any("T" in row for row in enemy_brd):
-            event_message = event_messages["congrats"]
-            event_message = event_messages["destroyed"]
+            game_over = True
     else:
         event_message = event_messages["miss"]
         player_brd[row][col] = "X"
-    return event_message, player_brd, enemy_brd, tanks_destr
+    return event_message, player_brd, enemy_brd, tanks_destr, game_over
+
+
+def game_loop(size, num_tanks, turn_limit):
+    """game loop function"""
+    player_brd, enemy_brd = create_brd(size), create_brd(size)
+    place_tanks(enemy_brd, num_tanks)
+
+    game_state = {"turns": 0, "tanks_destr": 0, "event_message": ""}
+
+    while game_state["turns"] < turn_limit:
+        clear_screen()
+        print(LOGO)
+        if game_state["event_message"]:
+            print(game_state["event_message"])
+        colored_turn = get_turn_color(game_state["turns"] + 1, turn_limit)
+        if game_state["turns"] + 1 == turn_limit:
+            print(f"\nTurn {colored_turn}/{turn_limit} {RED}Last!{RESET}")
+        else:
+            print(f"\nTurn {colored_turn}/{turn_limit}")
+        print_brd(player_brd)
+
+        row, col = get_row_col(size)
+
+        if row not in range(size) or col not in range(size):
+            game_state["event_message"] = event_messages["oops"]
+        elif player_brd[row][col] in ("X", " !"):
+            game_state["event_message"] = event_messages["same"]
+        else:
+            (game_state["event_message"], player_brd, enemy_brd,
+             game_state["tanks_destr"], game_over) = update_game_state(
+             player_brd, enemy_brd, row, col, game_state["tanks_destr"])
+        if game_over:
+            print(event_messages["congrats"])
+        game_state["turns"] += 1
+
+    return game_state, player_brd, enemy_brd
+
+
+def play_game(player_index=None, signed_in=False):
+    """play game function"""
+    while True:
+        clear_screen()
+        print(LOGO)
+        size, num_tanks, turn_limit = select_difficulty()
+        game_state, _, enemy_brd = game_loop(size, num_tanks, turn_limit)
+
+        if game_state["turns"] == turn_limit:
+            print(event_messages["game_over"])
+            print(event_messages["enemy_tanks"])
+            print_brd(enemy_brd)
+
+        score = int(game_state["tanks_destr"] * 10 *
+                    [1, 1.2, 1.3][turn_limit // 5 - 2])
+        print(f"You scored: {GREEN}{score} points!{RESET}")
+
+        if player_index is not None:
+            highscores = get_highscores_worksheet()
+            old_score = highscores.cell(player_index + 2, 3).value
+            highscores.update_cell(player_index + 2, 3, int(old_score) + score)
+        elif not signed_in:
+            print(f"\nYou are not signed in{RED} !!!{RESET}")
+            print(f"Your score will {RED}not be "
+                  f"saved{RESET}.")
+
+        play_again = prompt_play_again()
+        if play_again == 'n':
+            break
+
+
+def prompt_play_again():
+    """play again promt"""
+    while True:
+        print(f"{YELLOW}\nWant to PLAY AGAIN? {RESET}(y/n):", end=" ")
+        play_again = input(f"{CYAN}\n>>> {RESET}").lower()
+
+        if play_again in ('y', 'n'):
+            return play_again
+        print(f"{RED}Please ENTER 'y' or 'n'.{RESET}")
