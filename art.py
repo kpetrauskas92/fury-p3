@@ -40,7 +40,7 @@ MAIN_LOGO = f"""
 
 INTRO_TEXT = f"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ {GREEN}Welcome to FURY!{RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-{YELLOW}Tank warfare: where strategy and firepower meet.{RESET}n
+{YELLOW}Tank warfare: where strategy and firepower meet.{RESET}
 """
 
 LOGO = f"""
@@ -50,7 +50,8 @@ LOGO = f"""
 {GREEN}⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁{RESET}⠀⠀⠀⠀⠀⠀
 {GREEN}⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇{RESET}⠀⠀⠀⠀⠀⠀⠀
 {GREEN}⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}⠀⠀⠀⠀⠀⠀⠀⠀
-   {YELLOW}----/"Engage in Epic Tank Warfare!/"----{RESET}
+       {YELLOW}----/"Epic Tank Warfare!/"----{RESET}
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
 
 MAIN_MENU = f"""
