@@ -58,11 +58,11 @@ def register():
     highscores.append_row(new_entry)
     player_index = len(highscores.col_values(1)) - 2
 
-    print(f"{GREEN}Congratulations {name}!"
+    print(f"\n{BOLD}{GREEN}Congratulations {name}!"
           f"{RESET}")
     print(f"{YELLOW}You've been registered"
           f"{RESET}")
-    print(f"\nYou received /{GREEN}{bonus_score}"
+    print(f"\nYou received /{BOLD}{GREEN}{bonus_score}"
           f"{RESET}/ bonus points.")
 
     # Return the player_index after registration

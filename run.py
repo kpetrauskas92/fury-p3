@@ -73,5 +73,5 @@ if __name__ == "__main__":
             process_main_menu_choice(highscores_worksheet)
     else:
         typewriter(f"\n{YELLOW}Shutting down the system...{RESET}")
-        print(f"Press {BOLD}{RED}'RESTART GAME'{RESET} button at "
-              f"the top of the screen to start again.")
+        print(f"Press {BOLD}{RED}'RESTART GAME'{RESET} button")
+        print("at the top of the screen to start again.")
