@@ -1,31 +1,261 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# FURY
+## **Game Overview**
 
-Welcome Karolis,
+OVERVIEW TEXT
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+---
+​
+![Menu](IMG)
+![Game Screen](IMG)
 
-## Reminders
+#### [The deployed website is here on Heroku](https://fury-p3.herokuapp.com)​
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Table of contents:
+1. [**Game Overview**](#game-overview)
+1. [**Planning stage**](#planning-stage)
+    * [***Planning Overview***](#planning-overview)
+    * [***User Stories***](#user-stories)
+    * [***Game Aims***](#game-aims)
+    * [***Wireframes***](#wireframes)
+    * [***Logic Flow***](#wireframes)
+    * [***Color Scheme***](#color-scheme)
+    * [***Design Choices***](#design-choices)
+1. [**Game Features**](#game-features)
+    * [***FEATURE1***](#feature1)
+    * [***FEATURE2***](#feature2)
+    * [***FEATURE3***](#feature3)
+    * [***FEATURE4***](#feature4)
+    * [***FEATURE5***](#feature5)
+    * [***FEATURE6***](#feature6)
+    * [***FEATURE7***](#feature7)
+    * [***FEATURE8***](#feature8)
+    * [***FEATURE9***](#feature9)
+1. [**Testing**](#testing)
+1. [**Deployment**](#deployment)
+1. [**Technology and Applications**](#technology-and-applications)
+1. [**Future-Enhancements**](#future-enhancements)
+    * [***User Enhancements***](#user_enhacements)
+    * [***Internal Enhancements***](#internal_enhacements)
+1. [**Credits**](#credits)
+    * [**Honorable mentions**](#honorable-mentions)
+    * [**Content**](#content)
+    * [**Media**](#media)
 
-## Creating the Heroku app
+---
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## **Planning Stage**
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### **Planning Overview:**
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+PLANNING OVERVIEW TEXT
 
-Connect your GitHub repository and deploy as normal.
+  Core aims for the project:
 
-## Constraints
+* AIM 1
+* AIM 2
+* AIM 3
+* AIM 4
+* AIM 5
+* AIM 6
+* AIM 7
+* AIM 8
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+### **Target Audiences:**
+
+* People that like
+* People that like
+* People that like
+* People that like
+* People that like
+
+### **User Stories:**
+
+* As a player, I want
+* As a player, I want
+* As a player, I want
+* As a player, I want
+* As a player, I want
+
+
+### **Game Aims:**
+
+* The game should
+* The game should
+* The game should
+* The game should
+* The game should
+* The game should
+* The game should
+
+---
+
+### **Wireframes:**
+
+TEXT
+
+![Wireframe 1](IMG)
+
+---
+
+### **Logic Flow:**
+
+TEXT
+
+![logic Flow](IMG)
+
+---
+​
+### **Color Scheme:**
+
+TEXT
+
+- Text
+- Text
+
+- Text
+
+- Text
+
+- Text
+
+- Text
+
+### **Design Choices**
+​
+TEXT
+
+
+---
+​
+## **Game Features**
+
+### ***FEATURE 1***
+
+TEXT
+
+- text
+- text
+- text
+- text
+- text
+- text
+- text
+
+TEXT
+- TEXT
+
+TEXT
+
+#### *Example*
+
+![logo](IMG)
+
+---
+
+### **FEATURE 1**
+
+---
+
+### **FEATURE 2**
+
+
+---
+### **FEATURE 3**
+
+
+---
+### **FEATURE 4**
+
+
+---
+### **FEATURE 5**
+
+
+---
+### **FEATURE 6**
+
+
+---
+### **FEATURE 7**
+
+
+---
+### **FEATURE 8**
+
+
+---
+### **FEATURE 9**
+
+
+### **Performance Summary**
+
+SUMMARY TEXT
+
+- text
+- text
+- text
+- text
+- text
+- text
+- text
+- text
+
+![logo](IMG)
+
+---
+## **Testing**
+
+Testing documentation is [here](./TESTING.md)
+
+## **Deployment**
+
+- 
+- 
+- 
+- 
+-  
+
+### **GitHub** 
+  
+
+---
+​
+## **Technology and Applications**
+​
+These are the technologies used for this project.
+
+- Python 3.8.11
+- Gitpod
+- Github
+- Heroku
+
+----
+
+## **Future-Enhancements**
+
+
+### **User Enhancements**
+
+* 
+* 
+* 
+
+### **Internal Enhancements**
+
+* 
+* 
+* 
+
+## **Credits**
+### **Honorable mentions**
+​
+
+​
+### **Content:**
+​
+  
+### **Media:**
+​
+* 
