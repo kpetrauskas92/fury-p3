@@ -13,6 +13,7 @@ CYAN = Fore.CYAN
 YELLOW = Fore.YELLOW
 RED = Fore.RED
 BOLD = Style.BRIGHT
+DIM = Style.DIM
 RESET = Style.RESET_ALL
 
 
@@ -30,12 +31,12 @@ event_messages = {
     "same": f"{RED}You've already hit that "
             f"spot. Try again!{RESET}",
     "hit": f"{GREEN}You've hit a tank! Good job!{RESET}",
-    "miss": f"{YELLOW}You missed. Better luck "
-            f"next time!{RESET}",
-    "game_over": f"\n{RED}Game over! You ran out "
-                 f"of turns.{RESET}",
+    "miss": f"{YELLOW}You missed.{RESET} Better luck "
+            f"next time!",
+    "game_over": f"\n{RED}Game over!{RESET} You ran out "
+                 f"of turns.",
     "enemy_tanks": f"{YELLOW}The enemy tanks were at:{RESET}",
-    "congrats": f"{GREEN}Congratulations!{RESET}",
+    "congrats": f"{BOLD}{GREEN}Congratulations!{RESET}",
     "destroyed": "You destroyed all enemy tanks!",
 }
 
@@ -60,25 +61,35 @@ def print_brd(brd):
     border = f"   +{'-' * (size * 3 + 1)}+"
 
     # Print the top border
-    print(border.center(40))
+    print(border)
 
     # Print row labels and board content
     for row_num, row in enumerate(brd, start=1):
         row_label = chr(row_num + 64)  # Convert row number to letters
         row_str = f" {row_label} | "
         for cell in row:
-            row_str += f"{cell:<3}"
+            if cell == "~":
+                cell_color = DIM
+            elif cell == "T":
+                cell_color = BOLD + YELLOW
+            elif cell == "X":
+                cell_color = BOLD + RED
+            elif cell == "!":
+                cell_color = BOLD + GREEN
+            else:
+                cell_color = RESET
+            row_str += f"{cell_color}{cell:<3}{RESET}"
         row_str += "|"
-        print(row_str.center(40))
+        print(row_str)
 
     # Print the bottom border
-    print(border.center(40))
+    print(border)
 
     # Print column labels
-    col_str = "   "
+    col_str = "     "
     for col_num in range(1, size + 1):
         col_str += f"{col_num:<3}"
-    print(col_str.center(40))
+    print(col_str)
 
 
 def random_row(brd):
@@ -142,7 +153,7 @@ def select_difficulty():
     """
     select difficulty function
     """
-    print(f"{GREEN}Select difficulty level:{RESET}\n")
+    print(f"{BOLD}{GREEN}Select difficulty level:{RESET}\n")
     print(f"{CYAN}1. {GREEN}Easy{RESET}")
     print(" 5x5 board with 2 Tanks - 10 turns\n")
     print(f"{CYAN}2. {YELLOW}Medium{RESET}")
@@ -151,7 +162,7 @@ def select_difficulty():
     print(" 10x10 board with 5 Tanks - 20 turns\n")
 
     while True:
-        print("\nChoose (1, 2, or 3) and press Enter:", end=" ")
+        print("\nChoose (1, 2, or 3) and press ENTER:", end=" ")
         choice = input(f"{CYAN}\n>>> {RESET}")
 
         if choice.isdigit() and choice in ('1', '2', '3'):
@@ -166,6 +177,16 @@ def select_difficulty():
     if choice == 2:
         return 7, 3, 15
     return 10, 4, 20
+
+
+def get_turn_color(turn, total_turns):
+    """turn color function"""
+    mid_turn = total_turns // 2
+    if turn <= mid_turn:
+        return f"{GREEN}{turn}{RESET}"
+    if turn <= (total_turns - mid_turn) + mid_turn - 1:
+        return f"{YELLOW}{turn}{RESET}"
+    return f"{RED}{turn}{RESET}"
 
 
 def get_input(prompt, valid_func):
@@ -208,7 +229,11 @@ def play_game(player_index=None, signed_in=False):
             print(LOGO)
             if game_state["event_message"]:
                 print(game_state["event_message"])
-            print(f"\nTurn {game_state['turns'] + 1}/{turn_limit}")
+            colored_turn = get_turn_color(game_state["turns"] + 1, turn_limit)
+            if game_state["turns"] + 1 == turn_limit:
+                print(f"\nTurn {colored_turn}/{turn_limit} {RED}Last!{RESET}")
+            else:
+                print(f"\nTurn {colored_turn}/{turn_limit}")
             print_brd(player_brd)
 
             row, col = get_row_col(size)
@@ -239,7 +264,7 @@ def play_game(player_index=None, signed_in=False):
             highscores.update_cell(player_index + 2, 3, int(old_score) + score)
         elif not signed_in:
             print(f"\nYou are not signed in{RED} !!!{RESET}")
-            print(f"{RED}Your score will not be "
+            print(f"Your score will {RED}not be "
                   f"updated.{RESET}")
 
         print(f"{YELLOW}\nDo you want to play again? {RESET}"
@@ -252,12 +277,12 @@ def play_game(player_index=None, signed_in=False):
 def get_row_col(size):
     """get row col function"""
     row_input = get_input(
-        f"Enter row (A-{chr(64 + size)}):{CYAN} >>> {RESET}",
+        f" Enter row (A-{chr(64 + size)}):{CYAN} >>> {RESET}",
         valid_row
     ).upper()
     row = ord(row_input) - 65
     col_input = get_input(
-        f"Enter column (1-{size}):{CYAN} >>> {RESET}",
+        f" Enter column (1-{size}):{CYAN} >>> {RESET}",
         valid_col
     )
     col = int(col_input) - 1
