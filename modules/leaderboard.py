@@ -1,8 +1,12 @@
 """ Leaderboard module """
-from colorama import Fore, Style, init
+from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
 
-init()
+GREEN = Fore.GREEN
+CYAN = Fore.CYAN
+YELLOW = Fore.YELLOW
+RED = Fore.RED
+RESET = Style.RESET_ALL
 
 
 def show_leaderboard():
@@ -13,11 +17,11 @@ def show_leaderboard():
     # Sort by score
     sorted_rows = sorted(rows, key=lambda row: int(row[2]), reverse=True)
 
-    print(f"{Fore.GREEN}Leaderboard:{Style.RESET_ALL}")
-    print(f"{Fore.YELLOW}{'Rank:':<7}{Style.RESET_ALL}"
-          f"{Fore.YELLOW}{' Name:':<15}{Style.RESET_ALL}"
-          f"{Fore.YELLOW}{'  City:':<18}{Style.RESET_ALL}"
-          f"{Fore.YELLOW}{'   Score:':<7}{Style.RESET_ALL}")
+    print(f"{GREEN}\nLeaderboard:{RESET}")
+    print(f"{YELLOW}{'Rank:':<7}{RESET}"
+          f"{YELLOW}{' Name:':<15}{RESET}"
+          f"{YELLOW}{'  City:':<18}{RESET}"
+          f"{YELLOW}{'   Score:':<7}{RESET}")
     print("-" * 50)
 
     for i, row in enumerate(sorted_rows[:15]):
