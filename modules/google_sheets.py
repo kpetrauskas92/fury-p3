@@ -4,7 +4,13 @@ from google.oauth2.service_account import Credentials
 
 
 def get_highscores_worksheet():
-    """ Access the Google Sheets and Google Drive APIs """
+    """
+    Accesses the Google Sheets and Google Drive APIs to retrieve
+    the 'highscores' worksheet from the 'fury_data' Google Sheets file.
+
+    Returns:
+    gspread.Worksheet: The 'highscores' worksheet object.
+    """
     scope = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",

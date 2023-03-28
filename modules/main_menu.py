@@ -1,4 +1,7 @@
-""" Main menu module """
+"""
+MAIN MENU:
+This module defines login function for user login and highscore retrieval.
+"""
 import time
 from colorama import Fore, Style
 from art import MAIN_MENU, RULES
@@ -18,7 +21,9 @@ RESET = Style.RESET_ALL
 
 
 def display_main_menu():
-    """Displays main menu"""
+    """
+    Displays the main menu options
+    """
     print(MAIN_MENU)
     print(f"{BOLD}{CYAN}1.{RESET} Play game")
     print(f"{BOLD}{CYAN}2.{RESET} Login")
@@ -27,7 +32,12 @@ def display_main_menu():
 
 
 def show_rules_and_start_game():
-    """show rules and start game function."""
+    """
+    Prompts the user to see the rules and starts the game.
+    If the user chooses to see the rules,
+    the function prints them and waits for the user to start the game.
+    Otherwise, the function starts the game immediately.
+    """
     while True:
         print(f"{BOLD}{CYAN}Would you like to see the "
               f"rules?{RESET} (y/n):", end=" ")
@@ -47,7 +57,11 @@ def show_rules_and_start_game():
 
 
 def process_main_menu_choice(highscores_worksheet):
-    """Process main menu function."""
+    """
+    Displays the main menu and processes the user's choice.
+    Calls corresponding function or
+    displays error message if input is invalid.
+    """
     while True:
         display_main_menu()
         print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")

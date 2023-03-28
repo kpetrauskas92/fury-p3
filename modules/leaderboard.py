@@ -1,4 +1,7 @@
-""" Leaderboard module """
+"""
+This module defines a function for displaying a
+leaderboard from a Google Sheets file.
+"""
 from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
 
@@ -11,11 +14,13 @@ RESET = Style.RESET_ALL
 
 
 def show_leaderboard():
-    """Display the leaderboard."""
+    """
+    Displays the leaderboard by retrieving the highscores worksheet
+    from Google Sheets, sorting the rows by score,
+    and printing the top 15 scores.
+    """
     highscores = get_highscores_worksheet()
-    rows = highscores.get_all_values()[1:]  # Skip the header row
-
-    # Sort by score
+    rows = highscores.get_all_values()[1:]
     sorted_rows = sorted(rows, key=lambda row: int(row[2]), reverse=True)
 
     print(f"{BOLD}{GREEN}\nLeaderboard:{RESET}")

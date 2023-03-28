@@ -1,4 +1,9 @@
-""" Player register module """
+"""
+REGISTER:
+This module defines functions for checking
+if a player is already registered, validating user input,
+and registering a new player by adding their data to Google Sheets API.
+"""
 import re
 from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
@@ -12,22 +17,14 @@ BOLD = Style.BRIGHT
 RESET = Style.RESET_ALL
 
 
-def is_player_registered(name, city, highscores):
-    """checks if user exists"""
-    rows = highscores.get_all_values()
-    for row in rows[1:]:  # Skip the header row
-        if name.lower() == row[0].lower() and city.lower() == row[1].lower():
-            return True
-    return False
-
-
-def is_valid_input(input_str):
-    """checks for valid input"""
-    return bool(re.match(r'^[A-Za-z]{3,10}$', input_str))
-
-
 def register():
-    """register user"""
+    """
+    Prompts the user to enter their name and city,
+    checks if the inputs are valid,
+    adds a bonus score to their score,
+    and returns their index in the highscores
+    worksheet after registering them.
+    """
     while True:
         name = input(f"{YELLOW}Please enter your name (3-10 letters):"
                      f"{RESET} ").title()
@@ -44,11 +41,14 @@ def register():
         print(RED + "Please enter a city name with "
               "3 to 10 letters." + RESET)
 
-    bonus_score = 10
+    bonus_score = 100
 
     highscores = get_highscores_worksheet()
 
     if is_player_registered(name, city, highscores):
+
+        # If the given player is already registered,
+        # prints a message indicating that the player already exists
         print(f"{RED}Player already exists.{RESET}")
         print(f"{YELLOW}Please choose a different name.{RESET}")
         print(f"{GREEN}Or Log In.{RESET}")
@@ -67,3 +67,21 @@ def register():
 
     # Return the player_index after registration
     return player_index
+
+
+def is_player_registered(name, city, highscores):
+    """
+    Checks if a player is already registered in the highscores worksheet.
+    """
+    rows = highscores.get_all_values()
+    for row in rows[1:]:  # Skip the header row
+        if name.lower() == row[0].lower() and city.lower() == row[1].lower():
+            return True
+    return False
+
+
+def is_valid_input(input_str):
+    """
+    Checks if a given string is a valid input, consisting of 3 to 10 letters.
+    """
+    return bool(re.match(r'^[A-Za-z]{3,10}$', input_str))

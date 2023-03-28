@@ -1,4 +1,9 @@
-"""User menu module"""
+"""
+USER MENU:
+This module defines the user menu for the game,
+displaying options to play the game,
+show the leaderboard, view the rules, or log out.
+"""
 
 from colorama import Fore, Style
 from game.game import play_game
@@ -16,7 +21,7 @@ RESET = Style.RESET_ALL
 
 
 def display_user_menu():
-    """Displays user menu"""
+    """Displays the user menu options"""
     print(USER_MENU)
     print(f"{BOLD}{CYAN}1.{RESET} Play Game")
     print(f"{BOLD}{CYAN}2.{RESET} Leaderboard")
@@ -25,7 +30,13 @@ def display_user_menu():
 
 
 def display_user_menu_after_action(player_index):
-    """Displays user menu after an action (login or register)"""
+    """
+    Displays the user menu after a successful action (login or register).
+    Takes a player_index argument to keep track of the
+    current player's position on the leaderboard.
+    Displays options to play the game, show the leaderboard,
+    view the rules, or log out.
+    """
     while True:
         display_user_menu()
         print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")

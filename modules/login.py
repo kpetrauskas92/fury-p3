@@ -1,4 +1,6 @@
-""" Login module """
+"""
+This module defines login function for user login and highscore retrieval.
+"""
 import re
 from operator import itemgetter
 from colorama import Fore, Style
@@ -11,24 +13,34 @@ RESET = Style.RESET_ALL
 
 
 def login(highscores):
-    """ Login function checks gsheets for existing data  """
+    """
+    Prompts the user to enter their name and city,
+    retrieves the highscores from the given worksheet, and checks
+    if the user's name and city already exist in the highscores.
+    If found, displays the user's highscore and position on the leaderboard.
+    """
+
+    # Prompt the user to enter their name
     player_name = input(f"{YELLOW}Enter your name:{RESET} ")
     while not re.match(r'^[A-Za-z]{3,10}$', player_name):
         print(RED + "Invalid name. Please enter a name with "
               "3 to 10 letters." + RESET)
         player_name = input(f"{YELLOW}Enter your name:{RESET} ")
 
+    # Prompt the user to enter their city
     player_city = input(f"{YELLOW}Enter your city:{RESET} ")
     while not re.match(r'^[A-Za-z]{3,10}$', player_city):
         print(RED + "Invalid city name. Please enter a city name with "
               "3 to 10 letters." + RESET)
         player_city = input(f"{YELLOW}Enter your city:{RESET} ")
 
+    # Retrieve all records from the highscores worksheet
     records = highscores.get_all_records()
 
     # Sort the records by 'SCORE' in descending order
     sorted_records = sorted(records, key=itemgetter('SCORE'), reverse=True)
 
+    # Check if the user's name and city already exist in the highscores
     for index, record in enumerate(sorted_records):
         if (record["NAME"].lower() == player_name.lower()
                 and record["CITY"].lower() == player_city.lower()):
@@ -43,5 +55,6 @@ def login(highscores):
             print(position_msg)
             return index
 
+    # If the user's record was not found, display an error message
     print(RED + "Player not found. Please try again." + RESET)
     return None
