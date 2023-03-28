@@ -1,9 +1,13 @@
 """
+LEADERBOARD:
 This module defines a function for displaying a
 leaderboard from a Google Sheets file.
 """
+
 from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
+from utils.cs import clear_screen
+from art import LEADERBOARD, LOGO_2
 
 GREEN = Fore.GREEN
 CYAN = Fore.CYAN
@@ -21,17 +25,21 @@ def show_leaderboard():
     """
     highscores = get_highscores_worksheet()
     rows = highscores.get_all_values()[1:]
-    sorted_rows = sorted(rows, key=lambda row: int(row[2]), reverse=True)
 
-    print(f"{BOLD}{GREEN}\nLeaderboard:{RESET}")
+    # Sort the rows by score, in descending order.
+    sorted_rows = sorted(rows, key=lambda row: int(row[2]), reverse=True)
+    print(LOGO_2)
+    print(LEADERBOARD)
     print(f"{YELLOW}{'Rank:':<7}{RESET}"
           f"{YELLOW}{' Name:':<15}{RESET}"
-          f"{YELLOW}{'  City:':<18}{RESET}"
-          f"{YELLOW}{'   Score:':<7}{RESET}")
-    print("-" * 50)
+          f"{YELLOW}{'  City:':<15}{RESET}"
+          f"{YELLOW}{'   Score:':<5}{RESET}")
+    print("-" * 46)
 
+    # Print the top 15 scores with rank, name, city, and score.
     for i, row in enumerate(sorted_rows[:15]):
         name, city, score = row
-        print(f"{i + 1:<7} {name:<15} {city:<18} {score:<7}")
+        print(f"{i + 1:<7} {name:<15} {city:<15} {score:<5}")
 
     input("\nPress ENTER to go back to the main menu: ")
+    clear_screen()

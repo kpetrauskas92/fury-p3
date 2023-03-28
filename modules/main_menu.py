@@ -1,14 +1,18 @@
 """
 MAIN MENU:
-This module defines login function for user login and highscore retrieval.
+This module defines the function for the main menu,
+displaying options for playing the game, logging in,
+registering a new player, and displaying the leaderboard.
 """
+
 import time
 from colorama import Fore, Style
-from art import MAIN_MENU, RULES
+from art import MAIN_MENU, RULES, LOGO, LOGO_2, ERROR
 from modules.login import login
 from modules.register import register
 from modules.leaderboard import show_leaderboard
 from modules.user_menu import display_user_menu_after_action
+from utils.cs import clear_screen
 from game.game import play_game
 
 
@@ -21,9 +25,7 @@ RESET = Style.RESET_ALL
 
 
 def display_main_menu():
-    """
-    Displays the main menu options
-    """
+    """Displays the main menu options"""
     print(MAIN_MENU)
     print(f"{BOLD}{CYAN}1.{RESET} Play game")
     print(f"{BOLD}{CYAN}2.{RESET} Login")
@@ -39,10 +41,12 @@ def show_rules_and_start_game():
     Otherwise, the function starts the game immediately.
     """
     while True:
-        print(f"{BOLD}{CYAN}Would you like to see the "
+        print(LOGO)
+        print(f"{BOLD}Would you like to see the "
               f"rules?{RESET} (y/n):", end=" ")
         show_rules = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
         if show_rules.lower() == 'y':
+            clear_screen()
             print("\n")
             for line in RULES.splitlines():
                 print(line)
@@ -63,11 +67,12 @@ def process_main_menu_choice(highscores_worksheet):
     displays error message if input is invalid.
     """
     while True:
+        print(LOGO_2)
         display_main_menu()
         print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")
         try:
             choice = int(input(f"{CYAN}\n>>> {RESET}"))
-
+            clear_screen()
             if choice == 1:
                 show_rules_and_start_game()
             elif choice == 2:
@@ -81,7 +86,10 @@ def process_main_menu_choice(highscores_worksheet):
             elif choice == 4:
                 show_leaderboard()
             else:
+                print(ERROR)
                 print(f"{RED}Please choose "
                       f"a number between 1 and 4.{RESET}")
         except ValueError:
+            clear_screen()
+            print(ERROR)
             print(f"{RED}Please enter a number between 1 and 4.{RESET}")

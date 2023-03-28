@@ -1,9 +1,13 @@
 """
+LOGIN:
 This module defines login function for user login and highscore retrieval.
 """
+
 import re
 from operator import itemgetter
 from colorama import Fore, Style
+from utils.cs import clear_screen
+from art import LOGIN, ERROR
 
 GREEN = Fore.GREEN
 CYAN = Fore.CYAN
@@ -19,7 +23,7 @@ def login(highscores):
     if the user's name and city already exist in the highscores.
     If found, displays the user's highscore and position on the leaderboard.
     """
-
+    print(LOGIN)
     # Prompt the user to enter their name
     player_name = input(f"{YELLOW}Enter your name:{RESET} ")
     while not re.match(r'^[A-Za-z]{3,10}$', player_name):
@@ -41,6 +45,7 @@ def login(highscores):
     sorted_records = sorted(records, key=itemgetter('SCORE'), reverse=True)
 
     # Check if the user's name and city already exist in the highscores
+    clear_screen()
     for index, record in enumerate(sorted_records):
         if (record["NAME"].lower() == player_name.lower()
                 and record["CITY"].lower() == player_city.lower()):
@@ -56,5 +61,8 @@ def login(highscores):
             return index
 
     # If the user's record was not found, display an error message
-    print(RED + "Player not found. Please try again." + RESET)
+    clear_screen()
+    print(ERROR)
+    print(f"{RED}⣿ Player not found{RESET}")
+    print(f"{YELLOW}⣿ Please try again{RESET}")
     return None

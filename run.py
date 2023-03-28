@@ -11,9 +11,10 @@ interacting with Google Sheets to store high scores.
 import sys
 import time
 from colorama import Fore, Style
-from art import MAIN_LOGO, INTRO_TEXT
+from art import MAIN_LOGO, INTRO_TEXT, LOGO_2
 from modules.main_menu import process_main_menu_choice
 from modules.google_sheets import get_highscores_worksheet
+from utils.cs import clear_screen
 
 GREEN = Fore.GREEN
 CYAN = Fore.CYAN
@@ -43,14 +44,14 @@ def continue_prompt():
     a valid input is given.
     """
     while True:
-        typewriter(INTRO_TEXT)
-        print(f"{BOLD}DO YOU HAVE WHAT IT TAKES TO WIN?{RESET} "
-              f"(y/n):", end=" ")
-
-        user_input = input(f"{CYAN}\n>>> {RESET}").lower()
+        print(INTRO_TEXT)
+        print(f"{BOLD}{GREEN}READY TO PLAY?{RESET} (y/n): ", end="")
+        user_input = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
         if user_input == 'y':
+            clear_screen()
             return True
         if user_input == 'n':
+            clear_screen()
             return False
         print(f"{RED}Invalid input. Please try again.{RESET}")
 
@@ -60,10 +61,11 @@ def load_game():
     Simulates loading game data by printing out a series of loading messages
     with a typewriter effect.
     """
+    print(LOGO_2)
     loading_messages = [
-        f"\n{YELLOW}Loading game data{RESET}...",
-        f"{YELLOW}Loading fury tanks{RESET}...",
-        f"{YELLOW}Loading battle coordinates{RESET}..."
+        f"\n{YELLOW}Loading game data...",
+        "Loading fury tanks...",
+        "Loading battle coordinates..."
     ]
 
     for message in loading_messages:
@@ -84,13 +86,13 @@ if __name__ == "__main__":
             if not GAME_LOADED:
                 game_loaded_msg = (
                     f"{BOLD}{GREEN}Game has loaded successfully!"
-                    f"{RESET}"
                 )
                 typewriter(game_loaded_msg + "\n")
                 GAME_LOADED = True
+                clear_screen()
 
             process_main_menu_choice(highscores_worksheet)
     else:
-        typewriter(f"\n{YELLOW}Shutting down the system...{RESET}")
+        typewriter(f"\n{YELLOW}Shutting down the system...{RESET}\n")
         print(f"Press {BOLD}{RED}'RESTART GAME'{RESET} button")
         print("at the top of the screen to start again.")

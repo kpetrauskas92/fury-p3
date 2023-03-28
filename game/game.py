@@ -10,11 +10,12 @@ The main components of the module are:
  *AI: Handles enemy tank movement and decision-making.
  *Game: Manages game flow, turn system, and user input.
 """
-import os
+
 import random
 from colorama import Fore, Style
 from art import LOGO
 from modules.google_sheets import get_highscores_worksheet
+from utils.cs import clear_screen
 
 
 GREEN = Fore.GREEN
@@ -51,15 +52,6 @@ event_messages = {
     "congrats": f"{BOLD}{GREEN}Congratulations!{RESET}",
     "destroyed": "You destroyed all enemy tanks!",
 }
-
-
-def clear_screen():
-    """
-    Clears the console screen for a new board.
-    Uses the 'os' module to check the operating system,
-    and then runs the appropriate console clear command.
-    """
-    os.system("cls" if os.name == "nt" else "clear")
 
 
 def create_brd(size):

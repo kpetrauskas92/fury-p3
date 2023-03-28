@@ -4,9 +4,12 @@ This module defines functions for checking
 if a player is already registered, validating user input,
 and registering a new player by adding their data to Google Sheets API.
 """
+
 import re
 from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
+from utils.cs import clear_screen
+from art import REGISTER, ERROR
 
 
 GREEN = Fore.GREEN
@@ -26,7 +29,8 @@ def register():
     worksheet after registering them.
     """
     while True:
-        name = input(f"{YELLOW}Please enter your name (3-10 letters):"
+        print(REGISTER)
+        name = input(f"{YELLOW}Enter your name (3-10 letters):"
                      f"{RESET} ").title()
         if is_valid_input(name):
             break
@@ -34,7 +38,7 @@ def register():
               "3 to 10 letters." + RESET)
 
     while True:
-        city = input(f"{YELLOW}Please enter your city (3-10 letters):"
+        city = input(f"{YELLOW}Enter your city (3-10 letters):"
                      f"{RESET} ").title()
         if is_valid_input(city):
             break
@@ -46,17 +50,18 @@ def register():
     highscores = get_highscores_worksheet()
 
     if is_player_registered(name, city, highscores):
-
+        clear_screen()
         # If the given player is already registered,
         # prints a message indicating that the player already exists
-        print(f"{RED}Player already exists.{RESET}")
-        print(f"{YELLOW}Please choose a different name.{RESET}")
-        print(f"{GREEN}Or Log In.{RESET}")
+        print(ERROR)
+        print(f"{RED}⣿ Player already exists{RESET}")
+        print(f"{YELLOW}⣿ Try gain {RESET}{GREEN}⣿ or Log In{RESET}")
         return None
 
     new_entry = [name, city, bonus_score]
     highscores.append_row(new_entry)
     player_index = len(highscores.col_values(1)) - 2
+    clear_screen()
 
     print(f"\n{BOLD}{GREEN}Congratulations {name}!"
           f"{RESET}")
