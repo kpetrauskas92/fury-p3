@@ -1,4 +1,12 @@
-"""Main python terminal"""
+"""
+Main Python terminal for the 'Fury' game.
+
+This file contains the main logic and entry point for the 'Fury' game. It
+imports various modules to handle game functionality such as displaying the
+game logo, simulating a typewriter effect, displaying prompts to the user,
+loading game data, displaying the main menu, processing user input, and
+interacting with Google Sheets to store high scores.
+"""
 
 import sys
 import time
@@ -16,7 +24,10 @@ RESET = Style.RESET_ALL
 
 
 def typewriter(text, delay=0.05):
-    """typewriter"""
+    """
+    Simulates a typewriter effect by printing out the characters
+    in the given text string one by one with a specified delay.
+    """
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -25,10 +36,15 @@ def typewriter(text, delay=0.05):
 
 
 def continue_prompt():
-    """continue prompt function"""
+    """
+    Displays a prompt asking the user if they want to continue, and returns
+    True if the user enters 'y', and False if they enter 'n'.
+    If the user enters an invalid input, the prompt will be repeated until
+    a valid input is given.
+    """
     while True:
         typewriter(INTRO_TEXT)
-        print(f"{BOLD}DO YOU HAVE WHAT IT TAKES TO {GREEN}WIN?{RESET} "
+        print(f"{BOLD}DO YOU HAVE WHAT IT TAKES TO WIN?{RESET} "
               f"(y/n):", end=" ")
 
         user_input = input(f"{CYAN}\n>>> {RESET}").lower()
@@ -40,7 +56,10 @@ def continue_prompt():
 
 
 def load_game():
-    """Load game function."""
+    """
+    Simulates loading game data by printing out a series of loading messages
+    with a typewriter effect.
+    """
     loading_messages = [
         f"\n{YELLOW}Loading game data{RESET}...",
         f"{YELLOW}Loading fury tanks{RESET}...",

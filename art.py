@@ -1,5 +1,8 @@
 """
-ASCII Art
+ASCII art, created using characters from the ASCII character set.
+
+Usage:
+To print the ASCII art, simply call the `print` function on the variable.
 """
 from colorama import Fore, Style
 
@@ -62,7 +65,6 @@ MAIN_MENU = f"""
 USER_MENU = f"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{MAGENTA}USER MENU {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
-
 
 RULES = f"""
 +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿{GREEN} --GAME RULES-- {RESET}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+
