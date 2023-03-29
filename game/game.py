@@ -182,7 +182,7 @@ def select_difficulty():
 
     while True:
         print("\nChoose (1, 2, or 3) and press ENTER:", end=" ")
-        choice = input(f"{CYAN}\n>>> {RESET}")
+        choice = input(f"{BOLD}{CYAN}\n>>> {RESET}")
 
         if choice.isdigit() and choice in ('1', '2', '3'):
             choice = int(choice)
@@ -329,8 +329,6 @@ def game_loop(size, num_tanks, turn_limit):
             print(event_messages["congrats"])
             print(event_messages["destroyed"])
             break
-        # if game_state["tanks_destr"] == num_tanks:
-        #     break
 
         game_state["turns"] += 1
 
