@@ -48,47 +48,47 @@
 
 ### **Planning Overview:**
 
-* Concept: 
-            The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships on a grid. However, during the development, the concept was switched to a tank board game where players try to destroy the enemy tanks on a grid.
+The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships on a grid. However, during the development, the concept was switched to a tank board game where the player tries to destroy the enemy tanks on a grid.
+
+"FURY" was chosen from one of your favorite movies, which represents the theme of the game well.
 
   Core aims for the project:
 
-* AIM 1
-* AIM 2
-* AIM 3
-* AIM 4
-* AIM 5
-* AIM 6
-* AIM 7
-* AIM 8
+* Maximize visual elements while utilizing a text-based terminal
+* Deliver a seamless user experience
+* Implement login and registration features
+* Integrate a leaderboard feature for top players
+* Establish a scoring system that takes difficulty levels into account
+* Update scores according to player registration status
+* Position tanks randomly on each game board
+* Offer an enjoyable challenge with rewards
 
 
 ### **Target Audiences:**
 
-* People that like
-* People that like
-* People that like
-* People that like
-* People that like
+* Python programmers interested in game logic
+* Fans of the movie Fury and military-themed entertainment
+* Casual players seeking strategic games for enjoyable pastime
+* Competitive individuals striving to surpass high scores
+* Individuals interested in honing their tactical skills in a single-player setting
 
 ### **User Stories:**
 
-* As a player, I want
-* As a player, I want
-* As a player, I want
-* As a player, I want
-* As a player, I want
+* As a player, I want a game featuring well-defined goals
+* As a player, I want inputs that are easy to use and provide quick responses
+* As a player, I want entertaining and engaging gameplay experience
+* As a player, I want clear instructions on how to play the game
+* As a player, I want to view my score and see the results of my gameplay
 
 
 ### **Game Aims:**
 
-* The game should
-* The game should
-* The game should
-* The game should
-* The game should
-* The game should
-* The game should
+* The game should feature clear rules to help players navigate through the gameplay
+* The game should offer a main menu and user menu for easy navigation and user control
+* The game should be straightforward and easy to grasp for new players
+* The game should feature a specified turn limit to add structure and strategy to the gameplay
+* The game should automatically update the scores of registered players
+* The game should give players informative and precise feedback to enhance the gaming experience.
 
 ---
 
@@ -96,7 +96,7 @@
 
 TEXT
 
-![Wireframe 1](IMG)
+![Wireframe 1](assets/images/readme/wireframe.png)
 
 ---
 
