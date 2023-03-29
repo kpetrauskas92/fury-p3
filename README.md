@@ -94,7 +94,7 @@ The initial concept of the game was a Battleship-style game, where the player gu
 
 ### **Wireframes:**
 
-TEXT
+The wireframes for the website were produced in [Balsamiq](https://balsamiq.com). The frames shown below are menus and game play on left and right side. The final site might be slightly different from the wireframes due to developments that occured during the creation process. 
 
 ![Wireframe 1](assets/images/readme/wireframe.png)
 
@@ -102,9 +102,10 @@ TEXT
 
 ### **Logic Flow:**
 
-TEXT
+I created a high-level logic flowchart in [Draw.io](https://draw.io)
 
-![logic Flow](IMG)
+
+![logic Flow](assets/images/readme/logic_flow.png)
 
 ---
 ​
