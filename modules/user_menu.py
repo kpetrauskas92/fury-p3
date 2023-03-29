@@ -5,12 +5,12 @@ displaying options to play the game,
 show the leaderboard, view the rules, or log out.
 """
 
+import re
 from colorama import Fore, Style
 from game.game import play_game
 from modules.leaderboard import show_leaderboard
 from utils.cs import clear_screen
-from art import USER_MENU
-from art import RULES
+from art import USER_MENU, RULES, ERROR
 
 
 GREEN = Fore.GREEN
@@ -41,9 +41,11 @@ def display_user_menu_after_action(player_index):
     while True:
         display_user_menu()
         print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")
-        try:
-            user_choice = int(input(f"{BOLD}{CYAN}\n>>> {RESET}"))
-            clear_screen()
+        user_choice = input(f"{BOLD}{CYAN}\n>>> {RESET}")
+        clear_screen()
+
+        if re.match(r'^[1-4]$', user_choice):
+            user_choice = int(user_choice)
             if user_choice == 1:
                 play_game(player_index)
             elif user_choice == 2:
@@ -53,10 +55,9 @@ def display_user_menu_after_action(player_index):
                 input("\nPress ENTER to go back to the user menu: ")
                 clear_screen()
             elif user_choice == 4:
-                print(f"{YELLOW}You have been logged out.{RESET}")
+                print(f"{BOLD}{YELLOW}You have logged out.{RESET}")
                 break
-            else:
-                print(f"{RED}Please choose a "
-                      f"number between 1 and 4.{RESET}")
-        except ValueError:
+        else:
+            clear_screen()
+            print(ERROR)
             print(f"{RED}Please enter a number between 1 and 4.{RESET}")

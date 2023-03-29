@@ -13,7 +13,7 @@ The main components of the module are:
 
 import random
 from colorama import Fore, Style
-from art import LOGO
+from art import LOGO, LOGO_2, GAME_OVER, WINNER
 from modules.google_sheets import get_highscores_worksheet
 from utils.cs import clear_screen
 
@@ -39,17 +39,16 @@ TANK_SIZES = [2]
 # A dictionary that defines the different messages
 # that can be displayed during the game.
 event_messages = {
-    "oops": f"{YELLOW}Oops, that's not even in "
+    "oops": f"⣿ {YELLOW}Oops, that's not even in "
             f"the battlefield.{RESET}",
-    "same": f"{RED}You've already hit that "
+    "same": f"⣿ {RED}You've already hit that "
             f"spot. Try again!{RESET}",
-    "hit": f"{GREEN}You've hit a tank! Good job!{RESET}",
-    "miss": f"{YELLOW}You missed.{RESET} Better luck "
+    "hit": f"⣿ {GREEN}You've hit a tank!{RESET} Good job!",
+    "miss": f"⣿ {YELLOW}You missed.{RESET} Better luck "
             f"next time!",
-    "game_over": f"\n{RED}Game over!{RESET} You ran out "
-                 f"of turns.",
-    "enemy_tanks": f"{YELLOW}The enemy tanks were at:{RESET}",
-    "congrats": f"{BOLD}{GREEN}Congratulations!{RESET}",
+    "game_over": "\n⣿ You ran out of turns.",
+    "enemy_tanks": f"⣿ {YELLOW}The enemy tanks were at:{RESET}",
+    "congrats": f"\n{BOLD}{GREEN}Congratulations!{RESET}",
     "destroyed": "You destroyed all enemy tanks!",
 }
 
@@ -97,8 +96,8 @@ def print_brd(brd):
     print(border)
 
     # Prints column labels
-    col_str = "     "
-    col_str = ' '.join(f"{col_num:<3}" for col_num in range(1, size + 1))
+    col_str = ("     " +
+               "".join(f"{col_num:<3}" for col_num in range(1, size + 1)))
     print(col_str)
 
 
@@ -324,7 +323,15 @@ def game_loop(size, num_tanks, turn_limit):
              game_state["tanks_destr"], game_over) = update_game_state(
              player_brd, enemy_brd, row, col, game_state["tanks_destr"])
         if game_over:
+            clear_screen()
+            print(LOGO_2)
+            print(WINNER)
             print(event_messages["congrats"])
+            print(event_messages["destroyed"])
+            break
+        # if game_state["tanks_destr"] == num_tanks:
+        #     break
+
         game_state["turns"] += 1
 
     return game_state, player_brd, enemy_brd
@@ -341,12 +348,20 @@ def play_game(player_index=None, signed_in=False):
         clear_screen()
         print(LOGO)
         size, num_tanks, turn_limit = select_difficulty()
-        game_state, _, enemy_brd = game_loop(size, num_tanks, turn_limit)
+        (
+            game_state,
+            _,
+            enemy_brd,
+        ) = game_loop(size, num_tanks, turn_limit)
 
         # Check if the game ended due to reaching the turn limit
         if game_state["turns"] == turn_limit:
+            clear_screen()
+            print(LOGO_2)
+            print(GAME_OVER)
             print(event_messages["game_over"])
             print(event_messages["enemy_tanks"])
+            # print_brd(player_brd)
             print_brd(enemy_brd)
 
         # Calculate and display the player's score
@@ -362,12 +377,13 @@ def play_game(player_index=None, signed_in=False):
         elif not signed_in:
 
             # If player is not signed in, inform their score won't be saved
-            print(f"\nYou are not signed in{RED} !!!{RESET}")
-            print(f"Your score will {RED}not be "
+            print(f"\n⣿ Your score will {RED}not be "
                   f"saved{RESET}.")
+            print(f"⣿ Please register{YELLOW} !!!{RESET}")
 
         play_again = prompt_play_again()
         if play_again == 'n':
+            clear_screen()
             break   # Exit the loop if the player chooses not to play again
 
 
@@ -376,8 +392,8 @@ def prompt_play_again():
     Prompts the player to play the game again and returns their answer.
     """
     while True:
-        print(f"{YELLOW}\nWant to PLAY AGAIN? {RESET}(y/n):", end=" ")
-        play_again = input(f"{CYAN}\n>>> {RESET}").lower()
+        print(f"{YELLOW}\nPLAY AGAIN? {RESET}(y/n):", end=" ")
+        play_again = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
 
         if play_again in ('y', 'n'):
             return play_again

@@ -28,22 +28,19 @@ def register():
     and returns their index in the highscores
     worksheet after registering them.
     """
-    while True:
-        print(REGISTER)
-        name = input(f"{YELLOW}Enter your name (3-10 letters):"
-                     f"{RESET} ").title()
-        if is_valid_input(name):
-            break
+    print(REGISTER)
+    name = input(f"{YELLOW}Enter your name:{RESET} ").title()
+    while not re.match(r'^[A-Za-z]{3,10}$', name):
         print(RED + "Please enter a name with "
               "3 to 10 letters." + RESET)
+        name = input(f"{YELLOW}Enter your name:{RESET} ").title()
 
-    while True:
-        city = input(f"{YELLOW}Enter your city (3-10 letters):"
-                     f"{RESET} ").title()
-        if is_valid_input(city):
-            break
+    # Prompt the user to enter their city
+    city = input(f"{YELLOW}Enter your city:{RESET} ").title()
+    while not re.match(r'^[A-Za-z]{3,10}$', city):
         print(RED + "Please enter a city name with "
               "3 to 10 letters." + RESET)
+        city = input(f"{YELLOW}Enter your city:{RESET} ").title()
 
     bonus_score = 100
 
@@ -55,7 +52,7 @@ def register():
         # prints a message indicating that the player already exists
         print(ERROR)
         print(f"{RED}⣿ Player already exists{RESET}")
-        print(f"{YELLOW}⣿ Try gain {RESET}{GREEN}⣿ or Log In{RESET}")
+        print(f"{YELLOW}⣿ Try again or Log In{RESET}")
         return None
 
     new_entry = [name, city, bonus_score]
@@ -83,10 +80,3 @@ def is_player_registered(name, city, highscores):
         if name.lower() == row[0].lower() and city.lower() == row[1].lower():
             return True
     return False
-
-
-def is_valid_input(input_str):
-    """
-    Checks if a given string is a valid input, consisting of 3 to 10 letters.
-    """
-    return bool(re.match(r'^[A-Za-z]{3,10}$', input_str))

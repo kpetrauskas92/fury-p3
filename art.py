@@ -40,11 +40,12 @@ MAIN_LOGO = f"""
 ⠀⠀⣼⣿⣿⠟⠛⠛⠛⠛⠛⠁⠀⢀⣿⣿⣿⠁⠀⠀⣸⣿⣿⡟⠀⢠⣿⣿⡿⠛⠻⣿⣿⣿⠛⠋⠀⠀⠀⢠⣿⣿⡿⠁
 ⠀⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣷⣶⣶⣶⣿⣿⡿⠁⢀⣿⣿⣿⠃⠀⠀⢹⣿⣿⣆⠀⠀⠀⠀⣾⣿⣿⠇
 ⠀⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠋⠁⠀⠘⠛⠛⠋⠀⠀⠀⠀⠛⠛⠛⠂⠀⠀⠘⠛⠛⠋{RESET}
-"""
-
-INTRO_TEXT = f"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{GREEN}Tank Warfare{RESET}  ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 """
+
+# INTRO_TEXT = f"""
+# ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{GREEN}Tank Warfare{RESET}  ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+# """
 
 LOGO = f"""
 {BOLD}{GREEN}
@@ -85,7 +86,7 @@ LEADERBOARD = f"""
 REGISTER = f"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{MAGENTA}REGISTER {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
-Register now and get 100 extra points!
+Register now and get {BOLD}{GREEN}100 extra points{RESET}!
 """
 
 USER_MENU = f"""
@@ -94,6 +95,16 @@ USER_MENU = f"""
 
 ERROR = f"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{RED}-ERROR- {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+"""
+
+GAME_OVER = f"""
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{RED}-GAME OVER- {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+"""
+
+WINNER = f"""
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿  {BOLD}{GREEN}WELL DONE ! {RESET} ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+
+ {BOLD}Congratulations on winning the fury tank game!{RESET}
 """
 
 RULES = f"""

@@ -27,14 +27,14 @@ def login(highscores):
     # Prompt the user to enter their name
     player_name = input(f"{YELLOW}Enter your name:{RESET} ")
     while not re.match(r'^[A-Za-z]{3,10}$', player_name):
-        print(RED + "Invalid name. Please enter a name with "
+        print(RED + "Please enter a name with "
               "3 to 10 letters." + RESET)
         player_name = input(f"{YELLOW}Enter your name:{RESET} ")
 
     # Prompt the user to enter their city
     player_city = input(f"{YELLOW}Enter your city:{RESET} ")
     while not re.match(r'^[A-Za-z]{3,10}$', player_city):
-        print(RED + "Invalid city name. Please enter a city name with "
+        print(RED + "Please enter a city name with "
               "3 to 10 letters." + RESET)
         player_city = input(f"{YELLOW}Enter your city:{RESET} ")
 

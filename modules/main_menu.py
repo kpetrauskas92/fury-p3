@@ -7,7 +7,7 @@ registering a new player, and displaying the leaderboard.
 
 import time
 from colorama import Fore, Style
-from art import MAIN_MENU, RULES, LOGO, LOGO_2, ERROR
+from art import MAIN_MENU, RULES, LOGO, ERROR
 from modules.login import login
 from modules.register import register
 from modules.leaderboard import show_leaderboard
@@ -51,12 +51,13 @@ def show_rules_and_start_game():
             for line in RULES.splitlines():
                 print(line)
                 time.sleep(0.1)
-            input("\nPress ENTER to start the game: ")
+            input("\nPress ENTER to start: ")
             play_game()
             break
         if show_rules.lower() == 'n':
             play_game()
             break
+        clear_screen()
         print(f"{RED}Invalid input. Please try again.{RESET}")
 
 
@@ -67,7 +68,6 @@ def process_main_menu_choice(highscores_worksheet):
     displays error message if input is invalid.
     """
     while True:
-        print(LOGO_2)
         display_main_menu()
         print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")
         try:

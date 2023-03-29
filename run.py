@@ -11,7 +11,7 @@ interacting with Google Sheets to store high scores.
 import sys
 import time
 from colorama import Fore, Style
-from art import MAIN_LOGO, INTRO_TEXT, LOGO_2
+from art import MAIN_LOGO, LOGO_2
 from modules.main_menu import process_main_menu_choice
 from modules.google_sheets import get_highscores_worksheet
 from utils.cs import clear_screen
@@ -44,7 +44,6 @@ def continue_prompt():
     a valid input is given.
     """
     while True:
-        print(INTRO_TEXT)
         print(f"{BOLD}{GREEN}READY TO PLAY?{RESET} (y/n): ", end="")
         user_input = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
         if user_input == 'y':
@@ -63,9 +62,9 @@ def load_game():
     """
     print(LOGO_2)
     loading_messages = [
-        f"\n{YELLOW}Loading game data...",
-        "Loading fury tanks...",
-        "Loading battle coordinates..."
+        f"\n{YELLOW}Loading game data{RESET}...",
+        f"{YELLOW}Loading fury tanks{RESET}...",
+        f"{YELLOW}Loading battle coordinates{RESET}..."
     ]
 
     for message in loading_messages:
