@@ -1,12 +1,12 @@
 # FURY
+![Icon](assets/favicon/android-chrome-192x192.png)
 ## **Game Overview**
 
 "FURY" tank battle game is a single player board game where the player's goal is to destroy all enemy tanks on the board within a limited number of turns. The player must choose a difficulty level (easy, medium, or hard) before starting the game. The game is played by guessing a row (letter) and column (number) on the enemy board to target a tank.
 
 ---
 ​
-![Main Logo](assets/images/readme/fury_main_logo.jpg)
-![Game Screen](IMG)
+![Game Screen](assets/images/readme/game_screen.png)
 
 #### [The deployed website is here on Heroku](https://fury-p3.herokuapp.com)​
 
@@ -48,7 +48,8 @@
 
 ### **Planning Overview:**
 
-PLANNING OVERVIEW TEXT
+* Concept: 
+            The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships on a grid. However, during the development, the concept was switched to a tank board game where players try to destroy the enemy tanks on a grid.
 
   Core aims for the project:
 
