@@ -9,7 +9,7 @@ import re
 from colorama import Fore, Style
 from modules.google_sheets import get_highscores_worksheet
 from utils.cs import clear_screen
-from art import REGISTER, ERROR
+from art import REGISTER, ERROR, LOGO_2
 
 
 GREEN = Fore.GREEN
@@ -28,6 +28,7 @@ def register():
     and returns their index in the highscores
     worksheet after registering them.
     """
+    print(LOGO_2)
     print(REGISTER)
     name = input(f"{YELLOW}Enter your name:{RESET} ").title()
     while not re.match(r'^[A-Za-z]{3,10}$', name):

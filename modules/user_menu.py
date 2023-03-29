@@ -10,7 +10,7 @@ from colorama import Fore, Style
 from game.game import play_game
 from modules.leaderboard import show_leaderboard
 from utils.cs import clear_screen
-from art import USER_MENU, RULES, ERROR
+from art import USER_MENU, RULES, ERROR, LINE
 
 
 GREEN = Fore.GREEN
@@ -28,6 +28,7 @@ def display_user_menu():
     print(f"{BOLD}{CYAN}2.{RESET} Leaderboard")
     print(f"{BOLD}{CYAN}3.{RESET} Rules")
     print(f"{BOLD}{CYAN}4.{RESET} Logout")
+    print(LINE)
 
 
 def display_user_menu_after_action(player_index):

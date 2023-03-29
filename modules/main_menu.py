@@ -7,7 +7,7 @@ registering a new player, and displaying the leaderboard.
 
 import time
 from colorama import Fore, Style
-from art import MAIN_MENU, RULES, LOGO, ERROR
+from art import MAIN_MENU, RULES, LOGO, ERROR, LINE
 from modules.login import login
 from modules.register import register
 from modules.leaderboard import show_leaderboard
@@ -31,6 +31,7 @@ def display_main_menu():
     print(f"{BOLD}{CYAN}2.{RESET} Login")
     print(f"{BOLD}{CYAN}3.{RESET} Register")
     print(f"{BOLD}{CYAN}4.{RESET} Leaderboard")
+    print(LINE)
 
 
 def show_rules_and_start_game():
@@ -50,7 +51,7 @@ def show_rules_and_start_game():
             print("\n")
             for line in RULES.splitlines():
                 print(line)
-                time.sleep(0.1)
+                time.sleep(0.05)
             input("\nPress ENTER to start: ")
             play_game()
             break
@@ -69,7 +70,7 @@ def process_main_menu_choice(highscores_worksheet):
     """
     while True:
         display_main_menu()
-        print("\nChoose (1, 2, 3 or 4) and press ENTER:", end=" ")
+        print("Choose (1, 2, 3 or 4) and press ENTER:", end=" ")
         try:
             choice = int(input(f"{CYAN}\n>>> {RESET}"))
             clear_screen()

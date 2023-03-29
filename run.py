@@ -11,7 +11,7 @@ interacting with Google Sheets to store high scores.
 import sys
 import time
 from colorama import Fore, Style
-from art import MAIN_LOGO, LOGO_2
+from art import MAIN_LOGO, LOGO_2, LINE
 from modules.main_menu import process_main_menu_choice
 from modules.google_sheets import get_highscores_worksheet
 from utils.cs import clear_screen
@@ -61,8 +61,9 @@ def load_game():
     with a typewriter effect.
     """
     print(LOGO_2)
+    print(LINE)
     loading_messages = [
-        f"\n{YELLOW}Loading game data{RESET}...",
+        f"{YELLOW}Loading game data{RESET}...",
         f"{YELLOW}Loading fury tanks{RESET}...",
         f"{YELLOW}Loading battle coordinates{RESET}..."
     ]

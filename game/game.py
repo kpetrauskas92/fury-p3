@@ -181,7 +181,7 @@ def select_difficulty():
     print(" 10x10 board with 5 Tanks - 20 turns\n")
 
     while True:
-        print("\nChoose (1, 2, or 3) and press ENTER:", end=" ")
+        print("Choose (1, 2, or 3) and press ENTER:", end=" ")
         choice = input(f"{BOLD}{CYAN}\n>>> {RESET}")
 
         if choice.isdigit() and choice in ('1', '2', '3'):
@@ -304,9 +304,9 @@ def game_loop(size, num_tanks, turn_limit):
             print(game_state["event_message"])
         colored_turn = get_turn_color(game_state["turns"] + 1, turn_limit)
         if game_state["turns"] + 1 == turn_limit:
-            print(f"\nTurn {colored_turn}/{turn_limit} {RED}Last!{RESET}")
+            print(f"\n Turn {colored_turn}/{turn_limit} {RED}Last!{RESET}")
         else:
-            print(f"\nTurn {colored_turn}/{turn_limit}")
+            print(f"\n Turn {colored_turn}/{turn_limit}")
         print_brd(player_brd)
 
         # Get player's move

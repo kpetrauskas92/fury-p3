@@ -7,7 +7,7 @@ import re
 from operator import itemgetter
 from colorama import Fore, Style
 from utils.cs import clear_screen
-from art import LOGIN, ERROR
+from art import LOGIN, ERROR, LOGO_2
 
 GREEN = Fore.GREEN
 CYAN = Fore.CYAN
@@ -23,6 +23,7 @@ def login(highscores):
     if the user's name and city already exist in the highscores.
     If found, displays the user's highscore and position on the leaderboard.
     """
+    print(LOGO_2)
     print(LOGIN)
     # Prompt the user to enter their name
     player_name = input(f"{YELLOW}Enter your name:{RESET} ")
