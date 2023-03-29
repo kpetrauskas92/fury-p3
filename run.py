@@ -84,7 +84,7 @@ if __name__ == "__main__":
         while True:
             if not GAME_LOADED:
                 game_loaded_msg = (
-                    f"{BOLD}{GREEN}Game has loaded successfully!"
+                    f"{BOLD}{GREEN}Game has loaded successfully!{RESET}"
                 )
                 typewriter(game_loaded_msg + "\n")
                 GAME_LOADED = True
