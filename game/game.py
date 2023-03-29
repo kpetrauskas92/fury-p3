@@ -173,11 +173,11 @@ def select_difficulty():
     for the selected difficulty level.
     """
     print(f"{BOLD}{GREEN}Select difficulty level:{RESET}\n")
-    print(f"{CYAN}1. {GREEN}Easy{RESET}")
+    print(f"{BOLD}{CYAN}1. {GREEN}Easy{RESET}")
     print(" 5x5 board with 2 Tanks - 10 turns\n")
-    print(f"{CYAN}2. {YELLOW}Medium{RESET}")
+    print(f"{BOLD}{CYAN}2. {YELLOW}Medium{RESET}")
     print(" 7x7 board with 3 Tanks - 15 turns\n")
-    print(f"{CYAN}3. {RED}Hard{RESET}")
+    print(f"{BOLD}{CYAN}3. {RED}Hard{RESET}")
     print(" 10x10 board with 5 Tanks - 20 turns\n")
 
     while True:
