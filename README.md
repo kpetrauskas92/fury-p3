@@ -20,16 +20,17 @@
     * [***Logic Flow***](#wireframes)
     * [***Color Scheme***](#color-scheme)
     * [***Design Choices***](#design-choices)
-1. [*Main Features*](#main-features)
+1. [**Main Features**](#main-features)
     * [***Intro Logo***](#intro-logo)
     * [***Loading Screen***](#loading-screen)
     * [***Main Menu***](#main-menu)
     * [***User Menu***](#user-menu)
-    * [***FEATURE5***](#feature5)
-    * [***FEATURE6***](#feature6)
-    * [***FEATURE7***](#feature7)
-    * [***FEATURE8***](#feature8)
-    * [***FEATURE9***](#feature9)
+1. [**Game Features**](#game-features)
+    * [***Difficulty Select***](#difficulty-select)
+    * [***Game Board***](#game-board)
+    * [***Game Events***](#game-events)
+    * [***Input Validation***](#input-validation)
+    * [***Game End***](#game-end)
 1. [**Testing**](#testing)
 1. [**Deployment**](#deployment)
 1. [**Technology and Applications**](#technology-and-applications)
@@ -336,7 +337,7 @@ they would like to play.
 </details></button>
 
 ---
-### ***Game Over State***
+### ***Game End***
 - Displaying the enemy board at the conclusion of each game, revealing the locations of the tanks the player missed, reinforces the game's fairness and randomness. By providing the player with a visual representation of the enemy board, players can see that the game is not rigged or biased in any way.
 
 - Event messages are displayed to provide the player with feedback on their performance. Depending on whether the player has won or lost the game, the event messages can vary from congratulatory messages to messages indicating that the player has run out of turns.
@@ -347,16 +348,6 @@ they would like to play.
 
 - To minimize menu navigation and improve the overall user experience, a "play again" option is displayed at the bottom of the game-over screen. This option enables the player to quickly start a new game without having to navigate back to the main menu.
 
----
-
-
-### **Performance Summary**
-
-SUMMARY TEXT
-
-- text
-
-![logo](IMG)
 
 ---
 ## **Testing**
