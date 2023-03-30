@@ -52,8 +52,8 @@ def register():
         # If the given player is already registered,
         # prints a message indicating that the player already exists
         print(ERROR)
-        print(f"{RED}⣿ Player already exists{RESET}")
-        print(f"{YELLOW}⣿ Try again or Log In{RESET}")
+        print(f"{BOLD}{RED}⣿ Player already exists{RESET}")
+        print(f"{BOLD}{YELLOW}⣿ Try again or Log In{RESET}")
         return None
 
     new_entry = [name, city, bonus_score]

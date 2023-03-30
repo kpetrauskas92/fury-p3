@@ -13,6 +13,7 @@ GREEN = Fore.GREEN
 CYAN = Fore.CYAN
 YELLOW = Fore.YELLOW
 RED = Fore.RED
+BOLD = Style.BRIGHT
 RESET = Style.RESET_ALL
 
 
@@ -50,13 +51,13 @@ def login(highscores):
     for index, record in enumerate(sorted_records):
         if (record["NAME"].lower() == player_name.lower()
                 and record["CITY"].lower() == player_city.lower()):
-            welcome_msg = f"\nWelcome back {GREEN}{record['NAME']}!"
+            welcome_msg = f"\nWelcome back {BOLD}{GREEN}{record['NAME']}!"
             print(welcome_msg + RESET)
-            highscore_msg = f"You have {YELLOW}{record['SCORE']} points."
+            highscore_msg = f"You have {BOLD}{YELLOW}{record['SCORE']} points."
             print(highscore_msg + RESET)
             position = index + 1
             position_msg = (f"Your position is: "
-                            f"/{GREEN}{position}{RESET}/ "
+                            f"/{BOLD}{GREEN}{position}{RESET}/ "
                             "on the leaderboard.")
             print(position_msg)
             return index
@@ -64,6 +65,6 @@ def login(highscores):
     # If the user's record was not found, display an error message
     clear_screen()
     print(ERROR)
-    print(f"{RED}⣿ Player not found{RESET}")
-    print(f"{YELLOW}⣿ Please try again{RESET}")
+    print(f"{BOLD}{RED}⣿ Player not found{RESET}")
+    print(f"{BOLD}{YELLOW}⣿ Please try again{RESET}")
     return None

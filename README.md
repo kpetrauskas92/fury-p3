@@ -1,3 +1,8 @@
+button {
+
+}
+
+
 # FURY
 ![Icon](assets/favicon/android-chrome-192x192.png)
 ## **Game Overview**
@@ -150,13 +155,13 @@ TEXT
 
 TEXT
 
-#### *Example*
-
-![intro](assets/images/readme/intro_logo.png)
+<button><details><summary>Example Image</summary>
+<img src="assets/images/readme/intro_logo.png">
+</details></button>
 
 ---
 
-### **FEATURE 1**
+### ***LOADING SCREEN***
 
 TEXT
 
@@ -171,15 +176,31 @@ TEXT
 
 #### *Example*
 
-![intro](assets/images/readme/loading_screen.png)
+<button><details><summary>Example Image</summary>
+<img src="assets/images/readme/loading_screen.png">
+</details></button>
 
 ---
 
-### **FEATURE 2**
+### ***MAIN MENU***
 
+TEXT
+
+- text
+- text
+
+
+TEXT
+- TEXT
+
+TEXT
+
+#### *Example*
+
+![intro](assets/images/readme/main_menu_mock.png)
 
 ---
-### **FEATURE 3**
+### ***USER MENU***
 
 
 ---

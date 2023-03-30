@@ -30,7 +30,7 @@ RESET = Style.RESET_ALL
 DIFFICULTY_LEVELS = {
     1: {"size": 5, "num_tanks": 2, "turn_limit": 10},
     2: {"size": 7, "num_tanks": 3, "turn_limit": 15},
-    3: {"size": 10, "num_tanks": 4, "turn_limit": 20},
+    3: {"size": 10, "num_tanks": 5, "turn_limit": 20},
 }
 
 # Sizes (lengths) for tanks in the game
@@ -195,7 +195,7 @@ def select_difficulty():
         return 5, 2, 10
     if choice == 2:
         return 7, 3, 15
-    return 10, 4, 20
+    return 10, 5, 20
 
 
 def get_turn_color(turn, total_turns):
@@ -227,7 +227,7 @@ def valid_row(value):
     Checks if the input value is a valid row identifier
     """
     if len(value) != 1 or not value.isalpha():
-        print(f"{RED}Please enter a single letter.{RESET}")
+        print(f"{BOLD}{RED}Please enter a single letter.{RESET}")
         return False
     return True
 
@@ -237,7 +237,7 @@ def valid_col(value):
     Checks if the input value is a valid col identifier
     """
     if not value.isdigit():
-        print(f"{RED}Please enter a number.{RESET}")
+        print(f"{BOLD}{RED}Please enter a number.{RESET}")
         return False
     return True
 
@@ -365,7 +365,7 @@ def play_game(player_index=None, signed_in=False):
         # Calculate and display the player's score
         score = int(game_state["tanks_destr"] * 10 *
                     [1, 1.2, 1.3][turn_limit // 5 - 2])
-        print(f"You scored: {GREEN}{score} points!{RESET}")
+        print(f"You scored: {BOLD}{GREEN}{score} points!{RESET}")
 
         # If player is signed in, update their highscore
         if player_index is not None:
@@ -375,9 +375,9 @@ def play_game(player_index=None, signed_in=False):
         elif not signed_in:
 
             # If player is not signed in, inform their score won't be saved
-            print(f"\n⣿ Your score will {RED}not be "
+            print(f"\n{BOLD}⣿ Your score will {RED}not be "
                   f"saved{RESET}.")
-            print(f"⣿ Please register{YELLOW} !!!{RESET}")
+            print(f"{BOLD}⣿ Please register{YELLOW} !!!{RESET}")
 
         play_again = prompt_play_again()
         if play_again == 'n':
@@ -390,9 +390,9 @@ def prompt_play_again():
     Prompts the player to play the game again and returns their answer.
     """
     while True:
-        print(f"{YELLOW}\nPLAY AGAIN? {RESET}(y/n):", end=" ")
+        print(f"{BOLD}{YELLOW}\nPLAY AGAIN? {RESET}(y/n):", end=" ")
         play_again = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
 
         if play_again in ('y', 'n'):
             return play_again
-        print(f"{RED}Please ENTER 'y' or 'n'.{RESET}")
+        print(f"{BOLD}{RED}Please ENTER 'y' or 'n'.{RESET}")
