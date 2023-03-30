@@ -39,12 +39,12 @@ TANK_SIZES = [2]
 # A dictionary that defines the different messages
 # that can be displayed during the game.
 event_messages = {
-    "oops": f"⣿ {YELLOW}Oops, that's not even in "
+    "oops": f"⣿ {BOLD}{YELLOW}Oops, that's not even in "
             f"the battlefield.{RESET}",
-    "same": f"⣿ {RED}You've already hit that "
+    "same": f"⣿ {BOLD}{RED}You've already hit that "
             f"spot. Try again!{RESET}",
-    "hit": f"⣿ {GREEN}You've hit a tank!{RESET} Good job!",
-    "miss": f"⣿ {YELLOW}You missed.{RESET} Better luck "
+    "hit": f"⣿ {BOLD}{GREEN}You've hit a tank!{RESET} Good job!",
+    "miss": f"⣿ {BOLD}{YELLOW}You missed.{RESET} Better luck "
             f"next time!",
     "game_over": "\n⣿ You ran out of turns.",
     "enemy_tanks": f"⣿ {YELLOW}The enemy tanks were at:{RESET}",
@@ -249,12 +249,12 @@ def get_row_col(size):
 
     """
     row_input = get_input(
-        f" Enter row (A-{chr(64 + size)}):{CYAN} >>> {RESET}",
+        f" Enter row (A-{chr(64 + size)}):{BOLD}{CYAN} >>> {RESET}",
         valid_row
     ).upper()
     row = ord(row_input) - 65
     col_input = get_input(
-        f" Enter column (1-{size}):{CYAN} >>> {RESET}",
+        f" Enter column (1-{size}):{BOLD}{CYAN} >>> {RESET}",
         valid_col
     )
     col = int(col_input) - 1

@@ -48,7 +48,7 @@
 
 ### **Planning Overview:**
 
-The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships on a grid. However, during the development, the concept was switched to a tank board game where the player tries to destroy the enemy tanks on a grid.
+The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships. However, during the development, the concept was switched to a tank board game where the player tries to destroy the enemy tanks on a grid.
 
 "FURY" was chosen from one of your favorite movies, which represents the theme of the game well.
 
@@ -111,29 +111,33 @@ I created a high-level logic flowchart in [Draw.io](https://draw.io)
 ​
 ### **Color Scheme:**
 
-TEXT
+The limited color availability in the Python terminal I was working with had an impact on my decision-making process. However, I was fortunate enough to be able to choose the main colors required for the game despite this limitation.
+I used colorama library with color constants to achieve the desired color scheme.
 
-- Text
-- Text
+-  $\colorbox{green}{{\color{black}{GREEN}}}$ : Was utilized for the Fury Logo as well as some event messages in the game.
 
-- Text
+- $\colorbox{yellow}{{\color{black}{YELLOW}}}$ : was primarily used for displaying informational pieces such as rules and certain event messages in the game.
 
-- Text
+- $\colorbox{red}{{\color{black}{RED}}}$ : was utilized for displaying error messages or certain important information in the game.
 
-- Text
+- $\colorbox{magenta}{{\color{black}{MAGENTA}}}$ : was used to differentiate menu headings from other elements, providing a unique and distinct style.
 
-- Text
+- $\colorbox{cyan}{{\color{black}{CYAN}}}$ : was assigned to list numbers for choices and the terminal prompt cursor.
+
+- $\colorbox{black}{{\color{white}{BRIGHT/BOLD}}}$ : Was applied to make the colors in the game more vibrant and visible.
+
+- $\colorbox{gray}{{\color{white}{DIM}}}$ : was utilized for the inner section of the board in order to provide a contrast and ensure that events within this section were easily visible.
+
 
 ### **Design Choices**
 ​
-TEXT
-
+When designing "FURY", I prioritized a clean and minimalistic user interface that would allow players to focus on the gameplay without distraction.
 
 ---
 ​
 ## **Game Features**
 
-### ***FEATURE 1***
+### ***INTRO LOGO***
 
 TEXT
 
