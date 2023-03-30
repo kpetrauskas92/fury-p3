@@ -72,7 +72,7 @@ def process_main_menu_choice(highscores_worksheet):
         display_main_menu()
         print("Choose (1, 2, 3 or 4) and press ENTER:", end=" ")
         try:
-            choice = int(input(f"{CYAN}\n>>> {RESET}"))
+            choice = int(input(f"{BOLD}{CYAN}\n>>> {RESET}"))
             clear_screen()
             if choice == 1:
                 show_rules_and_start_game()

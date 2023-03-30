@@ -143,11 +143,7 @@ TEXT
 
 - text
 - text
-- text
-- text
-- text
-- text
-- text
+
 
 TEXT
 - TEXT
@@ -156,11 +152,26 @@ TEXT
 
 #### *Example*
 
-![logo](IMG)
+![intro](assets/images/readme/intro_logo.png)
 
 ---
 
 ### **FEATURE 1**
+
+TEXT
+
+- text
+- text
+
+
+TEXT
+- TEXT
+
+TEXT
+
+#### *Example*
+
+![intro](assets/images/readme/loading_screen.png)
 
 ---
 
