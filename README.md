@@ -148,9 +148,9 @@ I utilized ASCII art to create the FURY text for the logo and incorporated a pre
 
 - Should the user opt not to continue, they will be presented with a "shutting down" message, along with instructions on how to restart the game.
 
-<button><details><summary>Intro Logo Example</summary>
+<details><summary>Intro Logo Example</summary>
 <img src="assets/images/readme/intro_logo.png">
-</details></button>
+</details>
 
 ---
 
@@ -165,9 +165,9 @@ Upon the user's decision to continue, the loading screen features a simplified v
 - Once the game has successfully loaded, the "Game loaded successfully" text appears and the screen is cleared to present the main menu.
 
 
-<button><details><summary>Loading Screen Example</summary>
+<details><summary>Loading Screen Example</summary>
 <img src="assets/images/readme/loading_screen.png">
-</details></button>
+</details>
 
 ---
 
@@ -175,40 +175,42 @@ Upon the user's decision to continue, the loading screen features a simplified v
 
 The main menu is presented without a logo to enhance user experience, particularly when an error message for an invalid option is displayed. Headings are distinguished with a magenta color to stand out and create visual separation.
 
-<button><details><summary>Main Menu Example</summary>
+<details><summary>Main Menu Example</summary>
 <img src="assets/images/readme/main_menu.png">
-</details></button>
+</details>
 
 ---
 
-### Option 1. Play Game
+## Option 1. Play Game
 - Allows users to play without the requirement of logging in or registering an account.
 - Before presenting the difficulty selection screen, a prompt is displayed asking users if they would like to view the game rules.
 
-<button><details><summary>See Rules Example</summary>
+### ***Example:***
+<details><summary>See Rules Example</summary>
 <img src="assets/images/readme/see_rules.png">
-</details></button>
+</details>
 
-### Option 2. Login
+## Option 2. Login
 - The user is directed to a login screen where they can input their credentials to resume their progress within the game.
 
 - The fury_data API checks for existing data in the Google Sheets high score sheet. 
 
 - If the user is matched, they will be directed to the user-menu; otherwise, they will be returned to the main-menu with an error message displayed.
 
-<button><details><summary>Login Example</summary>
+ ### ***Examples:***
+<details><summary>Login Example</summary>
 <img src="assets/images/readme/login.png">
-</details></button>
+</details>
 
-<button><details><summary>Login Success Example</summary>
+<details><summary>Login Success Example</summary>
+<img src="assets/images/readme/login_success.png">
+</details>
+
+<details><summary>Login Error Example</summary>
 <img src="assets/images/readme/login_error.png">
-</details></button>
+</details>
 
-<button><details><summary>Login Error Example</summary>
-<img src="assets/images/readme/login_error.png">
-</details></button>
-
-### Option 3. Register
+## Option 3. Register
 - The user is directed to the registration screen, where they can sign up for an account, enabling their scores to be updated as they progress through the game.
 
 - The fury_data API verifies whether a user with the same credentials already exists in the system.
@@ -217,63 +219,70 @@ The main menu is presented without a logo to enhance user experience, particular
 
 - Upon successful registration, the user is automatically logged in, greeted with a welcome message, and presented with the user menu.
 
-<button><details><summary>Register Screen Example</summary>
+ ### ***Examples:***
+<details><summary>Register Screen Example</summary>
 <img src="assets/images/readme/register.png">
-</details></button>
+</details>
 
-<button><details><summary>Register Error Example</summary>
+<details><summary>Register Error Example</summary>
 <img src="assets/images/readme/register_error.png">
-</details></button>
+</details>
 
-<button><details><summary>Register Successful Example</summary>
+<details><summary>Register Successful Example</summary>
 <img src="assets/images/readme/register_success.png">
-</details></button>
+</details>
 
-### Option 4. Leaderboard
+## Option 4. Leaderboard
 - The inclusion of a leaderboard on the main screen is designed to attract new players who take pleasure in examining scores and player standings, consequently encouraging them to register by providing a sense of motivation.
 
-<button><details><summary>Leaderboard Example</summary>
-<img src="assets/images/readme/leaderboard.png">
-</details></button>
+### ***Example:***
+<details><summary>Leaderboard Example</summary>
+<img src="">
+</details>
 
 ---
 ## ***USER MENU***
 
 The user menu is also displayed without incorporating the logo to improve user experience, especially when an error message appears due to an invalid option. To make them more prominent and visually distinct, headings are highlighted with a magenta hue.
 
-<button><details><summary>User Menu Example</summary>
+### ***Example:***
+<details><summary>User Menu Example</summary>
 <img src="assets/images/readme/user_menu.png">
-</details></button>
+</details>
 
 ---
 
-### Option 1. Play Game
+## Option 1. Play Game
 - Assuming that registered users are already familiar with the game, they are directly guided to the difficulty selection screen. However, if they need a refresher on the rules, option 3 is available at any time to review them.
 
-<button><details><summary>Select Difficulty Example</summary>
-<img src="assets/images/readme/difficulty_select.png">
-</details></button>
+### ***Example:***
+<details><summary>Select Difficulty Example</summary>
+<img src="">
+</details>
 
-### Option 2. Leaderboard
+## Option 2. Leaderboard
 - The leaderboard is available as an option for registered users to track their progress and assess how close they are to achieving their desired ranking in the game.
 
-<button><details><summary>Updated Leaderboard Example</summary>
+### ***Example:***
+<details><summary>Updated Leaderboard Example</summary>
 <img src="assets/images/readme/leaderboard.png">
-</details></button>
+</details>
 
-### Option 3. Rules
+## Option 3. Rules
 - This option allows users to view the game rules, which are presented in a clear and easy-to-understand format. Additionally, an ASCII art design border is incorporated for better user experience.
 
-<button><details><summary>Rules Example</summary>
+### ***Example:***
+<details><summary>Rules Example</summary>
 <img src="assets/images/readme/rules.png">
-</details></button>
+</details>
 
-### Option 4. Logout
+## Option 4. Logout
 - The logout feature performs as expected, logging out the user to the main menu with a confirmation message. This feature can be useful for users who wish to register a new account or play without having their scores updated.
 
-<button><details><summary>Logout Example</summary>
+### ***Example:***
+<details><summary>Logout Example</summary>
 <img src="assets/images/readme/main_menu_logged_out.png">
-</details></button>
+</details>
 
 ---
 
@@ -285,9 +294,10 @@ they would like to play.
 
 - Each level offers a reward score multiplier bonus to provide an incentive for players to challenge themselves with harder difficulty.
 
-<button><details><summary>Select Difficulty Example</summary>
+### ***Example:***
+<details><summary>Select Difficulty Example</summary>
 <img src="assets/images/readme/difficulty_select.png">
-</details></button>
+</details>
 
 ---
 
@@ -296,9 +306,10 @@ they would like to play.
 
 - To enhance the user experience and make the gameplay more engaging, events on the game board are color-coded accordingly.
 
-<button><details><summary>Game Boards Example</summary>
-<img src="">
-</details></button>
+### ***Example:***
+<details><summary>Game Boards Example</summary>
+<img src="assets/images/readme/boards.png">
+</details>
 
 ---
 ### ***Game Events***
@@ -308,33 +319,36 @@ they would like to play.
 
 - Another event message that appears during gameplay is for hitting the same spot repeatedly. When this occurs, the player is penalized by losing a turn, which can affect their progress and score. This feature encourages players to plan their moves carefully and avoid hitting the same spot repeatedly, adding an extra layer of challenge and strategy to the game.
 
-<button><details><summary>Turns Example</summary>
-<img src="">
-</details></button>
+### ***Examples:***
 
-<button><details><summary>Hit Example</summary>
-<img src="">
-</details></button>
+<details><summary>Turns Example</summary>
+<img src="assets/images/readme/turns.png">
+</details>
 
-<button><details><summary>Miss Example</summary>
-<img src="">
-</details></button>
+<details><summary>Hit Example</summary>
+<img src="assets/images/readme/hit.png">
+</details>
 
-<button><details><summary>Off Grid Example</summary>
-<img src="">
-</details></button>
+<details><summary>Miss Example</summary>
+<img src="assets/images/readme/miss.png">
+</details>
 
-<button><details><summary>Same Spot Example</summary>
-<img src="">
-</details></button>
+<details><summary>Off Grid Example</summary>
+<img src="assets/images/readme/off-grid.png">
+</details>
+
+<details><summary>Same Spot Example</summary>
+<img src="assets/images/readme/same_spot.png">
+</details>
 
 ---
 ### ***Input Validation***
 - Choosing the correct row and column is essential to the gameplay experience, which is why input validation is implemented throughout the game. This feature ensures that the player enters a valid row and column value before proceeding with their move. If an invalid value is entered, an error message is displayed, and the player is prompted to re-enter the correct row and column value.
 
-<button><details><summary>Input Validation Example</summary>
-<img src="">
-</details></button>
+### ***Example:***
+<details><summary>Input Validation Example</summary>
+<img src="assets/images/readme/input_validation.png">
+</details>
 
 ---
 ### ***Game End***
@@ -402,5 +416,3 @@ These are the technologies used for this project.
 ​
   
 ### **Media:**
-​
-* 
