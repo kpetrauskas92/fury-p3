@@ -179,6 +179,7 @@ def select_difficulty():
     print(" 7x7 board with 3 Tanks - 20 turns\n")
     print(f"{BOLD}{CYAN}3. {RED}Hard{RESET}")
     print(" 10x10 board with 5 Tanks - 30 turns\n")
+    print(f"{YELLOW}For each hit you get 10 points{RESET}\n")
 
     while True:
         print("Choose (1, 2, or 3) and press ENTER:", end=" ")
