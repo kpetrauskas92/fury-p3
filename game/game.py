@@ -28,9 +28,9 @@ RESET = Style.RESET_ALL
 
 # A dictionary that defines the game difficulty levels.
 DIFFICULTY_LEVELS = {
-    1: {"size": 5, "num_tanks": 2, "turn_limit": 10},
-    2: {"size": 7, "num_tanks": 3, "turn_limit": 15},
-    3: {"size": 10, "num_tanks": 5, "turn_limit": 20},
+    1: {"size": 5, "num_tanks": 2, "turn_limit": 15},
+    2: {"size": 7, "num_tanks": 3, "turn_limit": 20},
+    3: {"size": 10, "num_tanks": 5, "turn_limit": 30},
 }
 
 # Sizes (lengths) for tanks in the game
@@ -174,11 +174,11 @@ def select_difficulty():
     """
     print(f"{BOLD}{GREEN}Select difficulty level:{RESET}\n")
     print(f"{BOLD}{CYAN}1. {GREEN}Easy{RESET}")
-    print(" 5x5 board with 2 Tanks - 10 turns\n")
+    print(" 5x5 board with 2 Tanks - 15 turns\n")
     print(f"{BOLD}{CYAN}2. {YELLOW}Medium{RESET}")
-    print(" 7x7 board with 3 Tanks - 15 turns\n")
+    print(" 7x7 board with 3 Tanks - 20 turns\n")
     print(f"{BOLD}{CYAN}3. {RED}Hard{RESET}")
-    print(" 10x10 board with 5 Tanks - 20 turns\n")
+    print(" 10x10 board with 5 Tanks - 30 turns\n")
 
     while True:
         print("Choose (1, 2, or 3) and press ENTER:", end=" ")
@@ -192,10 +192,10 @@ def select_difficulty():
               f"(1, 2, or 3).{RESET}")
 
     if choice == 1:
-        return 5, 2, 10
+        return 5, 2, 15
     if choice == 2:
-        return 7, 3, 15
-    return 10, 5, 20
+        return 7, 3, 20
+    return 10, 5, 30
 
 
 def get_turn_color(turn, total_turns):
@@ -364,7 +364,7 @@ def play_game(player_index=None, signed_in=False):
 
         # Calculate and display the player's score
         score = int(game_state["tanks_destr"] * 10 *
-                    [1, 1.2, 1.3][turn_limit // 5 - 2])
+                    [1, 1.2, 1.3][turn_limit // 10 - 1])
         print(f"You scored: {BOLD}{GREEN}{score} points!{RESET}")
 
         # If player is signed in, update their highscore
