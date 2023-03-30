@@ -1,7 +1,3 @@
-button {
-
-}
-
 
 # FURY
 ![Icon](assets/favicon/android-chrome-192x192.png)
@@ -140,20 +136,15 @@ When designing "FURY", I prioritized a clean and minimalistic user interface tha
 
 ---
 ​
-## **Game Features**
+## **Main Features**
 
 ### ***INTRO LOGO***
 
-TEXT
+I utilized ASCII art to create the FURY text for the logo and incorporated a pre-existing tank ASCII design to emphasize the theme of a tank warfare game.
 
-- text
-- text
-
-
-TEXT
-- TEXT
-
-TEXT
+- Incorporated introductory text to provide a glimpse into the game's theme and content.
+- Included a "Ready to play" prompt, allowing users to decide whether they want to proceed with playing the game.
+- Should the user opt not to continue, they will be presented with a "shutting down" message, along with instructions on how to restart the game.
 
 <button><details><summary>Example Image</summary>
 <img src="assets/images/readme/intro_logo.png">
@@ -163,18 +154,12 @@ TEXT
 
 ### ***LOADING SCREEN***
 
-TEXT
+Upon the user's decision to continue, the loading screen features a simplified version of the logo, enhancing the overall user experience.
 
-- text
-- text
+- Sequential loading event messages are presented with a typewriter-style animation for added visual appeal.
+- While the "game loaded" message is being prepared for display, the fury_data API is loaded silently in the background.
+- Once the game has successfully loaded, the "Game loaded successfully" text appears and the screen is cleared to present the main menu.
 
-
-TEXT
-- TEXT
-
-TEXT
-
-#### *Example*
 
 <button><details><summary>Example Image</summary>
 <img src="assets/images/readme/loading_screen.png">
@@ -184,20 +169,31 @@ TEXT
 
 ### ***MAIN MENU***
 
-TEXT
+The FURY menu is presented without a logo to enhance user experience, particularly when an error message for an invalid option is displayed. Headings are distinguished with a magenta color to stand out and create visual separation.
 
-- text
-- text
+<button><details><summary>Main Menu Example</summary>
+<img src="assets/images/readme/main_menu.png">
+</details></button>
 
+### Option 1. Play Game
+- Allows users to play without the requirement of logging in or registering an account.
+- Before presenting the difficulty selection screen, a prompt is displayed asking users if they would like to view the game rules.
 
-TEXT
-- TEXT
+<button><details><summary>Example</summary>
+<img src="assets/images/readme/see_rules.png">
+</details></button>
 
-TEXT
+### Option 2. Login
+- The user is directed to a login screen where they can input their credentials to resume their progress within the game.
+- The fury_data API checks for existing data in the Google Sheets high score sheet. If the user is matched, they will be directed to the user-menu; otherwise, they will be returned to the main-menu with an error message displayed.
 
-#### *Example*
+<button><details><summary>Example 1</summary>
+<img src="assets/images/readme/login.png">
+</details></button>
 
-![intro](assets/images/readme/main_menu_mock.png)
+<button><details><summary>Example 2</summary>
+<img src="assets/images/readme/main_menu.png">
+</details></button>
 
 ---
 ### ***USER MENU***
