@@ -35,10 +35,8 @@
 1. [**Deployment**](#deployment)
 1. [**Technology and Applications**](#technology-and-applications)
 1. [**Future-Enhancements**](#future-enhancements)
-    * [***User Enhancements***](#user_enhacements)
-    * [***Internal Enhancements***](#internal_enhacements)
 1. [**Credits**](#credits)
-    * [**Honorable mentions**](#honorable-mentions)
+    * [**Honorable mentions**](#mentions)
     * [**Content**](#content)
     * [**Media**](#media)
 
@@ -49,9 +47,9 @@
 
 ### **Planning Overview:**
 
-The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships. However, during the development, the concept was switched to a tank board game where the player tries to destroy the enemy tanks on a grid.
+The initial concept of the game was a Battleship-style game, where the player guesses the location of the enemy's ships. However, during the development, the concept was switched to a tank board game where the player tries to destroy the enemy tanks on a grid instead.
 
-"FURY" was chosen from one of your favorite movies, which represents the theme of the game well.
+"FURY" was chosen from one of my favorite movies, which represents the theme of the game well.
 
   Core aims for the project:
 
@@ -90,6 +88,11 @@ The initial concept of the game was a Battleship-style game, where the player gu
 * The game should feature a specified turn limit to add structure and strategy to the gameplay
 * The game should automatically update the scores of registered players
 * The game should give players informative and precise feedback to enhance the gaming experience.
+
+
+---
+
+[Back to top](<#table-of-contents>)
 
 ---
 
@@ -134,6 +137,11 @@ I used colorama library with color constants to achieve the desired color scheme
 ​
 When designing "FURY", I prioritized a clean and minimalistic user interface that would allow players to focus on the gameplay without distraction.
 
+
+---
+
+[Back to top](<#table-of-contents>)
+
 ---
 ​
 # **Main Features :**
@@ -168,6 +176,10 @@ Upon the user's decision to continue, the loading screen features a simplified v
 <details><summary>Loading Screen Example</summary>
 <img src="assets/images/readme/loading_screen.png">
 </details>
+
+---
+
+[Back to top](<#table-of-contents>)
 
 ---
 
@@ -237,8 +249,12 @@ The main menu is presented without a logo to enhance user experience, particular
 
 ### ***Example:***
 <details><summary>Leaderboard Example</summary>
-<img src="">
+<img src="assets/images/readme/leaderboard.png">
 </details>
+
+---
+
+[Back to top](<#table-of-contents>)
 
 ---
 ## ***USER MENU***
@@ -257,14 +273,14 @@ The user menu is also displayed without incorporating the logo to improve user e
 
 ### ***Example:***
 <details><summary>Select Difficulty Example</summary>
-<img src="">
+<img src="assets/images/readme/difficulty_select.png">
 </details>
 
 ## Option 2. Leaderboard
 - The leaderboard is available as an option for registered users to track their progress and assess how close they are to achieving their desired ranking in the game.
 
 ### ***Example:***
-<details><summary>Updated Leaderboard Example</summary>
+<details><summary>Leaderboard Example</summary>
 <img src="assets/images/readme/leaderboard.png">
 </details>
 
@@ -283,6 +299,10 @@ The user menu is also displayed without incorporating the logo to improve user e
 <details><summary>Logout Example</summary>
 <img src="assets/images/readme/main_menu_logged_out.png">
 </details>
+
+---
+
+[Back to top](<#table-of-contents>)
 
 ---
 
@@ -362,6 +382,18 @@ they would like to play.
 
 - To minimize menu navigation and improve the overall user experience, a "play again" option is displayed at the bottom of the game-over screen. This option enables the player to quickly start a new game without having to navigate back to the main menu.
 
+### ***Examples:***
+<details><summary>Not Logged In Example</summary>
+<img src="assets/images/readme/not_signed_game_end.png">
+</details>
+
+<details><summary>Logged In Example</summary>
+<img src="assets/images/readme/game_over.png">
+</details>
+
+---
+
+[Back to top](<#table-of-contents>)
 
 ---
 ## **Testing**
@@ -370,14 +402,42 @@ Testing documentation is [here](./TESTING.md)
 
 ## **Deployment**
 
-- 
-- 
-- 
-- 
--  
+I deployed the program on heroku and used manual deployment so I could verify all features as I committed code manually.
+
+- Sign in to Heroku
+- In Heroku 'Create new app' from the 'New' menu at the top right
+- Follow the instructions
+- In 'Config Vars' section select 'Reveal Config Vars'
+- Enter PORT for the key and 8000 for the value
+- Enter CREDS for they key
+- For CREDS value use your creds.json information
+- Scroll down to the 'Buildpacks' section
+- Select 'Add' and add the `Python' buildpack
+- Select 'Add' again and add the 'NodeJS' buildpack (this must be after adding the Python buildpack)
+- Select 'Deploy' from the menu at the top
+- Select 'GitHub' and confirm you wish to deploy using GitHub. You may be asked to enter your GitHub password
+- Find the 'Connect to GitHub' section and use the search box to find the repo you want to deploy
+- Connect to it and deploy Your site will shortly be deployed and you will be given a link to the deployed site when the process is complete.
+
 
 ### **GitHub** 
-  
+### Forking the GitHub Repository
+
+You can fork the repository by following these steps:
+1. Go to the GitHub repository
+1. Click on Fork button in upper right hand corner
+
+### Cloning the GitHub Repository
+
+You can clone the repository to use locally by following these steps:
+1. Navigate to the GitHub Repository you want to clone
+2. Click on the code drop down button
+3. Click on HTTPS
+4. Copy the repository link to the clipboard
+5. Open your IDE of choice (git must be installed for the next steps)
+6. Type git clone copied-git-url into the IDE terminal
+
+The project will now be cloned locally for you to use.
 
 ---
 ​
@@ -385,34 +445,40 @@ Testing documentation is [here](./TESTING.md)
 ​
 These are the technologies used for this project.
 
-- Python 3.8.11
-- Gitpod
-- Github
-- Heroku
+- [Python 3.8.11](https://www.python.org/)
+- [Gitpod](https://gitpod.io)
+- [Github](https://github.com)
+- [Heroku](https://heroku.com/)
+- [Draw.io](www.draw.io)
+- [Photoshop](https://www.adobe.com/ie/products/photoshop.html)
 
 ----
 
 ## **Future-Enhancements**
 
-
-### **User Enhancements**
-
-* 
-* 
-* 
-
-### **Internal Enhancements**
-
-* 
-* 
-* 
+* Design a better TUI - Text based interface
+* Nuke  event that would be randomly placed during gameplay.
+* Add multiplayer to create a lobby system with matchmaking
+* Improve code readability through refactoring
 
 ## **Credits**
-### **Honorable mentions**
-​
-
+### **Mentions**
+I want to give a big shoutout to my family for their incredible support during the development of FURY.
 ​
 ### **Content:**
-​
+
+The name of the game, FURY, was inspired by the popular movie of the same name. The movie, which was released in 2014, was a war drama that received critical acclaim for its intense and gritty portrayal of tank warfare during World War II. The game FURY takes inspiration from this movie, recreating the excitement and strategy of tank battles in a virtual setting.
   
 ### **Media:**
+
+The FURY heading was created using the ASCII Art Generator available on the website https://www.twitchquotes.com/ascii-art-generator. The process involved cropping a font text "FURY" and uploading it to the website to be generated into ASCII art.
+
+The tank was taken from here: https://emojicombos.com/tank-text-art
+
+---
+
+[Back to top](<#table-of-contents>)
+
+---
+
+© Project developed by Karolis P. for Code Institute 2023

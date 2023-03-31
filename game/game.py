@@ -3,12 +3,6 @@ GAME:
 This module provides functionality for a turn-based tank battle game, including
 grid generation, game logic, and enemy AI.
 The main components of the module are:
-
- *Grid: Handles grid generation, rendering, and manipulation.
- *Tank: Represents player and enemy tanks,
-  including their positions and status.
- *AI: Handles enemy tank movement and decision-making.
- *Game: Manages game flow, turn system, and user input.
 """
 import sys
 import random
