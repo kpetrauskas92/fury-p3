@@ -161,8 +161,13 @@ Throughout the entire project, I diligently adhered to the best practices for Py
 
 The individuals who generously tested the game reported no issues, indicating a positive user experience and a well-functioning game.
 
-    During the midway point of the development phase, some fellow students from various Slack channels pointed out that certain sections lacked validation and allowed navigation using any key. I promptly addressed this issue by implementing input validation loops, ensuring that users could only enter the necessary keys to progress through the program. This enhancement improved the overall user experience and functionality of the application.
+    During the midway point of the development phase, some fellow students from various Slack channels
+    pointed out that certain sections lacked validation and allowed navigation using any key.
+    I promptly addressed this issue by implementing input validation loops, ensuring that users could only enter the necessary keys to progress through the program.
+    This enhancement improved the overall user experience and functionality of the application.
 
 ### **Known Issues**
 
-    There are no major known issues or bugs that would cause the terminal to crash during navigation or gameplay. Throughout the development process, I faced numerous challenges that required extensive research to resolve. However, this proved to be an invaluable learning experience in debugging and problem-solving, ultimately contributing to the creation of a stable and enjoyable game.
+    There are no major known issues or bugs that would cause the terminal to crash during navigation or gameplay.
+    Throughout the development process, I faced numerous challenges that required extensive research to resolve.
+    However, this proved to be an invaluable learning experience in debugging and problem-solving, ultimately contributing to the creation of a stable and enjoyable game.
