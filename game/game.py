@@ -10,7 +10,7 @@ The main components of the module are:
  *AI: Handles enemy tank movement and decision-making.
  *Game: Manages game flow, turn system, and user input.
 """
-
+import sys
 import random
 from colorama import Fore, Style
 from art import LOGO, LOGO_2, GAME_OVER, WINNER
@@ -312,7 +312,7 @@ def game_loop(size, num_tanks, turn_limit):
 
         # Get player's move
         row, col = get_row_col(size)
-
+        game_over = False
         # Handle invalid move
         if row not in range(size) or col not in range(size):
             game_state["event_message"] = event_messages["oops"]
@@ -368,11 +368,30 @@ def play_game(player_index=None, signed_in=False):
                     [1, 1.2, 1.3][turn_limit // 10 - 1])
         print(f"You scored: {BOLD}{GREEN}{score} points!{RESET}")
 
-        # If player is signed in, update their highscore
+        # If player is signed in, update their highscore and sort the scores
         if player_index is not None:
             highscores = get_highscores_worksheet()
             old_score = highscores.cell(player_index + 2, 3).value
             highscores.update_cell(player_index + 2, 3, int(old_score) + score)
+
+            # Print loading message
+            print(f"\n{YELLOW}Updating highscores... Please wait...{RESET}")
+            sys.stdout.flush()
+
+            # Retrieve highscores data
+            highscores_data = highscores.get_all_values()
+            headers = highscores_data.pop(0)  # Remove header row
+
+            # Sort highscores data by scores (column 3) in descending order
+            sorted_highscores = sorted(
+                highscores_data, key=lambda x: int(x[2]), reverse=True)
+
+            # Update highscores worksheet with the sorted data
+            highscores.clear()
+            highscores.append_row(headers)
+            for row in sorted_highscores:
+                highscores.append_row(row)
+
         elif not signed_in:
 
             # If player is not signed in, inform their score won't be saved

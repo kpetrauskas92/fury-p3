@@ -36,7 +36,7 @@ def show_leaderboard():
           f"{YELLOW}{'   Score:':<5}{RESET}")
     print("-" * 46)
 
-    # Print the top 15 scores with rank, name, city, and score.
+    # Print the top 10 scores with rank, name, city, and score.
     for i, row in enumerate(sorted_rows[:10]):
         name, city, score = row
         print(f"{i + 1:<7} {name:<15} {city:<15} {score:<5}")
