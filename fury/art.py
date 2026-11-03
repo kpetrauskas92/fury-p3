@@ -4,14 +4,7 @@ ASCII art, created using characters from the ASCII character set.
 Usage:
 To print the ASCII art, simply call the `print` function on the variable.
 """
-from colorama import Fore, Style
-
-GREEN = Fore.GREEN
-YELLOW = Fore.YELLOW
-MAGENTA = Fore.MAGENTA
-RED = Fore.RED
-BOLD = Style.BRIGHT
-RESET = Style.RESET_ALL
+from fury.colors import GREEN, YELLOW, MAGENTA, RED, BOLD, RESET
 
 
 MAIN_LOGO = f"""
@@ -136,7 +129,7 @@ RULES = f"""
 ⣿     {BOLD}{YELLOW}if turn limit is reached.{RESET}                ⣿
 ⣿                                              ⣿
 ⣿  6. {BOLD}{YELLOW}Score is based on number{RESET}                 ⣿
-⣿     {BOLD}{YELLOW}of tanks destroyed{RESET}                       ⣿
+⣿     {BOLD}{YELLOW}of hits{RESET}                                  ⣿
 ⣿     {BOLD}{YELLOW}and the chosen difficulty level.{RESET}         ⣿
 ⣿                                              ⣿
 +⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿+

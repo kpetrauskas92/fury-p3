@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fury"
+version = "2.0.0"
+description = "FURY - a terminal tank battle game"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+fury = "fury.__main__:run"
+
+[tool.setuptools]
+packages = ["fury"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
