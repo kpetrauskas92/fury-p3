@@ -8,7 +8,7 @@
 ​
 ![Game Screen](assets/images/readme/game_screen.png)
 
-#### [The deployed website is here on Heroku](https://fury-p3.herokuapp.com)​
+#### Play it in your browser: the game runs on GitHub Pages (see [Deployment](#deployment))​
 
 ## Table of contents:
 1. [**Game Overview**](#game-overview)
@@ -116,7 +116,7 @@ I created a high-level logic flowchart in [Draw.io](https://draw.io)
 ### **Color Scheme:**
 
 The limited color availability in the Python terminal I was working with had an impact on my decision-making process. However, I was fortunate enough to be able to choose the main colors required for the game despite this limitation.
-I used colorama library with color constants to achieve the desired color scheme.
+I used ANSI colour codes, kept as constants in `fury/colors.py`, to achieve the desired color scheme. (The first version used the colorama library.)
 
 -  $\colorbox{green}{{\color{black}{GREEN}}}$ : Was utilized for the Fury Logo as well as some event messages in the game.
 
@@ -205,7 +205,7 @@ The main menu is presented without a logo to enhance user experience, particular
 ## Option 2. Login
 - The user is directed to a login screen where they can input their credentials to resume their progress within the game.
 
-- The fury_data API checks for existing data in the Google Sheets high score sheet. 
+- The game checks the leaderboard for a player with that name and city. 
 
 - If the user is matched, they will be directed to the user-menu; otherwise, they will be returned to the main-menu with an error message displayed.
 
@@ -402,23 +402,57 @@ Testing documentation is [here](./TESTING.md)
 
 ## **Deployment**
 
-I deployed the program on heroku and used manual deployment so I could verify all features as I committed code manually.
+The first version ran on Heroku: a Node.js server streamed `run.py` to a web terminal and the leaderboard lived in Google Sheets. Version 2 needs no server at all, so it can be hosted for free.
 
-- Sign in to Heroku
-- In Heroku 'Create new app' from the 'New' menu at the top right
-- Follow the instructions
-- In 'Config Vars' section select 'Reveal Config Vars'
-- Enter PORT for the key and 8000 for the value
-- Enter CREDS for they key
-- For CREDS value use your creds.json information
-- Scroll down to the 'Buildpacks' section
-- Select 'Add' and add the `Python' buildpack
-- Select 'Add' again and add the 'NodeJS' buildpack (this must be after adding the Python buildpack)
-- Select 'Deploy' from the menu at the top
-- Select 'GitHub' and confirm you wish to deploy using GitHub. You may be asked to enter your GitHub password
-- Find the 'Connect to GitHub' section and use the search box to find the repo you want to deploy
-- Connect to it and deploy Your site will shortly be deployed and you will be given a link to the deployed site when the process is complete.
+### How the browser version works
 
+- `index.html` and `web/app.js` load [Pyodide](https://pyodide.org) (Python compiled to WebAssembly) and [xterm.js](https://xtermjs.org) from a CDN.
+- The page downloads the files in `fury/` and runs the same game code the terminal version runs.
+- All input is awaited (`fury/term.py`), so the browser never freezes while the game waits for the player.
+
+### Hosting on GitHub Pages (free)
+
+1. Push the repository to GitHub.
+1. Go to **Settings -> Pages**.
+1. Under **Build and deployment** choose **Deploy from a branch**, pick `main` and `/ (root)`, then **Save**.
+1. The game will be live at `https://<your-username>.github.io/fury-p3/` after a minute or two.
+
+The empty `.nojekyll` file stops GitHub Pages from hiding `__init__.py` and `__main__.py`. Any other static host (Vercel, Netlify, Cloudflare Pages) works the same way: publish the repository root, with no build step.
+
+### Shared leaderboard (optional, free)
+
+Without any setup, scores are saved in each player's own browser. To share one leaderboard between everyone:
+
+1. Create a free project at [supabase.com](https://supabase.com).
+1. Open **SQL Editor -> New query**, paste in [`supabase/schema.sql`](supabase/schema.sql) and run it.
+1. In **Project Settings -> API**, copy the project URL and the `anon` public key into [`web/config.js`](web/config.js).
+
+The anon key is meant to be public. Players can only be created and scored through the database functions, which reject anything a single game can't score (more than 130 points). Logging in only needs a name and a city, so this is a just-for-fun leaderboard rather than real accounts.
+
+### Running it in a terminal
+
+Python 3.10+ is all you need; the game has no third-party dependencies.
+
+```bash
+python -m fury
+```
+
+Scores are saved to `~/.fury_scores.json`. To use the shared Supabase leaderboard instead, set `FURY_SUPABASE_URL` and `FURY_SUPABASE_KEY`.
+
+### Running it in the browser locally
+
+```bash
+python -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+### Tests
+
+```bash
+pip install -e ".[dev]"
+pytest
+```
 
 ### **GitHub** 
 ### Forking the GitHub Repository
@@ -445,10 +479,12 @@ The project will now be cloned locally for you to use.
 ​
 These are the technologies used for this project.
 
-- [Python 3.8.11](https://www.python.org/)
-- [Gitpod](https://gitpod.io)
-- [Github](https://github.com)
-- [Heroku](https://heroku.com/)
+- [Python 3.12](https://www.python.org/)
+- [Pyodide](https://pyodide.org) - runs the Python game in the browser
+- [xterm.js](https://xtermjs.org) - the in-browser terminal
+- [Supabase](https://supabase.com) - optional shared leaderboard
+- [GitHub](https://github.com) and GitHub Pages
+- [pytest](https://pytest.org)
 - [Draw.io](www.draw.io)
 - [Photoshop](https://www.adobe.com/ie/products/photoshop.html)
 
@@ -459,7 +495,6 @@ These are the technologies used for this project.
 * Design a better TUI - Text based interface
 * Nuke  event that would be randomly placed during gameplay.
 * Add multiplayer to create a lobby system with matchmaking
-* Improve code readability through refactoring
 
 ## **Credits**
 ### **Mentions**

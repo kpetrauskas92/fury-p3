@@ -1,34 +1,31 @@
 """
 GAME:
 This module provides functionality for a turn-based tank battle game, including
-grid generation, game logic, and enemy AI.
-The main components of the module are:
+grid generation, game logic, and scoring.
 """
-import sys
 import random
-from colorama import Fore, Style
-from art import LOGO, LOGO_2, GAME_OVER, WINNER
-from modules.google_sheets import get_highscores_worksheet
-from utils.cs import clear_screen
+from fury import term
+from fury.art import LOGO, LOGO_2, GAME_OVER, WINNER
+from fury.colors import GREEN, CYAN, YELLOW, RED, BOLD, DIM, RESET
+from fury.store import StoreError
+from fury.term import clear_screen
 
-
-GREEN = Fore.GREEN
-CYAN = Fore.CYAN
-YELLOW = Fore.YELLOW
-RED = Fore.RED
-BOLD = Style.BRIGHT
-DIM = Style.DIM
-RESET = Style.RESET_ALL
 
 # A dictionary that defines the game difficulty levels.
 DIFFICULTY_LEVELS = {
-    1: {"size": 5, "num_tanks": 2, "turn_limit": 15},
-    2: {"size": 7, "num_tanks": 3, "turn_limit": 20},
-    3: {"size": 10, "num_tanks": 5, "turn_limit": 30},
+    1: {"name": "Easy", "color": GREEN, "size": 5, "num_tanks": 2,
+        "turn_limit": 15, "multiplier": 1},
+    2: {"name": "Medium", "color": YELLOW, "size": 7, "num_tanks": 3,
+        "turn_limit": 20, "multiplier": 1.2},
+    3: {"name": "Hard", "color": RED, "size": 10, "num_tanks": 5,
+        "turn_limit": 30, "multiplier": 1.3},
 }
 
 # Sizes (lengths) for tanks in the game
 TANK_SIZES = [2]
+
+# Points for each hit, before the difficulty multiplier
+POINTS_PER_HIT = 10
 
 # A dictionary that defines the different messages
 # that can be displayed during the game.
@@ -160,37 +157,35 @@ def place_tanks(brd, num_tanks):
             placed = place_tank(brd, tank_length)
 
 
-def select_difficulty():
+async def select_difficulty():
     """
     Displays the difficulty levels and prompts the user to choose one.
-    Returns a tuple with the board size, number of tanks, and turn limit
-    for the selected difficulty level.
+    Returns the settings dictionary for the selected difficulty level.
     """
     print(f"{BOLD}{GREEN}Select difficulty level:{RESET}\n")
-    print(f"{BOLD}{CYAN}1. {GREEN}Easy{RESET}")
-    print(" 5x5 board with 2 Tanks - 15 turns\n")
-    print(f"{BOLD}{CYAN}2. {YELLOW}Medium{RESET}")
-    print(" 7x7 board with 3 Tanks - 20 turns\n")
-    print(f"{BOLD}{CYAN}3. {RED}Hard{RESET}")
-    print(" 10x10 board with 5 Tanks - 30 turns\n")
-    print(f"{YELLOW}For each hit you get 10 points{RESET}\n")
+    for number, level in DIFFICULTY_LEVELS.items():
+        print(f"{BOLD}{CYAN}{number}. {level['color']}{level['name']}{RESET}")
+        print(f" {level['size']}x{level['size']} board with "
+              f"{level['num_tanks']} Tanks - {level['turn_limit']} turns\n")
+    print(f"{YELLOW}For each hit you get {POINTS_PER_HIT} points{RESET}\n")
 
     while True:
         print("Choose (1, 2, or 3) and press ENTER:", end=" ")
-        choice = input(f"{BOLD}{CYAN}\n>>> {RESET}")
+        choice = await term.ask(f"{BOLD}{CYAN}\n>>> {RESET}")
 
-        if choice.isdigit() and choice in ('1', '2', '3'):
-            choice = int(choice)
-            break
+        if choice in ('1', '2', '3'):
+            return DIFFICULTY_LEVELS[int(choice)]
 
         print(f"\n{RED}Please enter a valid option "
               f"(1, 2, or 3).{RESET}")
 
-    if choice == 1:
-        return 5, 2, 15
-    if choice == 2:
-        return 7, 3, 20
-    return 10, 5, 30
+
+def calculate_score(hits, level):
+    """
+    Returns the score for the given number of hits,
+    scaled by the difficulty level's multiplier.
+    """
+    return int(hits * POINTS_PER_HIT * level["multiplier"])
 
 
 def get_turn_color(turn, total_turns):
@@ -200,19 +195,19 @@ def get_turn_color(turn, total_turns):
     mid_turn = total_turns // 2
     if turn <= mid_turn:
         return f"{GREEN}{turn}{RESET}"
-    if turn <= (total_turns - mid_turn) + mid_turn - 1:
+    if turn < total_turns:
         return f"{YELLOW}{turn}{RESET}"
     return f"{RED}{turn}{RESET}"
 
 
-def get_input(prompt, valid_func):
+async def get_input(prompt, valid_func):
     """
     Prompts the user for input using the given prompt,
     and uses the given validation function to check if the input is valid.
     If the input is valid, returns the input value.
     """
     while True:
-        value = input(prompt)
+        value = await term.ask(prompt)
         if valid_func(value):
             return value
 
@@ -221,7 +216,7 @@ def valid_row(value):
     """
     Checks if the input value is a valid row identifier
     """
-    if len(value) != 1 or not value.isalpha():
+    if len(value) != 1 or not value.isascii() or not value.isalpha():
         print(f"{BOLD}{RED}Please enter a single letter.{RESET}")
         return False
     return True
@@ -231,24 +226,23 @@ def valid_col(value):
     """
     Checks if the input value is a valid col identifier
     """
-    if not value.isdigit():
+    if not value.isascii() or not value.isdigit():
         print(f"{BOLD}{RED}Please enter a number.{RESET}")
         return False
     return True
 
 
-def get_row_col(size):
+async def get_row_col(size):
     """
     Prompts the user to enter a row and column for a grid of the given size
     and returns the corresponding row and column values as a tuple.
-
     """
-    row_input = get_input(
+    row_input = (await get_input(
         f" Enter row (A-{chr(64 + size)}):{BOLD}{CYAN} >>> {RESET}",
         valid_row
-    ).upper()
+    )).upper()
     row = ord(row_input) - 65
-    col_input = get_input(
+    col_input = await get_input(
         f" Enter column (1-{size}):{BOLD}{CYAN} >>> {RESET}",
         valid_col
     )
@@ -256,7 +250,7 @@ def get_row_col(size):
     return row, col
 
 
-def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
+def update_game_state(player_brd, enemy_brd, row, col, hits):
     """
     Updates the state of the game based on the player's move
     and returns relevant information for events.
@@ -266,30 +260,33 @@ def update_game_state(player_brd, enemy_brd, row, col, tanks_destr):
         event_message = event_messages["hit"]
         player_brd[row][col] = "!"
         enemy_brd[row][col] = "~"
-        tanks_destr += 1
+        hits += 1
         if not any("T" in row for row in enemy_brd):
             game_over = True
     else:
         event_message = event_messages["miss"]
         player_brd[row][col] = "X"
-    return event_message, player_brd, enemy_brd, tanks_destr, game_over
+    return event_message, player_brd, enemy_brd, hits, game_over
 
 
-def game_loop(size, num_tanks, turn_limit):
+async def game_loop(size, num_tanks, turn_limit, enemy_brd=None):
     """
     Runs the game loop function, allowing the player to take turns,
     making moves and updating the game state until either
     all tanks have been destroyed or the turn limit has been reached.
+    Shots off the board or at a spot already tried don't use up a turn.
     The function returns a dictionary with information about the game state,
     as well as the player's and enemy's game boards.
     """
 
     # Create game boards and place tanks on enemy board
-    player_brd, enemy_brd = create_brd(size), create_brd(size)
-    place_tanks(enemy_brd, num_tanks)
+    player_brd = create_brd(size)
+    if enemy_brd is None:
+        enemy_brd = create_brd(size)
+        place_tanks(enemy_brd, num_tanks)
 
     # Initialize game state dictionary
-    game_state = {"turns": 0, "tanks_destr": 0, "event_message": ""}
+    game_state = {"turns": 0, "hits": 0, "won": False, "event_message": ""}
 
     # Main game loop
     while game_state["turns"] < turn_limit:
@@ -305,19 +302,23 @@ def game_loop(size, num_tanks, turn_limit):
         print_brd(player_brd)
 
         # Get player's move
-        row, col = get_row_col(size)
-        game_over = False
-        # Handle invalid move
+        row, col = await get_row_col(size)
+        # Handle invalid move without using up a turn
         if row not in range(size) or col not in range(size):
             game_state["event_message"] = event_messages["oops"]
-        elif player_brd[row][col] in ("X", " !"):
+            continue
+        if player_brd[row][col] in ("X", "!"):
             game_state["event_message"] = event_messages["same"]
-        else:
-            # Update game state based on player's move
-            (game_state["event_message"], player_brd, enemy_brd,
-             game_state["tanks_destr"], game_over) = update_game_state(
-             player_brd, enemy_brd, row, col, game_state["tanks_destr"])
+            continue
+
+        # Update game state based on player's move
+        (game_state["event_message"], player_brd, enemy_brd,
+         game_state["hits"], game_over) = update_game_state(
+            player_brd, enemy_brd, row, col, game_state["hits"])
+        game_state["turns"] += 1
+
         if game_over:
+            game_state["won"] = True
             clear_screen()
             print(LOGO_2)
             print(WINNER)
@@ -325,87 +326,63 @@ def game_loop(size, num_tanks, turn_limit):
             print(event_messages["destroyed"])
             break
 
-        game_state["turns"] += 1
-
     return game_state, player_brd, enemy_brd
 
 
-def play_game(player_index=None, signed_in=False):
+async def play_game(player=None, store=None):
     """
     This function runs the main game loop,
     handles user inputs, game states, and scoring.
     It allows the player to play multiple games in succession
-    and updates the highscores if the player is signed in.
+    and adds the score to the player's total if they are signed in.
     """
     while True:
         clear_screen()
         print(LOGO)
-        size, num_tanks, turn_limit = select_difficulty()
-        (
-            game_state,
-            _,
-            enemy_brd,
-        ) = game_loop(size, num_tanks, turn_limit)
+        level = await select_difficulty()
+        game_state, _, enemy_brd = await game_loop(
+            level["size"], level["num_tanks"], level["turn_limit"])
 
-        # Check if the game ended due to reaching the turn limit
-        if game_state["turns"] == turn_limit:
+        if not game_state["won"]:
             clear_screen()
             print(LOGO_2)
             print(GAME_OVER)
             print(event_messages["game_over"])
             print(event_messages["enemy_tanks"])
-            # print_brd(player_brd)
             print_brd(enemy_brd)
 
         # Calculate and display the player's score
-        score = int(game_state["tanks_destr"] * 10 *
-                    [1, 1.2, 1.3][turn_limit // 10 - 1])
+        score = calculate_score(game_state["hits"], level)
         print(f"You scored: {BOLD}{GREEN}{score} points!{RESET}")
 
-        # If player is signed in, update their highscore and sort the scores
-        if player_index is not None:
-            highscores = get_highscores_worksheet()
-            old_score = highscores.cell(player_index + 2, 3).value
-            highscores.update_cell(player_index + 2, 3, int(old_score) + score)
-
-            # Print loading message
+        if player is not None:
             print(f"\n{YELLOW}Updating highscores... Please wait...{RESET}")
-            sys.stdout.flush()
-
-            # Retrieve highscores data
-            highscores_data = highscores.get_all_values()
-            headers = highscores_data.pop(0)  # Remove header row
-
-            # Sort highscores data by scores (column 3) in descending order
-            sorted_highscores = sorted(
-                highscores_data, key=lambda x: int(x[2]), reverse=True)
-
-            # Update highscores worksheet with the sorted data
-            highscores.clear()
-            highscores.append_row(headers)
-            for row in sorted_highscores:
-                highscores.append_row(row)
-
-        elif not signed_in:
-
+            try:
+                total = await store.add_score(
+                    player["name"], player["city"], score)
+                print(f"⣿ Your total is now {BOLD}{GREEN}{total}{RESET} "
+                      "points.")
+            except StoreError as err:
+                print(f"{BOLD}{RED}⣿ Couldn't save your score.{RESET} {err}")
+        else:
             # If player is not signed in, inform their score won't be saved
             print(f"\n{BOLD}⣿ Your score will {RED}not be "
                   f"saved{RESET}.")
             print(f"{BOLD}⣿ Please register{YELLOW} !!!{RESET}")
 
-        play_again = prompt_play_again()
+        play_again = await prompt_play_again()
         if play_again == 'n':
             clear_screen()
             break   # Exit the loop if the player chooses not to play again
 
 
-def prompt_play_again():
+async def prompt_play_again():
     """
     Prompts the player to play the game again and returns their answer.
     """
     while True:
         print(f"{BOLD}{YELLOW}\nPLAY AGAIN? {RESET}(y/n):", end=" ")
-        play_again = input(f"{BOLD}{CYAN}\n>>> {RESET}").lower()
+        play_again = (await term.ask(f"{BOLD}{CYAN}\n>>> {RESET}")).lower()
 
         if play_again in ('y', 'n'):
             return play_again

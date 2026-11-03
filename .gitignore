@@ -6,4 +6,5 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
-creds.json
+creds.json.pytest_cache/
+*.egg-info/
