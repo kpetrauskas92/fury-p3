@@ -40,18 +40,31 @@ const context = document.createElement("canvas").getContext("2d");
 context.font = `100px ${FONT_FAMILY}`;
 const CHAR_RATIO = context.measureText("W").width / 100;
 
+const IS_TOUCH = window.matchMedia("(pointer: coarse)").matches;
+
 // Picks the biggest font that still fits 50 columns, then fills the height.
+// The page follows the visible viewport, so the on-screen keyboard on a
+// phone shrinks the terminal instead of covering the prompt.
 function fitTerminal() {
-    // Leave room for the scrollbar.
-    const width = container.clientWidth - 16;
-    term.options.fontSize = Math.max(9, Math.min(20, Math.floor(width / (COLS * CHAR_RATIO))));
+    const viewport = window.visualViewport;
+    if (viewport) {
+        document.body.style.height = `${viewport.height}px`;
+        window.scrollTo(0, 0);
+    }
+    const size = container.clientWidth / (COLS * CHAR_RATIO);
+    term.options.fontSize = Math.max(8, Math.min(20, Math.floor(size * 2) / 2));
     const dims = fitAddon.proposeDimensions();
     if (dims && dims.rows > 0) {
         term.resize(COLS, Math.max(10, dims.rows));
     }
+    // Lines the header, footer and keys up with the terminal's edges.
+    const screen = container.querySelector(".xterm-screen");
+    document.documentElement.style.setProperty("--term-width", `${screen.offsetWidth}px`);
+    term.scrollToBottom();
 }
 fitTerminal();
 window.addEventListener("resize", fitTerminal);
+window.visualViewport?.addEventListener("resize", fitTerminal);
 
 // Line input for the game. Python awaits furyReadLine() whenever it asks
 // for input. Like a real terminal, lines typed before the game asks are
@@ -68,7 +81,8 @@ window.furyReadLine = () => new Promise((resolve) => {
     }
 });
 
-term.onData((data) => {
+// Handles typed keys, pasted text and taps on the on-screen keys alike.
+function handleInput(data) {
     for (const ch of data) {
         if (ch === "\r") {
             term.write("\r\n");
@@ -91,7 +105,40 @@ term.onData((data) => {
             term.write(ch);
         }
     }
-});
+}
+
+term.onData(handleInput);
+
+// On phones, on-screen keys cover the menus, y/n questions and every shot
+// (rows A-J, columns 1-10) without opening the keyboard, which would hide
+// most of the board. Pressing them keeps the keyboard as it is.
+const keys = document.getElementById("keys");
+const NAMED_KEYS = { backspace: "\x7f", enter: "\r" };
+if (IS_TOUCH) {
+    const rows = ["ABCDEFGHIJ", "1234567890"].map((chars) => [...chars].map((ch) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.key = ch.toLowerCase();
+        button.textContent = ch;
+        return button;
+    })).flat();
+    keys.prepend(...rows);
+    keys.hidden = false;
+    document.getElementById("hint").textContent = "⌨ opens the keyboard.";
+    keys.addEventListener("pointerdown", (event) => {
+        if (event.target.closest("button")) event.preventDefault();
+    });
+    keys.addEventListener("click", (event) => {
+        const button = event.target.closest("button");
+        if (!button) return;
+        if (button.dataset.key === "keyboard") {
+            term.focus();
+        } else {
+            handleInput(NAMED_KEYS[button.dataset.key] ?? button.dataset.key);
+        }
+    });
+    fitTerminal();
+}
 
 document.getElementById("restart").addEventListener("click", () => {
     window.location.reload();
@@ -99,7 +146,8 @@ document.getElementById("restart").addEventListener("click", () => {
 
 async function start() {
     term.write("\x1b[33mLoading the battlefield...\x1b[0m\r\n");
-    term.focus();
+    // On a phone this would pop the keyboard up over the intro.
+    if (!IS_TOUCH) term.focus();
 
     const pyodide = await loadPyodide();
     // Pyodide reuses the buffer it passes in, so copy it before xterm reads it.

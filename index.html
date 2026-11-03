@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
     <meta name="description" content="FURY - a terminal tank battle game you can play in your browser.">
     <title>FURY Tank Warfare</title>
     <link rel="icon" href="favicon.ico">
@@ -20,8 +20,16 @@
     <main>
         <div id="terminal" aria-label="Game terminal"></div>
     </main>
+    <!-- On-screen keys for phones; web/app.js adds the letter and digit rows. -->
+    <div id="keys" hidden>
+        <button type="button" data-key="y" class="wide">Y</button>
+        <button type="button" data-key="n" class="wide">N</button>
+        <button type="button" data-key="backspace" class="wide" aria-label="Backspace">&#x232B;</button>
+        <button type="button" data-key="enter" class="enter">Enter</button>
+        <button type="button" data-key="keyboard" aria-label="Show keyboard">&#x2328;</button>
+    </div>
     <footer>
-        Type your answers and press Enter.
+        <span id="hint">Type your answers and press Enter.</span>
         <a href="https://github.com/kpetrauskas92/fury-p3">Source on GitHub</a>
     </footer>
 

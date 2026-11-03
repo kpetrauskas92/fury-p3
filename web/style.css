@@ -3,6 +3,10 @@
     --text: #d6d6d6;
     --muted: #8a8a8a;
     --accent: #3ec46d;
+    --key-bg: #141414;
+    --key-border: #2c2c2c;
+    /* Set by web/app.js to the terminal's drawn width. */
+    --term-width: 760px;
 }
 
 * {
@@ -11,11 +15,13 @@
 
 html,
 body {
-    height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 body {
+    height: 100vh;
+    height: 100dvh;
     background: var(--bg);
     color: var(--text);
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -23,13 +29,19 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 12px 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
     gap: 10px;
 }
 
 header,
-footer {
+footer,
+#keys {
     width: 100%;
-    max-width: 760px;
+    max-width: var(--term-width);
+}
+
+header,
+footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,6 +71,7 @@ h1 span {
     font: inherit;
     font-size: 0.85rem;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 #restart:hover,
@@ -72,17 +85,71 @@ main {
     width: 100%;
     max-width: 760px;
     min-height: 0;
+}
+
+/* Centres the terminal: the xterm element shrinks to its 50 columns. */
+#terminal {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
 
-#terminal {
-    width: 100%;
-    height: 100%;
+#terminal .xterm-viewport {
+    scrollbar-width: none;
 }
 
-#terminal .xterm-viewport {
-    scrollbar-color: #333 var(--bg);
+#terminal .xterm-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+/* Stops iOS zooming the page when the terminal takes focus. */
+#terminal .xterm-helper-textarea {
+    font-size: 16px;
+}
+
+#keys {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+}
+
+#keys[hidden] {
+    display: none;
+}
+
+#keys .wide {
+    grid-column: span 2;
+}
+
+#keys .enter {
+    grid-column: span 3;
+}
+
+#keys button {
+    min-height: 40px;
+    padding: 0;
+    background: var(--key-bg);
+    color: var(--text);
+    border: 1px solid var(--key-border);
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+#keys button:active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+#keys .enter {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 footer {
@@ -92,4 +159,28 @@ footer {
 
 footer a {
     color: var(--muted);
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px 8px max(8px, env(safe-area-inset-bottom));
+        gap: 8px;
+    }
+
+    h1 {
+        font-size: 1.1rem;
+    }
+
+    h1 span {
+        font-size: 0.8rem;
+    }
+
+    #keys {
+        gap: 4px;
+    }
+
+    #keys button {
+        min-height: 38px;
+        font-size: 0.95rem;
+    }
 }
