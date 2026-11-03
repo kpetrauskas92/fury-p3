@@ -8,7 +8,9 @@
 ​
 ![Game Screen](assets/images/readme/game_screen.png)
 
-#### Play it in your browser: the game runs on GitHub Pages (see [Deployment](#deployment))​
+#### [▶ Play FURY in your browser](https://kpetrauskas92.github.io/fury-p3/)​
+
+Works on desktop and on phones, with on-screen keys for touch screens. Nothing to install.
 
 ## Table of contents:
 1. [**Game Overview**](#game-overview)
@@ -415,7 +417,7 @@ The first version ran on Heroku: a Node.js server streamed `run.py` to a web ter
 1. Push the repository to GitHub.
 1. Go to **Settings -> Pages**.
 1. Under **Build and deployment** choose **Deploy from a branch**, pick `main` and `/ (root)`, then **Save**.
-1. The game will be live at `https://<your-username>.github.io/fury-p3/` after a minute or two.
+1. The game will be live at `https://<your-username>.github.io/fury-p3/` after a minute or two. This repository's copy is at https://kpetrauskas92.github.io/fury-p3/.
 
 The empty `.nojekyll` file stops GitHub Pages from hiding `__init__.py` and `__main__.py`. Any other static host (Vercel, Netlify, Cloudflare Pages) works the same way: publish the repository root, with no build step.
 
